@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CANAlyzat0r manual &mdash; CANalyzat0r 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CANalyzat0r 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Main Tab" href="manual.maintab.html"/>
+        <link rel="prev" title="Requirements" href="requirements.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CANalyzat0r
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CANAlyzat0r manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-tab-by-tab">Usage: Tab by tab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.maintab.html">Main Tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.general.html">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.sniffertab.html">Sniffer Tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.sendertab.html">Sender Tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.fuzzertab.html">Fuzzer Tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.comparertab.html">Comparer Tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.searchertab.html">Searcher Tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.managertab.html">Manager Tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.filtertab.html">Filter Tab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src.html">src package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usedlibs.html">Used libraries and files</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CANalyzat0r</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>CANAlyzat0r manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/manual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="canalyzat0r-manual">
+<h1>CANAlyzat0r manual<a class="headerlink" href="#canalyzat0r-manual" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>You can use <strong>CANAlyzat0r</strong> to quickly analyze the CAN bus in many ways.
+It’s great.</p>
+<img alt="_images/icon.png" src="_images/icon.png" />
+<p>This documentation will guide you through the usage of the application.
+Also, you can find the code documentation in this document if you want
+to extend and/or contribute to this project.</p>
+</div>
+<div class="section" id="usage-tab-by-tab">
+<h2>Usage: Tab by tab<a class="headerlink" href="#usage-tab-by-tab" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manual.maintab.html">Main Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.maintab.html#where-s-my-interface-1">Where’s my interface?!?!1!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.maintab.html#creating-and-selecting-projects">Creating and selecting projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.maintab.html#log-levels">Log levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.maintab.html#where-s-my-data-being-saved-to">Where’s my data being saved to?!!?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.maintab.html#but-what-if-i-want-to-export-my-data">But what if i want to export my data?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.general.html">General</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.general.html#why-can-i-change-interface-settings-in-every-tab-and-why-is-there-a-global-interface">Why can I change interface settings in every tab and why is there a global interface?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.general.html#well-how-can-i-manage-packets-in-between-tabs">Well, how can I manage packets in between tabs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.general.html#ok-ok-but-how-can-i-import-my-socketcan-dumps">Ok Ok, but how can I import my SocketCAN dumps?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.general.html#what-are-known-packets">What are known packets?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.general.html#i-ve-discovered-a-bug-pls-fix">I’ve discovered a bug, pls fix!</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.sniffertab.html">Sniffer Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.sniffertab.html#how-to-sniff">How to sniff?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.sniffertab.html#ignoring-packets">Ignoring packets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.sniffertab.html#i-get-errors-no-data-when-i-try-to-sniff-1">I get errors/no data when I try to sniff!!1!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.sniffertab.html#the-sniffer-tab-doesn-t-list-the-packets-i-m-sending">The sniffer tab doesn’t list the packets I’m sending</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.sendertab.html">Sender Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.sendertab.html#what-do-the-sub-tabs-do">What do the sub tabs do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.sendertab.html#why-does-loop-do">Why does <code class="docutils literal"><span class="pre">Loop</span></code> do?!?!</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.fuzzertab.html">Fuzzer Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.fuzzertab.html#what-does-this-thing-to">What does this thing to?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.fuzzertab.html#what-are-masks">What are masks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.fuzzertab.html#other-fuzzers-are-much-faster-1">Other fuzzers are much faster!!1!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.fuzzertab.html#what-are-the-modes">What are the modes?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.comparertab.html">Comparer Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.comparertab.html#what-can-i-compare">What can I compare?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.searchertab.html">Searcher Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.searchertab.html#what-can-i-search-for">What can I search for?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.searchertab.html#it-doesn-t-work-1">It doesn’t work!!1!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.searchertab.html#it-still-doesn-t-work">It still doesn’t work :(</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.searchertab.html#i-want-to-do-it-manually-how-can-this-tool-help-me">I want to do it manually, how can this tool help me?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.managertab.html">Manager Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.managertab.html#what-can-i-do-using-the-dumps-tab">What can I do using the dumps tab?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.managertab.html#i-know-packet-xy-has-effect-zz-do-i-create-a-dump-or-a-known-packet">I know packet XY has effect ZZ, do I create a dump or a known packet?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.managertab.html#importing-exporting-projects">Importing/Exporting projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.filtertab.html">Filter Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.filtertab.html#what-can-i-filter">What can I filter?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.filtertab.html#how-can-i-try-this-without-a-car-or-can-device">How can I try this without a car or CAN device?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="manual.maintab.html" class="btn btn-neutral float-right" title="Main Tab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="requirements.html" class="btn btn-neutral" title="Requirements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, pschmied (SCHUTZWERK GmbH).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="fonts">
+    <file>ui/res/OCRA.ttf</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.ui package &mdash; CANalyzat0r 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CANalyzat0r 1.0 documentation" href="index.html"/>
+        <link rel="up" title="src package" href="src.html"/>
+        <link rel="next" title="Used libraries and files" href="usedlibs.html"/>
+        <link rel="prev" title="src package" href="src.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CANalyzat0r
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">CANAlyzat0r manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">src.ui package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.ui.mainWindow">CANalyzat0r.ui.mainWindow module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.ui">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.AboutTab">CANalyzat0r.AboutTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.CANData">CANalyzat0r.CANData module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.CANalyzat0r">CANalyzat0r.CANalyzat0r module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.ComparerTab">CANalyzat0r.ComparerTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#canalyzat0r-database-module">CANalyzat0r.Database module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.FilterTab">CANalyzat0r.FilterTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.FuzzerTab">CANalyzat0r.FuzzerTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.Globals">CANalyzat0r.Globals module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.ItemAdderThread">CANalyzat0r.ItemAdderThread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.KnownPacket">CANalyzat0r.KnownPacket module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.Logger">CANalyzat0r.Logger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.MainTab">CANalyzat0r.MainTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.ManagerTab">CANalyzat0r.ManagerTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.Packet">CANalyzat0r.Packet module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.PacketsDialog">CANalyzat0r.PacketsDialog module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.PacketSet">CANalyzat0r.PacketSet module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.PacketTableModel">CANalyzat0r.PacketTableModel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.Project">CANalyzat0r.Project module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.SearcherTab">CANalyzat0r.SearcherTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.SenderTab">CANalyzat0r.SenderTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.SenderTabElement">CANalyzat0r.SenderTabElement module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.SenderThread">CANalyzat0r.SenderThread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.Settings">CANalyzat0r.Settings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.SnifferProcess">CANalyzat0r.SnifferProcess module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.SnifferTab">CANalyzat0r.SnifferTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.SnifferTabElement">CANalyzat0r.SnifferTabElement module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.Strings">CANalyzat0r.Strings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.Toolbox">CANalyzat0r.Toolbox module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.mainWindow">CANalyzat0r.mainWindow module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.AbstractTab">CANalyzat0r.AbstractTab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usedlibs.html">Used libraries and files</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CANalyzat0r</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="src.html">src package</a> &raquo;</li>
+        
+      <li>src.ui package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/src.ui.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="src-ui-package">
+<h1>src.ui package<a class="headerlink" href="#src-ui-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.ui.mainWindow">
+<span id="canalyzat0r-ui-mainwindow-module"></span><h2>CANalyzat0r.ui.mainWindow module<a class="headerlink" href="#module-src.ui.mainWindow" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.ui.mainWindow.Ui_CANalyzatorMainWindow">
+<em class="property">class </em><code class="descclassname">src.ui.mainWindow.</code><code class="descname">Ui_CANalyzatorMainWindow</code><a class="headerlink" href="#src.ui.mainWindow.Ui_CANalyzatorMainWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="src.ui.mainWindow.Ui_CANalyzatorMainWindow.retranslateUi">
+<code class="descname">retranslateUi</code><span class="sig-paren">(</span><em>CANalyzatorMainWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#src.ui.mainWindow.Ui_CANalyzatorMainWindow.retranslateUi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.ui.mainWindow.Ui_CANalyzatorMainWindow.setupUi">
+<code class="descname">setupUi</code><span class="sig-paren">(</span><em>CANalyzatorMainWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#src.ui.mainWindow.Ui_CANalyzatorMainWindow.setupUi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.ui">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.ui" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usedlibs.html" class="btn btn-neutral float-right" title="Used libraries and files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="src.html" class="btn btn-neutral" title="src package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, pschmied (SCHUTZWERK GmbH).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

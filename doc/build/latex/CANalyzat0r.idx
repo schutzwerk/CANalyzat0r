@@ -1,0 +1,439 @@
+\indexentry{src.ui.mainWindow (module)|hyperpage}{11}
+\indexentry{Ui\_CANalyzatorMainWindow (class in src.ui.mainWindow)|hyperpage}{11}
+\indexentry{retranslateUi() (src.ui.mainWindow.Ui\_CANalyzatorMainWindow method)|hyperpage}{11}
+\indexentry{setupUi() (src.ui.mainWindow.Ui\_CANalyzatorMainWindow method)|hyperpage}{11}
+\indexentry{src.ui (module)|hyperpage}{11}
+\indexentry{src.AboutTab (module)|hyperpage}{11}
+\indexentry{AboutTab (class in src.AboutTab)|hyperpage}{11}
+\indexentry{browseGitHub() (src.AboutTab.AboutTab static method)|hyperpage}{11}
+\indexentry{browseSW() (src.AboutTab.AboutTab static method)|hyperpage}{11}
+\indexentry{prepareUI() (src.AboutTab.AboutTab static method)|hyperpage}{11}
+\indexentry{src.CANData (module)|hyperpage}{12}
+\indexentry{CANData (class in src.CANData)|hyperpage}{12}
+\indexentry{CANDataInstances (src.CANData.CANData attribute)|hyperpage}{12}
+\indexentry{\_\_init\_\_() (src.CANData.CANData method)|hyperpage}{12}
+\indexentry{checkVCAN() (src.CANData.CANData method)|hyperpage}{12}
+\indexentry{createCANDataInstance() (src.CANData.CANData static method)|hyperpage}{12}
+\indexentry{deleteCANDataInstance() (src.CANData.CANData static method)|hyperpage}{12}
+\indexentry{getGlobalOrFirstInstance() (src.CANData.CANData static method)|hyperpage}{12}
+\indexentry{logger (src.CANData.CANData attribute)|hyperpage}{12}
+\indexentry{parseSocketCANLines() (src.CANData.CANData static method)|hyperpage}{12}
+\indexentry{readCANFile() (src.CANData.CANData static method)|hyperpage}{13}
+\indexentry{readPacket() (src.CANData.CANData method)|hyperpage}{13}
+\indexentry{readPacketAsync() (src.CANData.CANData method)|hyperpage}{13}
+\indexentry{rebuildCANDataInstances() (src.CANData.CANData static method)|hyperpage}{13}
+\indexentry{sendPacket() (src.CANData.CANData method)|hyperpage}{13}
+\indexentry{timeout (src.CANData.CANData attribute)|hyperpage}{13}
+\indexentry{toString() (src.CANData.CANData method)|hyperpage}{13}
+\indexentry{tryBuildPacket() (src.CANData.CANData static method)|hyperpage}{13}
+\indexentry{updateBitrate() (src.CANData.CANData method)|hyperpage}{13}
+\indexentry{writeCANFile() (src.CANData.CANData static method)|hyperpage}{14}
+\indexentry{SocketCANPacket (class in src.CANData)|hyperpage}{14}
+\indexentry{\_\_init\_\_() (src.CANData.SocketCANPacket method)|hyperpage}{14}
+\indexentry{toString() (src.CANData.SocketCANPacket method)|hyperpage}{14}
+\indexentry{src.CANalyzat0r (module)|hyperpage}{14}
+\indexentry{MainWindow (class in src.CANalyzat0r)|hyperpage}{14}
+\indexentry{\_\_init\_\_() (src.CANalyzat0r.MainWindow method)|hyperpage}{14}
+\indexentry{assignWidgets() (src.CANalyzat0r.MainWindow method)|hyperpage}{15}
+\indexentry{checkSU() (src.CANalyzat0r.MainWindow method)|hyperpage}{15}
+\indexentry{cleanup() (src.CANalyzat0r.MainWindow static method)|hyperpage}{15}
+\indexentry{staticMetaObject (src.CANalyzat0r.MainWindow attribute)|hyperpage}{15}
+\indexentry{globalLoggingHandler() (in module src.CANalyzat0r)|hyperpage}{15}
+\indexentry{uncaughtExceptionLogger (in module src.CANalyzat0r)|hyperpage}{15}
+\indexentry{src.ComparerTab (module)|hyperpage}{15}
+\indexentry{ComparerTab (class in src.ComparerTab)|hyperpage}{15}
+\indexentry{\_\_init\_\_() (src.ComparerTab.ComparerTab method)|hyperpage}{15}
+\indexentry{compare() (src.ComparerTab.ComparerTab method)|hyperpage}{15}
+\indexentry{getPacketSet() (src.ComparerTab.ComparerTab method)|hyperpage}{15}
+\indexentry{setPacketSet1() (src.ComparerTab.ComparerTab method)|hyperpage}{15}
+\indexentry{setPacketSet2() (src.ComparerTab.ComparerTab method)|hyperpage}{15}
+\indexentry{src.Database (module)|hyperpage}{16}
+\indexentry{Database (class in src.Database)|hyperpage}{16}
+\indexentry{\_\_init\_\_() (src.Database.Database method)|hyperpage}{16}
+\indexentry{checkDB() (src.Database.Database method)|hyperpage}{16}
+\indexentry{connect() (src.Database.Database method)|hyperpage}{16}
+\indexentry{createTables() (src.Database.Database method)|hyperpage}{16}
+\indexentry{deleteFromTableByID() (src.Database.Database method)|hyperpage}{16}
+\indexentry{deleteFromTableByValue() (src.Database.Database method)|hyperpage}{16}
+\indexentry{deleteKnownPacket() (src.Database.Database method)|hyperpage}{16}
+\indexentry{deletePacketSet() (src.Database.Database method)|hyperpage}{17}
+\indexentry{deleteProjectAndData() (src.Database.Database method)|hyperpage}{17}
+\indexentry{getKnownPackets() (src.Database.Database method)|hyperpage}{17}
+\indexentry{getOverallTableCount() (src.Database.Database method)|hyperpage}{17}
+\indexentry{getPacketSets() (src.Database.Database method)|hyperpage}{17}
+\indexentry{getPacketsOfPacketSet() (src.Database.Database method)|hyperpage}{17}
+\indexentry{getProjects() (src.Database.Database method)|hyperpage}{17}
+\indexentry{saveKnownPacket() (src.Database.Database method)|hyperpage}{17}
+\indexentry{savePacket() (src.Database.Database method)|hyperpage}{17}
+\indexentry{savePacketSet() (src.Database.Database method)|hyperpage}{18}
+\indexentry{savePacketSetWithData() (src.Database.Database method)|hyperpage}{18}
+\indexentry{savePacketsBatch() (src.Database.Database method)|hyperpage}{18}
+\indexentry{saveProject() (src.Database.Database method)|hyperpage}{18}
+\indexentry{updateKnownPacket() (src.Database.Database method)|hyperpage}{18}
+\indexentry{updatePackets() (src.Database.Database method)|hyperpage}{18}
+\indexentry{updateProject() (src.Database.Database method)|hyperpage}{19}
+\indexentry{DatabaseStatements (class in src.Database)|hyperpage}{19}
+\indexentry{checkTablesPresentStatement (src.Database.DatabaseStatements attribute)|hyperpage}{19}
+\indexentry{createKnownPacketTableStatement (src.Database.DatabaseStatements attribute)|hyperpage}{19}
+\indexentry{createPacketSetTableStatement (src.Database.DatabaseStatements attribute)|hyperpage}{19}
+\indexentry{createPacketTableStatement (src.Database.DatabaseStatements attribute)|hyperpage}{19}
+\indexentry{createProjectTableStatement (src.Database.DatabaseStatements attribute)|hyperpage}{19}
+\indexentry{createTableStatementsList (src.Database.DatabaseStatements attribute)|hyperpage}{19}
+\indexentry{getDeleteByIDStatement() (src.Database.DatabaseStatements static method)|hyperpage}{19}
+\indexentry{getDeleteByValueStatement() (src.Database.DatabaseStatements static method)|hyperpage}{19}
+\indexentry{getInsertKnownPacketStatement() (src.Database.DatabaseStatements static method)|hyperpage}{19}
+\indexentry{getInsertPacketSetStatement() (src.Database.DatabaseStatements static method)|hyperpage}{20}
+\indexentry{getInsertPacketStatement() (src.Database.DatabaseStatements static method)|hyperpage}{20}
+\indexentry{getInsertProjectStatement() (src.Database.DatabaseStatements static method)|hyperpage}{20}
+\indexentry{getInsertStatement() (src.Database.DatabaseStatements static method)|hyperpage}{20}
+\indexentry{getOverallCountStatement() (src.Database.DatabaseStatements static method)|hyperpage}{21}
+\indexentry{getSelectAllStatement() (src.Database.DatabaseStatements static method)|hyperpage}{21}
+\indexentry{getSelectAllStatementWhereEquals() (src.Database.DatabaseStatements static method)|hyperpage}{21}
+\indexentry{getUpdateByIDStatement() (src.Database.DatabaseStatements static method)|hyperpage}{21}
+\indexentry{knownPacketTableCANIDColName (src.Database.DatabaseStatements attribute)|hyperpage}{21}
+\indexentry{knownPacketTableDataColName (src.Database.DatabaseStatements attribute)|hyperpage}{21}
+\indexentry{knownPacketTableDescriptionColName (src.Database.DatabaseStatements attribute)|hyperpage}{21}
+\indexentry{knownPacketTableName (src.Database.DatabaseStatements attribute)|hyperpage}{21}
+\indexentry{packetSetTableName (src.Database.DatabaseStatements attribute)|hyperpage}{21}
+\indexentry{packetTableCANIDColName (src.Database.DatabaseStatements attribute)|hyperpage}{22}
+\indexentry{packetTableDataColName (src.Database.DatabaseStatements attribute)|hyperpage}{22}
+\indexentry{packetTableName (src.Database.DatabaseStatements attribute)|hyperpage}{22}
+\indexentry{projectTableDescriptionColName (src.Database.DatabaseStatements attribute)|hyperpage}{22}
+\indexentry{projectTableName (src.Database.DatabaseStatements attribute)|hyperpage}{22}
+\indexentry{projectTableNameColName (src.Database.DatabaseStatements attribute)|hyperpage}{22}
+\indexentry{tableCount (src.Database.DatabaseStatements attribute)|hyperpage}{22}
+\indexentry{src.FilterTab (module)|hyperpage}{22}
+\indexentry{DataAdderThread (class in src.FilterTab)|hyperpage}{22}
+\indexentry{\_\_init\_\_() (src.FilterTab.DataAdderThread method)|hyperpage}{22}
+\indexentry{frameToList() (src.FilterTab.DataAdderThread method)|hyperpage}{22}
+\indexentry{run() (src.FilterTab.DataAdderThread method)|hyperpage}{22}
+\indexentry{signalSniffedPacket (src.FilterTab.DataAdderThread attribute)|hyperpage}{22}
+\indexentry{staticMetaObject (src.FilterTab.DataAdderThread attribute)|hyperpage}{22}
+\indexentry{FilterTab (class in src.FilterTab)|hyperpage}{22}
+\indexentry{\_\_init\_\_() (src.FilterTab.FilterTab method)|hyperpage}{22}
+\indexentry{addSniffedNoise() (src.FilterTab.FilterTab method)|hyperpage}{22}
+\indexentry{addSniffedPacketToSample() (src.FilterTab.FilterTab method)|hyperpage}{22}
+\indexentry{analyze() (src.FilterTab.FilterTab method)|hyperpage}{23}
+\indexentry{clear() (src.FilterTab.FilterTab method)|hyperpage}{23}
+\indexentry{collectNoise() (src.FilterTab.FilterTab method)|hyperpage}{23}
+\indexentry{getSampleData() (src.FilterTab.FilterTab method)|hyperpage}{23}
+\indexentry{noiseData (src.FilterTab.FilterTab attribute)|hyperpage}{23}
+\indexentry{outputRemainingPackets() (src.FilterTab.FilterTab method)|hyperpage}{23}
+\indexentry{sharedDataAdderEnabledFlag (src.FilterTab.FilterTab attribute)|hyperpage}{23}
+\indexentry{sharedSnifferEnabledFlag (src.FilterTab.FilterTab attribute)|hyperpage}{23}
+\indexentry{startFilter() (src.FilterTab.FilterTab method)|hyperpage}{24}
+\indexentry{startSnifferAndAdder() (src.FilterTab.FilterTab method)|hyperpage}{24}
+\indexentry{stopSnifferAndAdder() (src.FilterTab.FilterTab method)|hyperpage}{24}
+\indexentry{toggleGUIElements() (src.FilterTab.FilterTab method)|hyperpage}{24}
+\indexentry{updateNoiseCollectProgress() (src.FilterTab.FilterTab method)|hyperpage}{24}
+\indexentry{src.FuzzerTab (module)|hyperpage}{24}
+\indexentry{FuzzerTab (class in src.FuzzerTab)|hyperpage}{24}
+\indexentry{IDMask (src.FuzzerTab.FuzzerTab attribute)|hyperpage}{24}
+\indexentry{IDMaskChanged() (src.FuzzerTab.FuzzerTab method)|hyperpage}{24}
+\indexentry{IDMaxValue (src.FuzzerTab.FuzzerTab attribute)|hyperpage}{24}
+\indexentry{\_\_init\_\_() (src.FuzzerTab.FuzzerTab method)|hyperpage}{24}
+\indexentry{addPacket() (src.FuzzerTab.FuzzerTab method)|hyperpage}{24}
+\indexentry{clear() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{dataMask (src.FuzzerTab.FuzzerTab attribute)|hyperpage}{25}
+\indexentry{dataMaskChanged() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{dataMaxLength (src.FuzzerTab.FuzzerTab attribute)|hyperpage}{25}
+\indexentry{fuzzSenderThread (src.FuzzerTab.FuzzerTab attribute)|hyperpage}{25}
+\indexentry{fuzzingModeChanged() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{fuzzingModeComboBoxValuePairs (src.FuzzerTab.FuzzerTab attribute)|hyperpage}{25}
+\indexentry{generateRandomPacket() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{itemAdderThread (src.FuzzerTab.FuzzerTab attribute)|hyperpage}{25}
+\indexentry{packetBuildErrorCount (src.FuzzerTab.FuzzerTab attribute)|hyperpage}{25}
+\indexentry{prepareUI() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{sliderChanged() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{toggleFuzzing() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{toggleGUIElements() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{toggleLoopActive() (src.FuzzerTab.FuzzerTab method)|hyperpage}{25}
+\indexentry{validateDataMaskInput() (src.FuzzerTab.FuzzerTab method)|hyperpage}{26}
+\indexentry{validateIDMaskInput() (src.FuzzerTab.FuzzerTab method)|hyperpage}{26}
+\indexentry{src.Globals (module)|hyperpage}{26}
+\indexentry{CANData (in module src.Globals)|hyperpage}{26}
+\indexentry{db (in module src.Globals)|hyperpage}{26}
+\indexentry{knownPackets (in module src.Globals)|hyperpage}{26}
+\indexentry{project (in module src.Globals)|hyperpage}{26}
+\indexentry{textBrowserLogs (in module src.Globals)|hyperpage}{26}
+\indexentry{ui (in module src.Globals)|hyperpage}{26}
+\indexentry{src.ItemAdderThread (module)|hyperpage}{26}
+\indexentry{ItemAdderThread (class in src.ItemAdderThread)|hyperpage}{26}
+\indexentry{\_\_init\_\_() (src.ItemAdderThread.ItemAdderThread method)|hyperpage}{27}
+\indexentry{appendRow (src.ItemAdderThread.ItemAdderThread attribute)|hyperpage}{27}
+\indexentry{disable() (src.ItemAdderThread.ItemAdderThread method)|hyperpage}{27}
+\indexentry{frameToRow() (src.ItemAdderThread.ItemAdderThread method)|hyperpage}{27}
+\indexentry{run() (src.ItemAdderThread.ItemAdderThread method)|hyperpage}{27}
+\indexentry{staticMetaObject (src.ItemAdderThread.ItemAdderThread attribute)|hyperpage}{27}
+\indexentry{src.KnownPacket (module)|hyperpage}{27}
+\indexentry{KnownPacket (class in src.KnownPacket)|hyperpage}{27}
+\indexentry{\_\_init\_\_() (src.KnownPacket.KnownPacket method)|hyperpage}{27}
+\indexentry{fromJSON() (src.KnownPacket.KnownPacket static method)|hyperpage}{27}
+\indexentry{toComboBoxString() (src.KnownPacket.KnownPacket method)|hyperpage}{27}
+\indexentry{toJSON() (src.KnownPacket.KnownPacket method)|hyperpage}{27}
+\indexentry{src.Logger (module)|hyperpage}{27}
+\indexentry{LogHandler (class in src.Logger)|hyperpage}{28}
+\indexentry{\_\_init\_\_() (src.Logger.LogHandler method)|hyperpage}{28}
+\indexentry{emit() (src.Logger.LogHandler method)|hyperpage}{28}
+\indexentry{Logger (class in src.Logger)|hyperpage}{28}
+\indexentry{\_\_init\_\_() (src.Logger.Logger method)|hyperpage}{28}
+\indexentry{getLogger() (src.Logger.Logger method)|hyperpage}{28}
+\indexentry{minLogLevel (src.Logger.Logger attribute)|hyperpage}{28}
+\indexentry{src.MainTab (module)|hyperpage}{28}
+\indexentry{MainTab (class in src.MainTab)|hyperpage}{28}
+\indexentry{VCANCheckboxChanged() (src.MainTab.MainTab static method)|hyperpage}{28}
+\indexentry{addApplicationStatus() (src.MainTab.MainTab static method)|hyperpage}{28}
+\indexentry{addVCANInterface() (src.MainTab.MainTab static method)|hyperpage}{28}
+\indexentry{applyGlobalInterfaceSettings() (src.MainTab.MainTab static method)|hyperpage}{28}
+\indexentry{applyLogLevelSetting() (src.MainTab.MainTab static method)|hyperpage}{28}
+\indexentry{detectCANInterfaces() (src.MainTab.MainTab static method)|hyperpage}{28}
+\indexentry{easterEgg() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{loadKernelModules() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{logger (src.MainTab.MainTab attribute)|hyperpage}{29}
+\indexentry{populateProjects() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{prepareUI() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{preselectUseBitrateCheckBox() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{removeApplicationStatus() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{removeVCANInterface() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{setGlobalInterfaceStatus() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{setProject() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{setProjectStatus() (src.MainTab.MainTab static method)|hyperpage}{29}
+\indexentry{setupStatusBar() (src.MainTab.MainTab static method)|hyperpage}{30}
+\indexentry{statusBarActiveStatuses (src.MainTab.MainTab attribute)|hyperpage}{30}
+\indexentry{statusBarApplicationStatus (src.MainTab.MainTab attribute)|hyperpage}{30}
+\indexentry{statusBarInterface (src.MainTab.MainTab attribute)|hyperpage}{30}
+\indexentry{statusBarProject (src.MainTab.MainTab attribute)|hyperpage}{30}
+\indexentry{updateVCANButtons() (src.MainTab.MainTab static method)|hyperpage}{30}
+\indexentry{src.ManagerTab (module)|hyperpage}{30}
+\indexentry{ManagerTab (class in src.ManagerTab)|hyperpage}{30}
+\indexentry{\_\_init\_\_() (src.ManagerTab.ManagerTab method)|hyperpage}{30}
+\indexentry{addKnownPacket() (src.ManagerTab.ManagerTab method)|hyperpage}{30}
+\indexentry{clear() (src.ManagerTab.ManagerTab method)|hyperpage}{30}
+\indexentry{createDump() (src.ManagerTab.ManagerTab method)|hyperpage}{30}
+\indexentry{createProject() (src.ManagerTab.ManagerTab method)|hyperpage}{30}
+\indexentry{deleteDump() (src.ManagerTab.ManagerTab method)|hyperpage}{30}
+\indexentry{deleteProject() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{dumpsRowIDs (src.ManagerTab.ManagerTab attribute)|hyperpage}{31}
+\indexentry{editKnownPacket() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{editProject() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{exportProject() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{getDump() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{getKnownPacketsForCurrentProject() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{handleCopy() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{handlePaste() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{importProject() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{loadingData (src.ManagerTab.ManagerTab attribute)|hyperpage}{31}
+\indexentry{populateKnownPacketEditLineEdits() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{populateKnownPackets() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{populatePacketSets() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{populateProjectEditLineEdits() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{populateProjects() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{prepareUI() (src.ManagerTab.ManagerTab method)|hyperpage}{31}
+\indexentry{removeKnownPacket() (src.ManagerTab.ManagerTab method)|hyperpage}{32}
+\indexentry{removeSelectedPackets() (src.ManagerTab.ManagerTab method)|hyperpage}{32}
+\indexentry{saveToFile() (src.ManagerTab.ManagerTab method)|hyperpage}{32}
+\indexentry{updateDump() (src.ManagerTab.ManagerTab method)|hyperpage}{32}
+\indexentry{src.Packet (module)|hyperpage}{32}
+\indexentry{Packet (class in src.Packet)|hyperpage}{32}
+\indexentry{\_\_init\_\_() (src.Packet.Packet method)|hyperpage}{32}
+\indexentry{fromJSON() (src.Packet.Packet static method)|hyperpage}{32}
+\indexentry{getDisplayDataLength() (src.Packet.Packet static method)|hyperpage}{32}
+\indexentry{lengthStringToInt() (src.Packet.Packet method)|hyperpage}{32}
+\indexentry{toJSON() (src.Packet.Packet method)|hyperpage}{32}
+\indexentry{src.PacketsDialog (module)|hyperpage}{33}
+\indexentry{PacketsDialog (class in src.PacketsDialog)|hyperpage}{33}
+\indexentry{\_\_init\_\_() (src.PacketsDialog.PacketsDialog method)|hyperpage}{33}
+\indexentry{displayUniquePackets() (src.PacketsDialog.PacketsDialog method)|hyperpage}{33}
+\indexentry{getUniqueIDs() (src.PacketsDialog.PacketsDialog method)|hyperpage}{33}
+\indexentry{getUniquePackets() (src.PacketsDialog.PacketsDialog method)|hyperpage}{33}
+\indexentry{getUniqueRawPackets() (src.PacketsDialog.PacketsDialog static method)|hyperpage}{33}
+\indexentry{open() (src.PacketsDialog.PacketsDialog method)|hyperpage}{33}
+\indexentry{prepareUI() (src.PacketsDialog.PacketsDialog method)|hyperpage}{33}
+\indexentry{src.PacketSet (module)|hyperpage}{34}
+\indexentry{PacketSet (class in src.PacketSet)|hyperpage}{34}
+\indexentry{\_\_init\_\_() (src.PacketSet.PacketSet method)|hyperpage}{34}
+\indexentry{fromJSON() (src.PacketSet.PacketSet static method)|hyperpage}{34}
+\indexentry{toComboBoxString() (src.PacketSet.PacketSet method)|hyperpage}{34}
+\indexentry{toJSON() (src.PacketSet.PacketSet method)|hyperpage}{34}
+\indexentry{src.PacketTableModel (module)|hyperpage}{34}
+\indexentry{PacketTableModel (class in src.PacketTableModel)|hyperpage}{34}
+\indexentry{\_\_init\_\_() (src.PacketTableModel.PacketTableModel method)|hyperpage}{34}
+\indexentry{appendRow() (src.PacketTableModel.PacketTableModel method)|hyperpage}{34}
+\indexentry{appendRows() (src.PacketTableModel.PacketTableModel method)|hyperpage}{35}
+\indexentry{cellChanged (src.PacketTableModel.PacketTableModel attribute)|hyperpage}{35}
+\indexentry{clear() (src.PacketTableModel.PacketTableModel method)|hyperpage}{35}
+\indexentry{columnCount() (src.PacketTableModel.PacketTableModel method)|hyperpage}{35}
+\indexentry{data() (src.PacketTableModel.PacketTableModel method)|hyperpage}{35}
+\indexentry{flags() (src.PacketTableModel.PacketTableModel method)|hyperpage}{35}
+\indexentry{getValue() (src.PacketTableModel.PacketTableModel method)|hyperpage}{35}
+\indexentry{headerData() (src.PacketTableModel.PacketTableModel method)|hyperpage}{36}
+\indexentry{insertRow() (src.PacketTableModel.PacketTableModel method)|hyperpage}{36}
+\indexentry{removeRow() (src.PacketTableModel.PacketTableModel method)|hyperpage}{36}
+\indexentry{removeRows() (src.PacketTableModel.PacketTableModel method)|hyperpage}{36}
+\indexentry{rowCount() (src.PacketTableModel.PacketTableModel method)|hyperpage}{36}
+\indexentry{setData() (src.PacketTableModel.PacketTableModel method)|hyperpage}{36}
+\indexentry{setRowCount() (src.PacketTableModel.PacketTableModel method)|hyperpage}{36}
+\indexentry{setText() (src.PacketTableModel.PacketTableModel method)|hyperpage}{37}
+\indexentry{sort() (src.PacketTableModel.PacketTableModel method)|hyperpage}{37}
+\indexentry{staticMetaObject (src.PacketTableModel.PacketTableModel attribute)|hyperpage}{37}
+\indexentry{src.Project (module)|hyperpage}{37}
+\indexentry{Project (class in src.Project)|hyperpage}{37}
+\indexentry{\_\_init\_\_() (src.Project.Project method)|hyperpage}{37}
+\indexentry{fromJSON() (src.Project.Project static method)|hyperpage}{37}
+\indexentry{toComboBoxString() (src.Project.Project method)|hyperpage}{37}
+\indexentry{toJSON() (src.Project.Project method)|hyperpage}{37}
+\indexentry{src.SearcherTab (module)|hyperpage}{38}
+\indexentry{SearcherTab (class in src.SearcherTab)|hyperpage}{38}
+\indexentry{\_\_init\_\_() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{askActionPerformed() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{askWhichAction() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{beep() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{clear() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{downwardsSearch (src.SearcherTab.SearcherTab attribute)|hyperpage}{38}
+\indexentry{enterWhenReady() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{lastWorkingChunk (src.SearcherTab.SearcherTab attribute)|hyperpage}{38}
+\indexentry{outputRemainingPacket() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{outputRemainingPackets() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{searchPackets() (src.SearcherTab.SearcherTab method)|hyperpage}{38}
+\indexentry{sendAndSearch() (src.SearcherTab.SearcherTab method)|hyperpage}{39}
+\indexentry{splitLists() (src.SearcherTab.SearcherTab method)|hyperpage}{39}
+\indexentry{toggleGUIElements() (src.SearcherTab.SearcherTab method)|hyperpage}{39}
+\indexentry{src.SenderTab (module)|hyperpage}{39}
+\indexentry{SenderTab (class in src.SenderTab)|hyperpage}{39}
+\indexentry{CANData (src.SenderTab.SenderTab attribute)|hyperpage}{39}
+\indexentry{active (src.SenderTab.SenderTab attribute)|hyperpage}{39}
+\indexentry{addSender() (src.SenderTab.SenderTab static method)|hyperpage}{39}
+\indexentry{addSenderWithData() (src.SenderTab.SenderTab static method)|hyperpage}{39}
+\indexentry{currentlySendingTabs (src.SenderTab.SenderTab attribute)|hyperpage}{40}
+\indexentry{handleInterfaceSettingsDialog() (src.SenderTab.SenderTab class method)|hyperpage}{40}
+\indexentry{indexInMainTabBar (src.SenderTab.SenderTab attribute)|hyperpage}{40}
+\indexentry{labelInterfaceValue (src.SenderTab.SenderTab attribute)|hyperpage}{40}
+\indexentry{logger (src.SenderTab.SenderTab attribute)|hyperpage}{40}
+\indexentry{prepareUI() (src.SenderTab.SenderTab static method)|hyperpage}{40}
+\indexentry{removeSender() (src.SenderTab.SenderTab static method)|hyperpage}{40}
+\indexentry{sendSinglePacket() (src.SenderTab.SenderTab static method)|hyperpage}{40}
+\indexentry{senderTabs (src.SenderTab.SenderTab attribute)|hyperpage}{40}
+\indexentry{setInitialCANData() (src.SenderTab.SenderTab class method)|hyperpage}{40}
+\indexentry{toggleActive() (src.SenderTab.SenderTab static method)|hyperpage}{40}
+\indexentry{toggleGUIElements() (src.SenderTab.SenderTab static method)|hyperpage}{40}
+\indexentry{updateCANDataInstance() (src.SenderTab.SenderTab class method)|hyperpage}{40}
+\indexentry{updateInterfaceLabel() (src.SenderTab.SenderTab class method)|hyperpage}{40}
+\indexentry{src.SenderTabElement (module)|hyperpage}{41}
+\indexentry{SenderTabElement (class in src.SenderTabElement)|hyperpage}{41}
+\indexentry{\_\_init\_\_() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{amountThreadsRunning (src.SenderTabElement.SenderTabElement attribute)|hyperpage}{41}
+\indexentry{getTabIndex() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{loopSenderThread (src.SenderTabElement.SenderTabElement attribute)|hyperpage}{41}
+\indexentry{prepareUI() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{removeSender() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{sendAll() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{sendButtonList (src.SenderTabElement.SenderTabElement attribute)|hyperpage}{41}
+\indexentry{setSendButtonState() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{stopSending() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{toggleGUIElements() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{toggleLoopActive() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{updateStatusBar() (src.SenderTabElement.SenderTabElement method)|hyperpage}{41}
+\indexentry{src.SenderThread (module)|hyperpage}{42}
+\indexentry{FuzzSenderThread (class in src.SenderThread)|hyperpage}{42}
+\indexentry{\_\_init\_\_() (src.SenderThread.FuzzSenderThread method)|hyperpage}{42}
+\indexentry{disable() (src.SenderThread.FuzzSenderThread method)|hyperpage}{42}
+\indexentry{run() (src.SenderThread.FuzzSenderThread method)|hyperpage}{42}
+\indexentry{staticMetaObject (src.SenderThread.FuzzSenderThread attribute)|hyperpage}{42}
+\indexentry{LoopSenderThread (class in src.SenderThread)|hyperpage}{42}
+\indexentry{\_\_init\_\_() (src.SenderThread.LoopSenderThread method)|hyperpage}{42}
+\indexentry{disable() (src.SenderThread.LoopSenderThread method)|hyperpage}{42}
+\indexentry{run() (src.SenderThread.LoopSenderThread method)|hyperpage}{42}
+\indexentry{staticMetaObject (src.SenderThread.LoopSenderThread attribute)|hyperpage}{42}
+\indexentry{src.Settings (module)|hyperpage}{42}
+\indexentry{APP\_NAME (in module src.Settings)|hyperpage}{42}
+\indexentry{APP\_VERSION (in module src.Settings)|hyperpage}{42}
+\indexentry{DB\_NAME (in module src.Settings)|hyperpage}{42}
+\indexentry{DB\_PATH (in module src.Settings)|hyperpage}{42}
+\indexentry{FORKME\_PATH (in module src.Settings)|hyperpage}{42}
+\indexentry{GITHUB\_URL (in module src.Settings)|hyperpage}{42}
+\indexentry{ICON\_PATH (in module src.Settings)|hyperpage}{42}
+\indexentry{LOGO\_PATH (in module src.Settings)|hyperpage}{42}
+\indexentry{src.SnifferProcess (module)|hyperpage}{43}
+\indexentry{SnifferProcess (class in src.SnifferProcess)|hyperpage}{43}
+\indexentry{\_\_init\_\_() (src.SnifferProcess.SnifferProcess method)|hyperpage}{43}
+\indexentry{run() (src.SnifferProcess.SnifferProcess method)|hyperpage}{43}
+\indexentry{src.SnifferTab (module)|hyperpage}{43}
+\indexentry{SnifferTab (class in src.SnifferTab)|hyperpage}{43}
+\indexentry{addSniffer() (src.SnifferTab.SnifferTab static method)|hyperpage}{43}
+\indexentry{clearAndAddPlaceholder() (src.SnifferTab.SnifferTab static method)|hyperpage}{43}
+\indexentry{indexInMainTabBar (src.SnifferTab.SnifferTab attribute)|hyperpage}{43}
+\indexentry{logger (src.SnifferTab.SnifferTab attribute)|hyperpage}{43}
+\indexentry{prepareUI() (src.SnifferTab.SnifferTab static method)|hyperpage}{43}
+\indexentry{removeSniffer() (src.SnifferTab.SnifferTab static method)|hyperpage}{43}
+\indexentry{snifferTabs (src.SnifferTab.SnifferTab attribute)|hyperpage}{44}
+\indexentry{toggleActive() (src.SnifferTab.SnifferTab static method)|hyperpage}{44}
+\indexentry{updateInterfaceLabel() (src.SnifferTab.SnifferTab class method)|hyperpage}{44}
+\indexentry{src.SnifferTabElement (module)|hyperpage}{44}
+\indexentry{SnifferTabElement (class in src.SnifferTabElement)|hyperpage}{44}
+\indexentry{\_\_init\_\_() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{44}
+\indexentry{addPacket() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{44}
+\indexentry{amountThreadsRunning (src.SnifferTabElement.SnifferTabElement attribute)|hyperpage}{44}
+\indexentry{clear() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{44}
+\indexentry{getPacketCount() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{handleInterfaceSettingsDialog() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{handleManageIgnoredPacketsDialog() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{removeSniffer() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{tabIndex() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{terminateThreads() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{toggleActive() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{toggleSniffing() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{updateStatusBar() (src.SnifferTabElement.SnifferTabElement method)|hyperpage}{45}
+\indexentry{src.Strings (module)|hyperpage}{45}
+\indexentry{src.Toolbox (module)|hyperpage}{45}
+\indexentry{Toolbox (class in src.Toolbox)|hyperpage}{45}
+\indexentry{askUserConfirmAction() (src.Toolbox.Toolbox static method)|hyperpage}{45}
+\indexentry{checkProjectIsNone() (src.Toolbox.Toolbox static method)|hyperpage}{45}
+\indexentry{getKnownPacketDescription() (src.Toolbox.Toolbox static method)|hyperpage}{46}
+\indexentry{getPacketDictIndex() (src.Toolbox.Toolbox static method)|hyperpage}{46}
+\indexentry{getSaveFileName() (src.Toolbox.Toolbox static method)|hyperpage}{46}
+\indexentry{getWorkingDialog() (src.Toolbox.Toolbox static method)|hyperpage}{46}
+\indexentry{interfaceDialogWidget (src.Toolbox.Toolbox attribute)|hyperpage}{46}
+\indexentry{interfaceSettingsDialog() (src.Toolbox.Toolbox static method)|hyperpage}{46}
+\indexentry{interfaceSettingsDialogCheckBoxChanged() (src.Toolbox.Toolbox static method)|hyperpage}{46}
+\indexentry{interfaceSettingsDialogComboBoxChanged() (src.Toolbox.Toolbox static method)|hyperpage}{46}
+\indexentry{isHexString() (src.Toolbox.Toolbox static method)|hyperpage}{46}
+\indexentry{logger (src.Toolbox.Toolbox attribute)|hyperpage}{47}
+\indexentry{mp3Processes (src.Toolbox.Toolbox attribute)|hyperpage}{47}
+\indexentry{playMP3() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{populateInterfaceComboBox() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{stopMP3() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{tableExtractAllRowData() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{tableExtractSelectedRowData() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{toggleDisabledProjectGUIElements() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{toggleDisabledSenderGUIElements() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{updateCANDataInstances() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{updateInterfaceLabels() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{widgetFromUIFile() (src.Toolbox.Toolbox static method)|hyperpage}{47}
+\indexentry{yesNoBox() (src.Toolbox.Toolbox static method)|hyperpage}{48}
+\indexentry{src.mainWindow (module)|hyperpage}{48}
+\indexentry{src.AbstractTab (module)|hyperpage}{48}
+\indexentry{AbstractTab (class in src.AbstractTab)|hyperpage}{48}
+\indexentry{CANData (src.AbstractTab.AbstractTab attribute)|hyperpage}{48}
+\indexentry{\_\_init\_\_() (src.AbstractTab.AbstractTab method)|hyperpage}{48}
+\indexentry{active (src.AbstractTab.AbstractTab attribute)|hyperpage}{48}
+\indexentry{addPacket() (src.AbstractTab.AbstractTab method)|hyperpage}{48}
+\indexentry{applyNewKnownPackets() (src.AbstractTab.AbstractTab method)|hyperpage}{48}
+\indexentry{clear() (src.AbstractTab.AbstractTab method)|hyperpage}{48}
+\indexentry{handleCellChanged() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{handleCopy() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{handleInterfaceSettingsDialog() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{handlePaste() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{handleRightCick() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{loggerName (src.AbstractTab.AbstractTab attribute)|hyperpage}{49}
+\indexentry{manualAddPacket() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{packetTableModel (src.AbstractTab.AbstractTab attribute)|hyperpage}{49}
+\indexentry{prepareUI() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{rawData (src.AbstractTab.AbstractTab attribute)|hyperpage}{49}
+\indexentry{readOnlyCols (src.AbstractTab.AbstractTab attribute)|hyperpage}{49}
+\indexentry{removeSelectedPackets() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{setInitialCANData() (src.AbstractTab.AbstractTab method)|hyperpage}{49}
+\indexentry{tabWidget (src.AbstractTab.AbstractTab attribute)|hyperpage}{49}
+\indexentry{toggleGUIElements() (src.AbstractTab.AbstractTab method)|hyperpage}{50}
+\indexentry{updateCANDataInstance() (src.AbstractTab.AbstractTab method)|hyperpage}{50}
+\indexentry{updateInterfaceLabel() (src.AbstractTab.AbstractTab method)|hyperpage}{50}
+\indexentry{src (module)|hyperpage}{50}

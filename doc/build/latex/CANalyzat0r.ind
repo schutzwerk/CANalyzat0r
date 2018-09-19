@@ -1,0 +1,519 @@
+\begin{sphinxtheindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter {Symbols}
+  \item \_\_init\_\_() (src.AbstractTab.AbstractTab method), \hyperpage{48}
+  \item \_\_init\_\_() (src.CANData.CANData method), \hyperpage{12}
+  \item \_\_init\_\_() (src.CANData.SocketCANPacket method), \hyperpage{14}
+  \item \_\_init\_\_() (src.CANalyzat0r.MainWindow method), \hyperpage{14}
+  \item \_\_init\_\_() (src.ComparerTab.ComparerTab method), \hyperpage{15}
+  \item \_\_init\_\_() (src.Database.Database method), \hyperpage{16}
+  \item \_\_init\_\_() (src.FilterTab.DataAdderThread method), \hyperpage{22}
+  \item \_\_init\_\_() (src.FilterTab.FilterTab method), \hyperpage{22}
+  \item \_\_init\_\_() (src.FuzzerTab.FuzzerTab method), \hyperpage{24}
+  \item \_\_init\_\_() (src.ItemAdderThread.ItemAdderThread method), \hyperpage{27}
+  \item \_\_init\_\_() (src.KnownPacket.KnownPacket method), \hyperpage{27}
+  \item \_\_init\_\_() (src.Logger.LogHandler method), \hyperpage{28}
+  \item \_\_init\_\_() (src.Logger.Logger method), \hyperpage{28}
+  \item \_\_init\_\_() (src.ManagerTab.ManagerTab method), \hyperpage{30}
+  \item \_\_init\_\_() (src.Packet.Packet method), \hyperpage{32}
+  \item \_\_init\_\_() (src.PacketSet.PacketSet method), \hyperpage{34}
+  \item \_\_init\_\_() (src.PacketTableModel.PacketTableModel method), \hyperpage{34}
+  \item \_\_init\_\_() (src.PacketsDialog.PacketsDialog method), \hyperpage{33}
+  \item \_\_init\_\_() (src.Project.Project method), \hyperpage{37}
+  \item \_\_init\_\_() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+  \item \_\_init\_\_() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item \_\_init\_\_() (src.SenderThread.FuzzSenderThread method), \hyperpage{42}
+  \item \_\_init\_\_() (src.SenderThread.LoopSenderThread method), \hyperpage{42}
+  \item \_\_init\_\_() (src.SnifferProcess.SnifferProcess method), \hyperpage{43}
+  \item \_\_init\_\_() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{44}
+
+  \indexspace
+  \bigletter A
+  \item AboutTab (class in src.AboutTab), \hyperpage{11}
+  \item AbstractTab (class in src.AbstractTab), \hyperpage{48}
+  \item active (src.AbstractTab.AbstractTab attribute), \hyperpage{48}
+  \item active (src.SenderTab.SenderTab attribute), \hyperpage{39}
+  \item addApplicationStatus() (src.MainTab.MainTab static method), \hyperpage{28}
+  \item addKnownPacket() (src.ManagerTab.ManagerTab method), \hyperpage{30}
+  \item addPacket() (src.AbstractTab.AbstractTab method), \hyperpage{48}
+  \item addPacket() (src.FuzzerTab.FuzzerTab method), \hyperpage{24}
+  \item addPacket() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{44}
+  \item addSender() (src.SenderTab.SenderTab static method), \hyperpage{39}
+  \item addSenderWithData() (src.SenderTab.SenderTab static method), \hyperpage{39}
+  \item addSniffedNoise() (src.FilterTab.FilterTab method), \hyperpage{22}
+  \item addSniffedPacketToSample() (src.FilterTab.FilterTab method), \hyperpage{22}
+  \item addSniffer() (src.SnifferTab.SnifferTab static method), \hyperpage{43}
+  \item addVCANInterface() (src.MainTab.MainTab static method), \hyperpage{28}
+  \item amountThreadsRunning (src.SenderTabElement.SenderTabElement attribute), \hyperpage{41}
+  \item amountThreadsRunning (src.SnifferTabElement.SnifferTabElement attribute), \hyperpage{44}
+  \item analyze() (src.FilterTab.FilterTab method), \hyperpage{23}
+  \item APP\_NAME (in module src.Settings), \hyperpage{42}
+  \item APP\_VERSION (in module src.Settings), \hyperpage{42}
+  \item appendRow (src.ItemAdderThread.ItemAdderThread attribute), \hyperpage{27}
+  \item appendRow() (src.PacketTableModel.PacketTableModel method), \hyperpage{34}
+  \item appendRows() (src.PacketTableModel.PacketTableModel method), \hyperpage{35}
+  \item applyGlobalInterfaceSettings() (src.MainTab.MainTab static method), \hyperpage{28}
+  \item applyLogLevelSetting() (src.MainTab.MainTab static method), \hyperpage{28}
+  \item applyNewKnownPackets() (src.AbstractTab.AbstractTab method), \hyperpage{48}
+  \item askActionPerformed() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+  \item askUserConfirmAction() (src.Toolbox.Toolbox static method), \hyperpage{45}
+  \item askWhichAction() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+  \item assignWidgets() (src.CANalyzat0r.MainWindow method), \hyperpage{15}
+
+  \indexspace
+  \bigletter B
+  \item beep() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+  \item browseGitHub() (src.AboutTab.AboutTab static method), \hyperpage{11}
+  \item browseSW() (src.AboutTab.AboutTab static method), \hyperpage{11}
+
+  \indexspace
+  \bigletter C
+  \item CANData (class in src.CANData), \hyperpage{12}
+  \item CANData (in module src.Globals), \hyperpage{26}
+  \item CANData (src.AbstractTab.AbstractTab attribute), \hyperpage{48}
+  \item CANData (src.SenderTab.SenderTab attribute), \hyperpage{39}
+  \item CANDataInstances (src.CANData.CANData attribute), \hyperpage{12}
+  \item cellChanged (src.PacketTableModel.PacketTableModel attribute), \hyperpage{35}
+  \item checkDB() (src.Database.Database method), \hyperpage{16}
+  \item checkProjectIsNone() (src.Toolbox.Toolbox static method), \hyperpage{45}
+  \item checkSU() (src.CANalyzat0r.MainWindow method), \hyperpage{15}
+  \item checkTablesPresentStatement (src.Database.DatabaseStatements attribute), \hyperpage{19}
+  \item checkVCAN() (src.CANData.CANData method), \hyperpage{12}
+  \item cleanup() (src.CANalyzat0r.MainWindow static method), \hyperpage{15}
+  \item clear() (src.AbstractTab.AbstractTab method), \hyperpage{48}
+  \item clear() (src.FilterTab.FilterTab method), \hyperpage{23}
+  \item clear() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item clear() (src.ManagerTab.ManagerTab method), \hyperpage{30}
+  \item clear() (src.PacketTableModel.PacketTableModel method), \hyperpage{35}
+  \item clear() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+  \item clear() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{44}
+  \item clearAndAddPlaceholder() (src.SnifferTab.SnifferTab static method), \hyperpage{43}
+  \item collectNoise() (src.FilterTab.FilterTab method), \hyperpage{23}
+  \item columnCount() (src.PacketTableModel.PacketTableModel method), \hyperpage{35}
+  \item compare() (src.ComparerTab.ComparerTab method), \hyperpage{15}
+  \item ComparerTab (class in src.ComparerTab), \hyperpage{15}
+  \item connect() (src.Database.Database method), \hyperpage{16}
+  \item createCANDataInstance() (src.CANData.CANData static method), \hyperpage{12}
+  \item createDump() (src.ManagerTab.ManagerTab method), \hyperpage{30}
+  \item createKnownPacketTableStatement (src.Database.DatabaseStatements attribute), \hyperpage{19}
+  \item createPacketSetTableStatement (src.Database.DatabaseStatements attribute), \hyperpage{19}
+  \item createPacketTableStatement (src.Database.DatabaseStatements attribute), \hyperpage{19}
+  \item createProject() (src.ManagerTab.ManagerTab method), \hyperpage{30}
+  \item createProjectTableStatement (src.Database.DatabaseStatements attribute), \hyperpage{19}
+  \item createTables() (src.Database.Database method), \hyperpage{16}
+  \item createTableStatementsList (src.Database.DatabaseStatements attribute), \hyperpage{19}
+  \item currentlySendingTabs (src.SenderTab.SenderTab attribute), \hyperpage{40}
+
+  \indexspace
+  \bigletter D
+  \item data() (src.PacketTableModel.PacketTableModel method), \hyperpage{35}
+  \item DataAdderThread (class in src.FilterTab), \hyperpage{22}
+  \item Database (class in src.Database), \hyperpage{16}
+  \item DatabaseStatements (class in src.Database), \hyperpage{19}
+  \item dataMask (src.FuzzerTab.FuzzerTab attribute), \hyperpage{25}
+  \item dataMaskChanged() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item dataMaxLength (src.FuzzerTab.FuzzerTab attribute), \hyperpage{25}
+  \item db (in module src.Globals), \hyperpage{26}
+  \item DB\_NAME (in module src.Settings), \hyperpage{42}
+  \item DB\_PATH (in module src.Settings), \hyperpage{42}
+  \item deleteCANDataInstance() (src.CANData.CANData static method), \hyperpage{12}
+  \item deleteDump() (src.ManagerTab.ManagerTab method), \hyperpage{30}
+  \item deleteFromTableByID() (src.Database.Database method), \hyperpage{16}
+  \item deleteFromTableByValue() (src.Database.Database method), \hyperpage{16}
+  \item deleteKnownPacket() (src.Database.Database method), \hyperpage{16}
+  \item deletePacketSet() (src.Database.Database method), \hyperpage{17}
+  \item deleteProject() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item deleteProjectAndData() (src.Database.Database method), \hyperpage{17}
+  \item detectCANInterfaces() (src.MainTab.MainTab static method), \hyperpage{28}
+  \item disable() (src.ItemAdderThread.ItemAdderThread method), \hyperpage{27}
+  \item disable() (src.SenderThread.FuzzSenderThread method), \hyperpage{42}
+  \item disable() (src.SenderThread.LoopSenderThread method), \hyperpage{42}
+  \item displayUniquePackets() (src.PacketsDialog.PacketsDialog method), \hyperpage{33}
+  \item downwardsSearch (src.SearcherTab.SearcherTab attribute), \hyperpage{38}
+  \item dumpsRowIDs (src.ManagerTab.ManagerTab attribute), \hyperpage{31}
+
+  \indexspace
+  \bigletter E
+  \item easterEgg() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item editKnownPacket() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item editProject() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item emit() (src.Logger.LogHandler method), \hyperpage{28}
+  \item enterWhenReady() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+  \item exportProject() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+
+  \indexspace
+  \bigletter F
+  \item FilterTab (class in src.FilterTab), \hyperpage{22}
+  \item flags() (src.PacketTableModel.PacketTableModel method), \hyperpage{35}
+  \item FORKME\_PATH (in module src.Settings), \hyperpage{42}
+  \item frameToList() (src.FilterTab.DataAdderThread method), \hyperpage{22}
+  \item frameToRow() (src.ItemAdderThread.ItemAdderThread method), \hyperpage{27}
+  \item fromJSON() (src.KnownPacket.KnownPacket static method), \hyperpage{27}
+  \item fromJSON() (src.Packet.Packet static method), \hyperpage{32}
+  \item fromJSON() (src.PacketSet.PacketSet static method), \hyperpage{34}
+  \item fromJSON() (src.Project.Project static method), \hyperpage{37}
+  \item FuzzerTab (class in src.FuzzerTab), \hyperpage{24}
+  \item fuzzingModeChanged() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item fuzzingModeComboBoxValuePairs (src.FuzzerTab.FuzzerTab attribute), \hyperpage{25}
+  \item FuzzSenderThread (class in src.SenderThread), \hyperpage{42}
+  \item fuzzSenderThread (src.FuzzerTab.FuzzerTab attribute), \hyperpage{25}
+
+  \indexspace
+  \bigletter G
+  \item generateRandomPacket() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item getDeleteByIDStatement() (src.Database.DatabaseStatements static method), \hyperpage{19}
+  \item getDeleteByValueStatement() (src.Database.DatabaseStatements static method), \hyperpage{19}
+  \item getDisplayDataLength() (src.Packet.Packet static method), \hyperpage{32}
+  \item getDump() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item getGlobalOrFirstInstance() (src.CANData.CANData static method), \hyperpage{12}
+  \item getInsertKnownPacketStatement() (src.Database.DatabaseStatements static method), 
+		\hyperpage{19}
+  \item getInsertPacketSetStatement() (src.Database.DatabaseStatements static method), 
+		\hyperpage{20}
+  \item getInsertPacketStatement() (src.Database.DatabaseStatements static method), \hyperpage{20}
+  \item getInsertProjectStatement() (src.Database.DatabaseStatements static method), \hyperpage{20}
+  \item getInsertStatement() (src.Database.DatabaseStatements static method), \hyperpage{20}
+  \item getKnownPacketDescription() (src.Toolbox.Toolbox static method), \hyperpage{46}
+  \item getKnownPackets() (src.Database.Database method), \hyperpage{17}
+  \item getKnownPacketsForCurrentProject() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item getLogger() (src.Logger.Logger method), \hyperpage{28}
+  \item getOverallCountStatement() (src.Database.DatabaseStatements static method), \hyperpage{21}
+  \item getOverallTableCount() (src.Database.Database method), \hyperpage{17}
+  \item getPacketCount() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{45}
+  \item getPacketDictIndex() (src.Toolbox.Toolbox static method), \hyperpage{46}
+  \item getPacketSet() (src.ComparerTab.ComparerTab method), \hyperpage{15}
+  \item getPacketSets() (src.Database.Database method), \hyperpage{17}
+  \item getPacketsOfPacketSet() (src.Database.Database method), \hyperpage{17}
+  \item getProjects() (src.Database.Database method), \hyperpage{17}
+  \item getSampleData() (src.FilterTab.FilterTab method), \hyperpage{23}
+  \item getSaveFileName() (src.Toolbox.Toolbox static method), \hyperpage{46}
+  \item getSelectAllStatement() (src.Database.DatabaseStatements static method), \hyperpage{21}
+  \item getSelectAllStatementWhereEquals() (src.Database.DatabaseStatements static method), 
+		\hyperpage{21}
+  \item getTabIndex() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item getUniqueIDs() (src.PacketsDialog.PacketsDialog method), \hyperpage{33}
+  \item getUniquePackets() (src.PacketsDialog.PacketsDialog method), \hyperpage{33}
+  \item getUniqueRawPackets() (src.PacketsDialog.PacketsDialog static method), \hyperpage{33}
+  \item getUpdateByIDStatement() (src.Database.DatabaseStatements static method), \hyperpage{21}
+  \item getValue() (src.PacketTableModel.PacketTableModel method), \hyperpage{35}
+  \item getWorkingDialog() (src.Toolbox.Toolbox static method), \hyperpage{46}
+  \item GITHUB\_URL (in module src.Settings), \hyperpage{42}
+  \item globalLoggingHandler() (in module src.CANalyzat0r), \hyperpage{15}
+
+  \indexspace
+  \bigletter H
+  \item handleCellChanged() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item handleCopy() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item handleCopy() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item handleInterfaceSettingsDialog() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item handleInterfaceSettingsDialog() (src.SenderTab.SenderTab class method), \hyperpage{40}
+  \item handleInterfaceSettingsDialog() (src.SnifferTabElement.SnifferTabElement method), 
+		\hyperpage{45}
+  \item handleManageIgnoredPacketsDialog() (src.SnifferTabElement.SnifferTabElement method), 
+		\hyperpage{45}
+  \item handlePaste() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item handlePaste() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item handleRightCick() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item headerData() (src.PacketTableModel.PacketTableModel method), \hyperpage{36}
+
+  \indexspace
+  \bigletter I
+  \item ICON\_PATH (in module src.Settings), \hyperpage{42}
+  \item IDMask (src.FuzzerTab.FuzzerTab attribute), \hyperpage{24}
+  \item IDMaskChanged() (src.FuzzerTab.FuzzerTab method), \hyperpage{24}
+  \item IDMaxValue (src.FuzzerTab.FuzzerTab attribute), \hyperpage{24}
+  \item importProject() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item indexInMainTabBar (src.SenderTab.SenderTab attribute), \hyperpage{40}
+  \item indexInMainTabBar (src.SnifferTab.SnifferTab attribute), \hyperpage{43}
+  \item insertRow() (src.PacketTableModel.PacketTableModel method), \hyperpage{36}
+  \item interfaceDialogWidget (src.Toolbox.Toolbox attribute), \hyperpage{46}
+  \item interfaceSettingsDialog() (src.Toolbox.Toolbox static method), \hyperpage{46}
+  \item interfaceSettingsDialogCheckBoxChanged() (src.Toolbox.Toolbox static method), 
+		\hyperpage{46}
+  \item interfaceSettingsDialogComboBoxChanged() (src.Toolbox.Toolbox static method), 
+		\hyperpage{46}
+  \item isHexString() (src.Toolbox.Toolbox static method), \hyperpage{46}
+  \item ItemAdderThread (class in src.ItemAdderThread), \hyperpage{26}
+  \item itemAdderThread (src.FuzzerTab.FuzzerTab attribute), \hyperpage{25}
+
+  \indexspace
+  \bigletter K
+  \item KnownPacket (class in src.KnownPacket), \hyperpage{27}
+  \item knownPackets (in module src.Globals), \hyperpage{26}
+  \item knownPacketTableCANIDColName (src.Database.DatabaseStatements attribute), \hyperpage{21}
+  \item knownPacketTableDataColName (src.Database.DatabaseStatements attribute), \hyperpage{21}
+  \item knownPacketTableDescriptionColName (src.Database.DatabaseStatements attribute), 
+		\hyperpage{21}
+  \item knownPacketTableName (src.Database.DatabaseStatements attribute), \hyperpage{21}
+
+  \indexspace
+  \bigletter L
+  \item labelInterfaceValue (src.SenderTab.SenderTab attribute), \hyperpage{40}
+  \item lastWorkingChunk (src.SearcherTab.SearcherTab attribute), \hyperpage{38}
+  \item lengthStringToInt() (src.Packet.Packet method), \hyperpage{32}
+  \item loadingData (src.ManagerTab.ManagerTab attribute), \hyperpage{31}
+  \item loadKernelModules() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item Logger (class in src.Logger), \hyperpage{28}
+  \item logger (src.CANData.CANData attribute), \hyperpage{12}
+  \item logger (src.MainTab.MainTab attribute), \hyperpage{29}
+  \item logger (src.SenderTab.SenderTab attribute), \hyperpage{40}
+  \item logger (src.SnifferTab.SnifferTab attribute), \hyperpage{43}
+  \item logger (src.Toolbox.Toolbox attribute), \hyperpage{47}
+  \item loggerName (src.AbstractTab.AbstractTab attribute), \hyperpage{49}
+  \item LogHandler (class in src.Logger), \hyperpage{28}
+  \item LOGO\_PATH (in module src.Settings), \hyperpage{42}
+  \item LoopSenderThread (class in src.SenderThread), \hyperpage{42}
+  \item loopSenderThread (src.SenderTabElement.SenderTabElement attribute), \hyperpage{41}
+
+  \indexspace
+  \bigletter M
+  \item MainTab (class in src.MainTab), \hyperpage{28}
+  \item MainWindow (class in src.CANalyzat0r), \hyperpage{14}
+  \item ManagerTab (class in src.ManagerTab), \hyperpage{30}
+  \item manualAddPacket() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item minLogLevel (src.Logger.Logger attribute), \hyperpage{28}
+  \item mp3Processes (src.Toolbox.Toolbox attribute), \hyperpage{47}
+
+  \indexspace
+  \bigletter N
+  \item noiseData (src.FilterTab.FilterTab attribute), \hyperpage{23}
+
+  \indexspace
+  \bigletter O
+  \item open() (src.PacketsDialog.PacketsDialog method), \hyperpage{33}
+  \item outputRemainingPacket() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+  \item outputRemainingPackets() (src.FilterTab.FilterTab method), \hyperpage{23}
+  \item outputRemainingPackets() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+
+  \indexspace
+  \bigletter P
+  \item Packet (class in src.Packet), \hyperpage{32}
+  \item packetBuildErrorCount (src.FuzzerTab.FuzzerTab attribute), \hyperpage{25}
+  \item PacketsDialog (class in src.PacketsDialog), \hyperpage{33}
+  \item PacketSet (class in src.PacketSet), \hyperpage{34}
+  \item packetSetTableName (src.Database.DatabaseStatements attribute), \hyperpage{21}
+  \item packetTableCANIDColName (src.Database.DatabaseStatements attribute), \hyperpage{22}
+  \item packetTableDataColName (src.Database.DatabaseStatements attribute), \hyperpage{22}
+  \item PacketTableModel (class in src.PacketTableModel), \hyperpage{34}
+  \item packetTableModel (src.AbstractTab.AbstractTab attribute), \hyperpage{49}
+  \item packetTableName (src.Database.DatabaseStatements attribute), \hyperpage{22}
+  \item parseSocketCANLines() (src.CANData.CANData static method), \hyperpage{12}
+  \item playMP3() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item populateInterfaceComboBox() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item populateKnownPacketEditLineEdits() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item populateKnownPackets() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item populatePacketSets() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item populateProjectEditLineEdits() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item populateProjects() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item populateProjects() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item prepareUI() (src.AboutTab.AboutTab static method), \hyperpage{11}
+  \item prepareUI() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item prepareUI() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item prepareUI() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item prepareUI() (src.ManagerTab.ManagerTab method), \hyperpage{31}
+  \item prepareUI() (src.PacketsDialog.PacketsDialog method), \hyperpage{33}
+  \item prepareUI() (src.SenderTab.SenderTab static method), \hyperpage{40}
+  \item prepareUI() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item prepareUI() (src.SnifferTab.SnifferTab static method), \hyperpage{43}
+  \item preselectUseBitrateCheckBox() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item Project (class in src.Project), \hyperpage{37}
+  \item project (in module src.Globals), \hyperpage{26}
+  \item projectTableDescriptionColName (src.Database.DatabaseStatements attribute), \hyperpage{22}
+  \item projectTableName (src.Database.DatabaseStatements attribute), \hyperpage{22}
+  \item projectTableNameColName (src.Database.DatabaseStatements attribute), \hyperpage{22}
+
+  \indexspace
+  \bigletter R
+  \item rawData (src.AbstractTab.AbstractTab attribute), \hyperpage{49}
+  \item readCANFile() (src.CANData.CANData static method), \hyperpage{13}
+  \item readOnlyCols (src.AbstractTab.AbstractTab attribute), \hyperpage{49}
+  \item readPacket() (src.CANData.CANData method), \hyperpage{13}
+  \item readPacketAsync() (src.CANData.CANData method), \hyperpage{13}
+  \item rebuildCANDataInstances() (src.CANData.CANData static method), \hyperpage{13}
+  \item removeApplicationStatus() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item removeKnownPacket() (src.ManagerTab.ManagerTab method), \hyperpage{32}
+  \item removeRow() (src.PacketTableModel.PacketTableModel method), \hyperpage{36}
+  \item removeRows() (src.PacketTableModel.PacketTableModel method), \hyperpage{36}
+  \item removeSelectedPackets() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item removeSelectedPackets() (src.ManagerTab.ManagerTab method), \hyperpage{32}
+  \item removeSender() (src.SenderTab.SenderTab static method), \hyperpage{40}
+  \item removeSender() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item removeSniffer() (src.SnifferTab.SnifferTab static method), \hyperpage{43}
+  \item removeSniffer() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{45}
+  \item removeVCANInterface() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item retranslateUi() (src.ui.mainWindow.Ui\_CANalyzatorMainWindow method), \hyperpage{11}
+  \item rowCount() (src.PacketTableModel.PacketTableModel method), \hyperpage{36}
+  \item run() (src.FilterTab.DataAdderThread method), \hyperpage{22}
+  \item run() (src.ItemAdderThread.ItemAdderThread method), \hyperpage{27}
+  \item run() (src.SenderThread.FuzzSenderThread method), \hyperpage{42}
+  \item run() (src.SenderThread.LoopSenderThread method), \hyperpage{42}
+  \item run() (src.SnifferProcess.SnifferProcess method), \hyperpage{43}
+
+  \indexspace
+  \bigletter S
+  \item saveKnownPacket() (src.Database.Database method), \hyperpage{17}
+  \item savePacket() (src.Database.Database method), \hyperpage{17}
+  \item savePacketsBatch() (src.Database.Database method), \hyperpage{18}
+  \item savePacketSet() (src.Database.Database method), \hyperpage{18}
+  \item savePacketSetWithData() (src.Database.Database method), \hyperpage{18}
+  \item saveProject() (src.Database.Database method), \hyperpage{18}
+  \item saveToFile() (src.ManagerTab.ManagerTab method), \hyperpage{32}
+  \item SearcherTab (class in src.SearcherTab), \hyperpage{38}
+  \item searchPackets() (src.SearcherTab.SearcherTab method), \hyperpage{38}
+  \item sendAll() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item sendAndSearch() (src.SearcherTab.SearcherTab method), \hyperpage{39}
+  \item sendButtonList (src.SenderTabElement.SenderTabElement attribute), \hyperpage{41}
+  \item SenderTab (class in src.SenderTab), \hyperpage{39}
+  \item SenderTabElement (class in src.SenderTabElement), \hyperpage{41}
+  \item senderTabs (src.SenderTab.SenderTab attribute), \hyperpage{40}
+  \item sendPacket() (src.CANData.CANData method), \hyperpage{13}
+  \item sendSinglePacket() (src.SenderTab.SenderTab static method), \hyperpage{40}
+  \item setData() (src.PacketTableModel.PacketTableModel method), \hyperpage{36}
+  \item setGlobalInterfaceStatus() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item setInitialCANData() (src.AbstractTab.AbstractTab method), \hyperpage{49}
+  \item setInitialCANData() (src.SenderTab.SenderTab class method), \hyperpage{40}
+  \item setPacketSet1() (src.ComparerTab.ComparerTab method), \hyperpage{15}
+  \item setPacketSet2() (src.ComparerTab.ComparerTab method), \hyperpage{15}
+  \item setProject() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item setProjectStatus() (src.MainTab.MainTab static method), \hyperpage{29}
+  \item setRowCount() (src.PacketTableModel.PacketTableModel method), \hyperpage{36}
+  \item setSendButtonState() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item setText() (src.PacketTableModel.PacketTableModel method), \hyperpage{37}
+  \item setupStatusBar() (src.MainTab.MainTab static method), \hyperpage{30}
+  \item setupUi() (src.ui.mainWindow.Ui\_CANalyzatorMainWindow method), \hyperpage{11}
+  \item sharedDataAdderEnabledFlag (src.FilterTab.FilterTab attribute), \hyperpage{23}
+  \item sharedSnifferEnabledFlag (src.FilterTab.FilterTab attribute), \hyperpage{23}
+  \item signalSniffedPacket (src.FilterTab.DataAdderThread attribute), \hyperpage{22}
+  \item sliderChanged() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item SnifferProcess (class in src.SnifferProcess), \hyperpage{43}
+  \item SnifferTab (class in src.SnifferTab), \hyperpage{43}
+  \item SnifferTabElement (class in src.SnifferTabElement), \hyperpage{44}
+  \item snifferTabs (src.SnifferTab.SnifferTab attribute), \hyperpage{44}
+  \item SocketCANPacket (class in src.CANData), \hyperpage{14}
+  \item sort() (src.PacketTableModel.PacketTableModel method), \hyperpage{37}
+  \item splitLists() (src.SearcherTab.SearcherTab method), \hyperpage{39}
+  \item src (module), \hyperpage{50}
+  \item src.AboutTab (module), \hyperpage{11}
+  \item src.AbstractTab (module), \hyperpage{48}
+  \item src.CANalyzat0r (module), \hyperpage{14}
+  \item src.CANData (module), \hyperpage{12}
+  \item src.ComparerTab (module), \hyperpage{15}
+  \item src.Database (module), \hyperpage{16}
+  \item src.FilterTab (module), \hyperpage{22}
+  \item src.FuzzerTab (module), \hyperpage{24}
+  \item src.Globals (module), \hyperpage{26}
+  \item src.ItemAdderThread (module), \hyperpage{26}
+  \item src.KnownPacket (module), \hyperpage{27}
+  \item src.Logger (module), \hyperpage{27}
+  \item src.MainTab (module), \hyperpage{28}
+  \item src.mainWindow (module), \hyperpage{48}
+  \item src.ManagerTab (module), \hyperpage{30}
+  \item src.Packet (module), \hyperpage{32}
+  \item src.PacketsDialog (module), \hyperpage{33}
+  \item src.PacketSet (module), \hyperpage{34}
+  \item src.PacketTableModel (module), \hyperpage{34}
+  \item src.Project (module), \hyperpage{37}
+  \item src.SearcherTab (module), \hyperpage{38}
+  \item src.SenderTab (module), \hyperpage{39}
+  \item src.SenderTabElement (module), \hyperpage{41}
+  \item src.SenderThread (module), \hyperpage{42}
+  \item src.Settings (module), \hyperpage{42}
+  \item src.SnifferProcess (module), \hyperpage{43}
+  \item src.SnifferTab (module), \hyperpage{43}
+  \item src.SnifferTabElement (module), \hyperpage{44}
+  \item src.Strings (module), \hyperpage{45}
+  \item src.Toolbox (module), \hyperpage{45}
+  \item src.ui (module), \hyperpage{11}
+  \item src.ui.mainWindow (module), \hyperpage{11}
+  \item startFilter() (src.FilterTab.FilterTab method), \hyperpage{24}
+  \item startSnifferAndAdder() (src.FilterTab.FilterTab method), \hyperpage{24}
+  \item staticMetaObject (src.CANalyzat0r.MainWindow attribute), \hyperpage{15}
+  \item staticMetaObject (src.FilterTab.DataAdderThread attribute), \hyperpage{22}
+  \item staticMetaObject (src.ItemAdderThread.ItemAdderThread attribute), \hyperpage{27}
+  \item staticMetaObject (src.PacketTableModel.PacketTableModel attribute), \hyperpage{37}
+  \item staticMetaObject (src.SenderThread.FuzzSenderThread attribute), \hyperpage{42}
+  \item staticMetaObject (src.SenderThread.LoopSenderThread attribute), \hyperpage{42}
+  \item statusBarActiveStatuses (src.MainTab.MainTab attribute), \hyperpage{30}
+  \item statusBarApplicationStatus (src.MainTab.MainTab attribute), \hyperpage{30}
+  \item statusBarInterface (src.MainTab.MainTab attribute), \hyperpage{30}
+  \item statusBarProject (src.MainTab.MainTab attribute), \hyperpage{30}
+  \item stopMP3() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item stopSending() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item stopSnifferAndAdder() (src.FilterTab.FilterTab method), \hyperpage{24}
+
+  \indexspace
+  \bigletter T
+  \item tabIndex() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{45}
+  \item tableCount (src.Database.DatabaseStatements attribute), \hyperpage{22}
+  \item tableExtractAllRowData() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item tableExtractSelectedRowData() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item tabWidget (src.AbstractTab.AbstractTab attribute), \hyperpage{49}
+  \item terminateThreads() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{45}
+  \item textBrowserLogs (in module src.Globals), \hyperpage{26}
+  \item timeout (src.CANData.CANData attribute), \hyperpage{13}
+  \item toComboBoxString() (src.KnownPacket.KnownPacket method), \hyperpage{27}
+  \item toComboBoxString() (src.PacketSet.PacketSet method), \hyperpage{34}
+  \item toComboBoxString() (src.Project.Project method), \hyperpage{37}
+  \item toggleActive() (src.SenderTab.SenderTab static method), \hyperpage{40}
+  \item toggleActive() (src.SnifferTab.SnifferTab static method), \hyperpage{44}
+  \item toggleActive() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{45}
+  \item toggleDisabledProjectGUIElements() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item toggleDisabledSenderGUIElements() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item toggleFuzzing() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item toggleGUIElements() (src.AbstractTab.AbstractTab method), \hyperpage{50}
+  \item toggleGUIElements() (src.FilterTab.FilterTab method), \hyperpage{24}
+  \item toggleGUIElements() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item toggleGUIElements() (src.SearcherTab.SearcherTab method), \hyperpage{39}
+  \item toggleGUIElements() (src.SenderTab.SenderTab static method), \hyperpage{40}
+  \item toggleGUIElements() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item toggleLoopActive() (src.FuzzerTab.FuzzerTab method), \hyperpage{25}
+  \item toggleLoopActive() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item toggleSniffing() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{45}
+  \item toJSON() (src.KnownPacket.KnownPacket method), \hyperpage{27}
+  \item toJSON() (src.Packet.Packet method), \hyperpage{32}
+  \item toJSON() (src.PacketSet.PacketSet method), \hyperpage{34}
+  \item toJSON() (src.Project.Project method), \hyperpage{37}
+  \item Toolbox (class in src.Toolbox), \hyperpage{45}
+  \item toString() (src.CANData.CANData method), \hyperpage{13}
+  \item toString() (src.CANData.SocketCANPacket method), \hyperpage{14}
+  \item tryBuildPacket() (src.CANData.CANData static method), \hyperpage{13}
+
+  \indexspace
+  \bigletter U
+  \item ui (in module src.Globals), \hyperpage{26}
+  \item Ui\_CANalyzatorMainWindow (class in src.ui.mainWindow), \hyperpage{11}
+  \item uncaughtExceptionLogger (in module src.CANalyzat0r), \hyperpage{15}
+  \item updateBitrate() (src.CANData.CANData method), \hyperpage{13}
+  \item updateCANDataInstance() (src.AbstractTab.AbstractTab method), \hyperpage{50}
+  \item updateCANDataInstance() (src.SenderTab.SenderTab class method), \hyperpage{40}
+  \item updateCANDataInstances() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item updateDump() (src.ManagerTab.ManagerTab method), \hyperpage{32}
+  \item updateInterfaceLabel() (src.AbstractTab.AbstractTab method), \hyperpage{50}
+  \item updateInterfaceLabel() (src.SenderTab.SenderTab class method), \hyperpage{40}
+  \item updateInterfaceLabel() (src.SnifferTab.SnifferTab class method), \hyperpage{44}
+  \item updateInterfaceLabels() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item updateKnownPacket() (src.Database.Database method), \hyperpage{18}
+  \item updateNoiseCollectProgress() (src.FilterTab.FilterTab method), \hyperpage{24}
+  \item updatePackets() (src.Database.Database method), \hyperpage{18}
+  \item updateProject() (src.Database.Database method), \hyperpage{19}
+  \item updateStatusBar() (src.SenderTabElement.SenderTabElement method), \hyperpage{41}
+  \item updateStatusBar() (src.SnifferTabElement.SnifferTabElement method), \hyperpage{45}
+  \item updateVCANButtons() (src.MainTab.MainTab static method), \hyperpage{30}
+
+  \indexspace
+  \bigletter V
+  \item validateDataMaskInput() (src.FuzzerTab.FuzzerTab method), \hyperpage{26}
+  \item validateIDMaskInput() (src.FuzzerTab.FuzzerTab method), \hyperpage{26}
+  \item VCANCheckboxChanged() (src.MainTab.MainTab static method), \hyperpage{28}
+
+  \indexspace
+  \bigletter W
+  \item widgetFromUIFile() (src.Toolbox.Toolbox static method), \hyperpage{47}
+  \item writeCANFile() (src.CANData.CANData static method), \hyperpage{14}
+
+  \indexspace
+  \bigletter Y
+  \item yesNoBox() (src.Toolbox.Toolbox static method), \hyperpage{48}
+
+\end{sphinxtheindex}

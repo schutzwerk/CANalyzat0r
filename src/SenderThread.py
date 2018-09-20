@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on Jun 08, 2017
 
@@ -31,7 +30,6 @@ from Logger import Logger
 
 
 class LoopSenderThread(QtCore.QThread):
-
     """
     Spawns a new thread that will send the passed packets in a loop.
     """
@@ -44,8 +42,8 @@ class LoopSenderThread(QtCore.QThread):
         self.threadName = threadName
         self.enabled = True
 
-        self.logger = Logger(Strings.senderThreadLoggerName +
-                             " (" + self.threadName + ")").getLogger()
+        self.logger = Logger(Strings.senderThreadLoggerName + " (" +
+                             self.threadName + ")").getLogger()
 
     def run(self):
         """
@@ -56,6 +54,9 @@ class LoopSenderThread(QtCore.QThread):
         # Send until the thread gets terminated
         while self.enabled:
             for packet in self.packets:
+                if not self.enabled:
+                    return
+
                 try:
                     self.CANData.sendPacket(packet)
                 except OSError:
@@ -72,11 +73,11 @@ class LoopSenderThread(QtCore.QThread):
 
         self.enabled = False
 
+
 ####
 
 
 class FuzzSenderThread(QtCore.QThread):
-
     """
     Spawns a new thread that will send random data in a loop.
     """
@@ -89,8 +90,8 @@ class FuzzSenderThread(QtCore.QThread):
         self.threadName = threadName
         self.enabled = True
 
-        self.logger = Logger(Strings.fuzzSenderThreadLoggerName +
-                             " (" + self.threadName + ")").getLogger()
+        self.logger = Logger(Strings.fuzzSenderThreadLoggerName + " (" +
+                             self.threadName + ")").getLogger()
 
     def run(self):
         """

@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 23, 2017
 
@@ -36,7 +35,6 @@ from AbstractTab import AbstractTab
 
 
 class SenderTabElement(AbstractTab):
-
     """
     This class handles the logic of the sender sub tab.
     The main tab is being handled in :class:`~src.SenderTab.SenderTab`.
@@ -56,13 +54,11 @@ class SenderTabElement(AbstractTab):
         :param tabWidget: The element in the tab bar. **Not** the table widget.
         """
 
-        AbstractTab.__init__(self,
-                             tabWidget,
-                             Strings.senderTabLoggerName +
-                             " (" + tabName + ")",
-                             [2, 3, 4],
-                             Strings.senderTabElementPacketTableViewName,
-                             Strings.senderTabElementLabelInterfaceValueName)
+        AbstractTab.__init__(
+            self, tabWidget,
+            Strings.senderTabLoggerName + " (" + tabName + ")", [2, 3, 4],
+            Strings.senderTabElementPacketTableViewName,
+            Strings.senderTabElementLabelInterfaceValueName)
 
         self.tabName = tabName
 
@@ -99,13 +95,13 @@ class SenderTabElement(AbstractTab):
             sleepTime = self.tabWidget.doubleSpinBoxGap.value() / 1000
             packetsToSend = []
             for packetData in self.rawData:
-                packetToSend = CANData.tryBuildPacket(
-                    packetData[0], packetData[1])
+                packetToSend = CANData.tryBuildPacket(packetData[0],
+                                                      packetData[1])
                 if packetToSend is not None:
                     packetsToSend.append(packetToSend)
                 else:
-                    self.logger.error(
-                        Strings.packetBuildError + ": " + packetData[0] + " " + packetData[1])
+                    self.logger.error(Strings.packetBuildError + ": " +
+                                      packetData[0] + " " + packetData[1])
 
             if len(packetsToSend) == 0 or packetsToSend[0] is None:
                 return
@@ -199,7 +195,8 @@ class SenderTabElement(AbstractTab):
         """
 
         # Set the attributes according to the currently set text color
-        if Globals.ui.tabWidgetSenderTabs.tabBar().tabTextColor(self.tabIndex) == QtCore.Qt.red:
+        if Globals.ui.tabWidgetSenderTabs.tabBar().tabTextColor(
+                self.tabIndex) == QtCore.Qt.red:
             Globals.ui.tabWidgetSenderTabs.tabBar().setTabTextColor(
                 self.tabIndex, QtCore.Qt.black)
             self.tabWidget.buttonSendAll.setText(Strings.senderTabSendAll)
@@ -252,13 +249,15 @@ class SenderTabElement(AbstractTab):
         :param state: Boolean value to indicate whether to enable or disable elements
         """
 
-        for GUIElement in [self.tabWidget.checkBoxSendingLoop,
-                           self.tabWidget.buttonSenderXInterfaceSettings,
-                           self.tabWidget.buttonAddPacket,
-                           self.tabWidget.doubleSpinBoxGap,
-                           self.tabWidget.tableViewSenderXData,
-                           self.tabWidget.buttonApplyNewKnownPacketsSender,
-                           self.tabWidget.buttonSenderXDataClear]:
+        for GUIElement in [
+                self.tabWidget.checkBoxSendingLoop,
+                self.tabWidget.buttonSenderXInterfaceSettings,
+                self.tabWidget.buttonAddPacket,
+                self.tabWidget.doubleSpinBoxGap,
+                self.tabWidget.tableViewSenderXData,
+                self.tabWidget.buttonApplyNewKnownPacketsSender,
+                self.tabWidget.buttonSenderXDataClear
+        ]:
             GUIElement.setEnabled(state)
 
     def getTabIndex(self):

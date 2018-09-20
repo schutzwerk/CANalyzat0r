@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 17, 2017
 
@@ -44,7 +43,6 @@ uncaughtExceptionLogger = Logger(
 
 
 class MainWindow(QMainWindow, Ui_CANalyzatorMainWindow):
-
     def __init__(self):
         """
         This method has to take care of the following things:
@@ -86,7 +84,8 @@ class MainWindow(QMainWindow, Ui_CANalyzatorMainWindow):
         if not self.checkSU():
             self.logger.fatal(Strings.mainTabNoSU)
             QMessageBox.critical(None, Strings.messageBoxErrorTitle,
-                                 Strings.mainTabMessageBoxNoSUHint, QMessageBox.Ok)
+                                 Strings.mainTabMessageBoxNoSUHint,
+                                 QMessageBox.Ok)
             exit(1)
 
         self.setupUi(self)
@@ -199,11 +198,32 @@ def globalLoggingHandler(type, value, tb):
     method = splittedRelevantLine[2].split("\n")[0].replace(" in ", "")
 
     # Log the exception
-    uncaughtExceptionLogger.exception(Strings.uncaughtExceptionLabel + ": \n " +
-                                      fileName + " (" + line + "): " + method + ": " + "{0}".format(str(value)))
+    uncaughtExceptionLogger.exception(
+        Strings.uncaughtExceptionLabel + ": \n " + fileName + " (" + line +
+        "): " + method + ": " + "{0}".format(str(value)))
+
+
+def __smoketest__():
+    """
+    Make quick smoketest to check if the application is ready to run.
+    """
+    from pyvit import can
+    import PySide.QtGui
+
+    # We need the "ip" command available
+    import distutils.spawn
+    if len(distutils.spawn.find_executable("ip")) == 0:
+        exit(1)
+
+    print("It works")
 
 
 if __name__ == '__main__':
+
+    if len(sys.argv) > 1 and sys.argv[1] == "smoketest":
+        __smoketest__()
+        sys.exit(0)
+
     app = QApplication(sys.argv)
     mainWin = MainWindow()
     mainWin.setFixedSize(mainWin.size())

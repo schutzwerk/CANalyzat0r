@@ -5,7 +5,7 @@ This contains a dockerized version of the [CANalyzat0r](https://github.com/schut
 ## Starting and building
 If you have the `Makefile` of the CANalyzat0r repository you can use `make build` and `make run` to build the image and run the container.
 
-Otherwise you can use the following commands to get the image and run the container manually:
+Otherwise you can use the following commands to get the image and run the container manually. Please make sure to replace the placeholders with the correct values for your setup:
 
 ```
 $ docker pull schutzwerk/canalyzat0r # Pull the image
@@ -17,7 +17,7 @@ $ docker run \
 	-e DISPLAY=$DISPLAY \
 	--net=host \
 	--privileged \
-	--cap-add=ALL \
+	--cap-add=CAP_SYS_MODULE \
 	--device /dev/snd \
 	-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 	-v /lib/modules:/lib/modules \
@@ -29,3 +29,9 @@ $ docker run \
 ## Shared files and folders
 - To make all data persistent, the file `database.db` is shared with the container.
 - Additionally, the folder `sharedFolder` is mounted into `/root/sharedFolder/` of the container.
+
+
+## Docker Capabilities and Privileges
+
+- `privileged`: Used to access all CAN interfaces of the host
+- `CAP_SYS_MODULE`: Used to load the `can` kernel module from the container

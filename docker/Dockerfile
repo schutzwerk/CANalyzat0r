@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 LABEL maintainer "Philipp Schmied <pschmied@schutzwerk.com>"
 
 
@@ -25,4 +25,8 @@ RUN git clone https://github.com/schutzwerk/CANalyzat0r /opt/CANalyzat0r
 RUN /opt/CANalyzat0r/install_requirements.sh
 
 WORKDIR /opt/CANalyzat0r
+# Test the image
+RUN ./CANalyzat0r.sh "smoketest"
+
+
 CMD ["/bin/bash", "CANalyzat0r.sh"]

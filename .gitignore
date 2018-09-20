@@ -3,3 +3,5 @@
 **.idea
 **__pycache__
 **/data
+**/workspace
+**/pipenv

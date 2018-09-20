@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 17, 2017
 
@@ -118,7 +117,8 @@ class CANData():
             return self.ifaceName
 
         else:
-            return self.ifaceName + " (" + str(self.bitrate/1000) + " kBit/s)"
+            return self.ifaceName + " (" + str(
+                self.bitrate / 1000) + " kBit/s)"
 
     def checkVCAN(self):
         """
@@ -130,8 +130,8 @@ class CANData():
         virtualIfaces = os.listdir("/sys/devices/virtual/net")
         for virtualIface in virtualIfaces:
             if virtualIface == self.ifaceName:
-                CANData.logger.info(
-                    Strings.CANDataDetectedVirtualInterface + self.ifaceName)
+                CANData.logger.info(Strings.CANDataDetectedVirtualInterface +
+                                    self.ifaceName)
                 return True
         return False
 
@@ -220,16 +220,16 @@ class CANData():
 
             # Uh oh, try to create an extended packet
             try:
-                packet = can.Frame(arb_id=arbID, data=data,
-                                   is_extended_id=True)
+                packet = can.Frame(
+                    arb_id=arbID, data=data, is_extended_id=True)
             except TypeError:
 
                 # The flag to mark an extended packet was changed in some git commit - try that
                 try:
                     packet = can.Frame(arb_id=arbID, data=data, extended=True)
                 except Exception as e:
-                    CANData.logger.error(
-                        Strings.packetBuildError + ": " + str(e))
+                    CANData.logger.error(Strings.packetBuildError + ": " +
+                                         str(e))
                     return None
 
         return packet
@@ -272,8 +272,8 @@ class CANData():
             if len(line.split(" ")) < 3:
                 if line == "":
                     line = Strings.CANDataParseSocketCANEmptyLine
-                CANData.logger.warning(
-                    Strings.CANDataInvalidSocketCANLine + ": " + line)
+                CANData.logger.warning(Strings.CANDataInvalidSocketCANLine +
+                                       ": " + line)
             else:
                 valueList = line.split(" ")
                 # Remove ( and )
@@ -283,10 +283,8 @@ class CANData():
                 if len(IDAndData) == 2:
                     curID = IDAndData[0]
                     curData = IDAndData[1]
-                    socketCANPacket = SocketCANPacket(curTimestamp,
-                                                      curIface,
-                                                      curID,
-                                                      curData)
+                    socketCANPacket = SocketCANPacket(curTimestamp, curIface,
+                                                      curID, curData)
                     socketCANPackets.append(socketCANPacket)
                 else:
                     CANData.logger.warning(
@@ -349,8 +347,8 @@ class CANData():
             del CANData.CANDataInstances[ifaceName]
             return True
         except KeyError:
-            CANData.logger.error(
-                Strings.CANDataCantExecuteNoSuchInterface + ifaceName)
+            CANData.logger.error(Strings.CANDataCantExecuteNoSuchInterface +
+                                 ifaceName)
             return False
 
     @staticmethod
@@ -375,8 +373,8 @@ class CANData():
                     CANIfaceName, returnObject=True)
                 if newCANData is not None:
                     tmpDict[CANIfaceName] = newCANData
-                    CANData.logger.info(
-                        Strings.CANDataNewInterfaceAdded + CANIfaceName)
+                    CANData.logger.info(Strings.CANDataNewInterfaceAdded +
+                                        CANIfaceName)
 
         removedInterfaceNames = []
         for CANDataInstanceName in list(CANData.CANDataInstances.keys()):
@@ -390,7 +388,6 @@ class CANData():
 
 
 class SocketCANPacket():
-
     """
     This class is used to manage data from/to SocketCAN format in a nice manner <:
     """
@@ -405,8 +402,8 @@ class SocketCANPacket():
         :param data: Data payload
         """
 
-        self.timestamp = timestamp if len(
-            timestamp) > 0 else ".".join(["0" * 10, "0" * 6])
+        self.timestamp = timestamp if len(timestamp) > 0 else ".".join(
+            ["0" * 10, "0" * 6])
         self.iface = iface if len(iface) > 0 else "can0"
         self.id = id
         self.data = data

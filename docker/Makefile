@@ -26,7 +26,7 @@ run: ## Run container
 		-e DISPLAY=$$DISPLAY \
 		--net=host \
 		--privileged \
-		--cap-add=ALL \
+		--cap-add=CAP_SYS_MODULE \
 		--device /dev/snd \
 		-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 		-v /lib/modules:/lib/modules \

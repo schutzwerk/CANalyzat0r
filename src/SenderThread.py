@@ -51,12 +51,14 @@ class LoopSenderThread(QtCore.QThread):
         """
 
         errorCount = 0
+        slept = 0
         # Send until the thread gets terminated
         while self.enabled:
             for packet in self.packets:
                 if not self.enabled:
                     return
 
+                slept = 0
                 try:
                     self.CANData.sendPacket(packet)
                 except OSError:
@@ -64,7 +66,12 @@ class LoopSenderThread(QtCore.QThread):
                         self.logger.error(Strings.OSError)
                         errorCount = 1
                     errorCount += 1
-                time.sleep(self.sleepTime)
+
+                while slept < self.sleepTime:
+                    if not self.enabled:
+                        return
+                    time.sleep(0.1)
+                    slept += 0.1
 
     def disable(self):
         """

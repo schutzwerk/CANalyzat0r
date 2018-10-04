@@ -35,3 +35,5 @@ $ docker run \
 
 - `privileged`: Used to access all CAN interfaces of the host
 - `CAP_SYS_MODULE`: Used to load the `can` kernel module from the container
+- `--net=host`: Required to access the CAN interfaces of the host
+- `xhost +local:root`: Used to spawn the GUI using a shared display. If you don't want to add this rule, it's also possible to [remap](https://docs.docker.com/engine/security/userns-remap/) your user ID to UID `0` inside of the container. Please note that loading the required kernel modules from inside of the container may not work when using this approach.

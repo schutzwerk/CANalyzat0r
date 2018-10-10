@@ -105,7 +105,9 @@ class FuzzSenderThread(QtCore.QThread):
         Send the packets in a loop and wait accordingly until the thread is disabled.
         """
         errorCount = 1
+        slept = 0
         while self.enabled:
+            slept = 0
             randomPacket = Globals.fuzzerTabInstance.generateRandomPacket()
             if randomPacket is None:
                 continue
@@ -121,7 +123,13 @@ class FuzzSenderThread(QtCore.QThread):
 
             # Also send the data over the pipe to add it on the GUI
             self.fuzzerSendPipe.send(randomPacket)
-            time.sleep(self.sleepTime)
+
+            while slept < self.sleepTime:
+                if not self.enabled:
+                    return
+
+                time.sleep(0.1)
+                slept += 0.1
 
     def disable(self):
         """

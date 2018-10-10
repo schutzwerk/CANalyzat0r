@@ -58,8 +58,8 @@ class CANData():
         self.iface = socketcan.SocketCanDev(ifaceName)
         self.updateBitrate(bitrate)
 
-        #: 1 second read timeout for async reads (see :func:`readPacketAsync`)
-        self.timeout = 1
+        #: 100 ms read timeout for async reads (see :func:`readPacketAsync`)
+        self.timeout = 0.1
 
         self.active = False
         self.iface.start()

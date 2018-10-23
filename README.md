@@ -45,7 +45,13 @@ For more information, read the HTML or PDF version of the documentation in the `
 
 You can use the [Instrument Cluster Simulator](https://github.com/zombieCraig/ICSim) in order to tinker with a virtual CAN bus without having to attach real CAN devices to your machine.
 
-# Fixing the GUI style
+# Troubleshooting
+
+## Empty GUI Windows
+
+Please make sure that the `QT_X11_NO_MITSHM` environment variable is set to `1`. When using `sudo`, please include the `-E` option in order to preserve this environment variable as follows: `sudo -E ./CANalyzat0r.sh`.
+
+## Fixing the GUI style
 
 This application has to be run as superuser. Because of a missing configuration, the displayed style
 can be set to an unwanted value when the effective UID is 0. To fix this behaviour, follow these steps:

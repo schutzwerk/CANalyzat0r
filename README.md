@@ -13,8 +13,8 @@
 * Documentation: Read the docs if you need a manual or technical info.
 
 # Installing and running:
-* Run `install_requirements.sh` along with `CANalyzat0r.sh`. This will create a folder called `pipenv` with a `pipenv` environment in it.
-* Or just use the docker version which is recommended at this time (Check the subdirectory)
+* Run `sudo ./install_requirements.sh` along with `sudo -E ./CANalyzat0r.sh`. This will create a folder called `pipenv` with a `pipenv` environment in it.
+* Or just use the docker version which is recommended at this time (Check the `README.md` file in the subdirectory)
 
 For more information, read the HTML or PDF version of the documentation in the `./doc/build` folder.
 

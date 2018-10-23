@@ -21,9 +21,10 @@ sudo apt -y install \
 # Pip dependencies
 sudo pip3 install --upgrade pip
 sudo pip3 install pipenv
+
 # Create a new pipenv
 cd $DIR
-mkdir pipenv && cd pipenv
+mkdir -p pipenv && cd pipenv
 pipenv --three
 pipenv install pyvit sphinx_rtd_theme
 cp -rf /usr/lib/python3/dist-packages/PySide $(pipenv --venv)/lib/python3*/site-packages

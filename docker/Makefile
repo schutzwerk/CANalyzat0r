@@ -9,18 +9,18 @@ CONTAINER_NAME ?= canalyzat0r
 
 # Build the container
 build: ## Build the image
-	sudo docker build --rm -t $(IMAGE_NAME):$(VERSION) .
+	docker build --rm -t $(IMAGE_NAME):$(VERSION) .
 
 build-local: ## Build the image using a local version of CANalyzat0r
-	sudo docker build -t $(IMAGE_NAME) -f Dockerfile.local .
+	docker build -t $(IMAGE_NAME) -f Dockerfile.local .
 
 build-nc: ## Build the container without caching
-	sudo docker build --rm --no-cache -t $(IMAGE_NAME) .
+	docker build --rm --no-cache -t $(IMAGE_NAME) .
 
 run: ## Run container
 	touch $(DIR)/database.db && \
 	xhost +local:root && \
-	sudo docker run \
+	docker run \
 		-it \
 		--name $(CONTAINER_NAME) \
 		-e DISPLAY=$$DISPLAY \
@@ -35,17 +35,17 @@ run: ## Run container
 		$(IMAGE_NAME):$(VERSION)
 
 stop: ## Stop a running container
-	sudo docker stop $(CONTAINER_NAME)
+	docker stop $(CONTAINER_NAME)
 
 remove: ## Remove a (running) container
-	sudo docker rm -f $(CONTAINER_NAME)
+	docker rm -f $(CONTAINER_NAME)
 
 restart: ## Restart the container
 	make remove; \
 	make run
 
 remove-image-force: ## Remove the latest image (forced)
-	sudo docker rmi -f $(IMAGE_NAME):$(VERSION)
+	docker rmi -f $(IMAGE_NAME):$(VERSION)
 
 # This will output the help for each task
 .PHONY: help

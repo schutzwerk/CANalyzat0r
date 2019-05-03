@@ -41,6 +41,10 @@ For more information, read the HTML or PDF version of the documentation in the `
 * SQLite support
 * Fuzz and change the values on the fly
 
+# Working CAN Adapters
+
+In general, all SocketCAN devices should be compatible. CANalyzat0r has been developed and successfully tested in combination with [USB2CAN](https://www.8devices.com/products/usb2can).
+
 # Testing It
 
 You can use the [Instrument Cluster Simulator](https://github.com/zombieCraig/ICSim) in order to tinker with a virtual CAN bus without having to attach real CAN devices to your machine.

@@ -226,6 +226,15 @@ if __name__ == '__main__':
 
     app = QApplication(sys.argv)
     QFontDatabase.addApplicationFont(":/fonts/ui/res/OCRA.ttf")
+    # this overwrites the system default palette
+    # this is required to fix the GUI style in blackarch
+    palette = QPalette()
+    palette.setColor(QPalette.Window, QColor(236, 234, 234))
+    palette.setColor(QPalette.Button, QColor(236, 234, 234))
+    palette.setColor(QPalette.Text, QColor(0, 0, 0))
+    palette.setColor(QPalette.WindowText, QColor(0, 0, 0))
+    palette.setColor(QPalette.ButtonText, QColor(0, 0, 0))
+    app.setPalette(palette)
     mainWin = MainWindow()
     mainWin.setFixedSize(mainWin.size())
     ret = app.exec_()

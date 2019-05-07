@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 22, 2017
 
@@ -38,7 +37,6 @@ from Logger import Logger
 
 
 class MainTab:
-
     """
     This class handles the logic of the main tab
     """
@@ -52,9 +50,6 @@ class MainTab:
     statusBarActiveStatuses = []
     statusBarInterface = None
     statusBarProject = None
-
-    # Add the font
-    QFontDatabase.addApplicationFont(":/fonts/ui/res/OCRA.ttf");
 
     ___playing = False
 
@@ -71,8 +66,8 @@ class MainTab:
             if status not in MainTab.statusBarActiveStatuses:
                 MainTab.statusBarActiveStatuses.append(status)
             # Sort to keep order
-            MainTab.statusBarApplicationStatus.setText(
-                ", ".join(sorted(MainTab.statusBarActiveStatuses)).title())
+            MainTab.statusBarApplicationStatus.setText(", ".join(
+                sorted(MainTab.statusBarActiveStatuses)).title())
 
         else:
             MainTab.statusBarApplicationStatus.setText(Strings.statusBarReady)
@@ -96,7 +91,9 @@ class MainTab:
                 # If a substring search matches get the element
                 matchingStatus = None
                 matchingStatusList = [
-                    value for value in MainTab.statusBarActiveStatuses if status in value]
+                    value for value in MainTab.statusBarActiveStatuses
+                    if status in value
+                ]
                 if len(matchingStatusList) > 0:
                     matchingStatus = matchingStatusList[0]
                 if matchingStatus is not None:
@@ -105,8 +102,8 @@ class MainTab:
                 MainTab.statusBarApplicationStatus.setText(
                     Strings.statusBarReady)
             else:
-                MainTab.statusBarApplicationStatus.setText(
-                    ", ".join(sorted(MainTab.statusBarActiveStatuses)).title())
+                MainTab.statusBarApplicationStatus.setText(", ".join(
+                    sorted(MainTab.statusBarActiveStatuses)).title())
 
     @staticmethod
     def setGlobalInterfaceStatus(red=False):
@@ -124,8 +121,8 @@ class MainTab:
                 "QLabel { color : black; }")
 
         if Globals.CANData is not None:
-            MainTab.statusBarInterface.setText(
-                "Global interface: " + Globals.CANData.toString())
+            MainTab.statusBarInterface.setText("Global interface: " +
+                                               Globals.CANData.toString())
         else:
             MainTab.statusBarInterface.setText("Global interface: None")
 
@@ -187,8 +184,7 @@ class MainTab:
 
         if not wasDeleted and not setNone:
             Globals.project = Globals.ui.comboBoxProjectSet.itemData(
-                Globals.ui.comboBoxProjectSet.currentIndex()
-            )
+                Globals.ui.comboBoxProjectSet.currentIndex())
 
             if Globals.project is None:
                 return
@@ -212,8 +208,9 @@ class MainTab:
         Globals.managerTabInstance.populateKnownPackets()
         Toolbox.Toolbox.toggleDisabledProjectGUIElements()
 
-        MainTab.logger.info(Strings.mainTabProjectSet + " " +
-                            Globals.project.name if Globals.project is not None else "None")
+        MainTab.logger.info(
+            Strings.mainTabProjectSet + " " +
+            Globals.project.name if Globals.project is not None else "None")
 
     @staticmethod
     def loadKernelModules():
@@ -247,8 +244,10 @@ class MainTab:
         """
 
         vifaceName = "vcan" + str(Globals.ui.spinBoxVCANIndex.value())
-        cmds = ["ip link add dev " + vifaceName +
-                " type vcan", "ip link set up " + vifaceName]
+        cmds = [
+            "ip link add dev " + vifaceName + " type vcan",
+            "ip link set up " + vifaceName
+        ]
         for cmd in cmds:
             process = subprocess.Popen(
                 cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -385,11 +384,12 @@ class MainTab:
 
         # It's still active, we set it but won't save the settings though
         if selectedCANData.active:
-            MainTab.logger.info(
-                Strings.activeCANDataWontSave + selectedCANData.ifaceName)
+            MainTab.logger.info(Strings.activeCANDataWontSave +
+                                selectedCANData.ifaceName)
             Globals.ui.spinBoxBitrate.setValue(selectedCANData.bitrate)
             Globals.ui.checkBoxMainUseVCAN.setChecked(
-                QtCore.Qt.Checked if selectedCANData.VCAN else QtCore.Qt.Unchecked)
+                QtCore.Qt.Checked if selectedCANData.VCAN else QtCore.Qt.
+                Unchecked)
             return
 
         # It's not active, updated VCAN and the bitrate
@@ -437,16 +437,16 @@ class MainTab:
         Add labels to the status bar and prepare it.
         """
 
-        MainTab.statusBarApplicationStatus = QLabel(
-            Strings.statusBarReady, Globals.ui)
+        MainTab.statusBarApplicationStatus = QLabel(Strings.statusBarReady,
+                                                    Globals.ui)
         MainTab.statusBarInterface = QLabel(
             Strings.statusBarSelectGlobalInterface, Globals.ui)
-        MainTab.statusBarProject = QLabel(
-            Strings.statusBarNoProject, Globals.ui)
+        MainTab.statusBarProject = QLabel(Strings.statusBarNoProject,
+                                          Globals.ui)
         MainTab.setProjectStatus(Strings.statusBarNoProject)
 
-        MainTab.statusBarApplicationStatus.setFrameStyle(
-            QFrame.Panel | QFrame.Sunken)
+        MainTab.statusBarApplicationStatus.setFrameStyle(QFrame.Panel
+                                                         | QFrame.Sunken)
         MainTab.statusBarInterface.setFrameStyle(QFrame.Panel | QFrame.Sunken)
         MainTab.statusBarProject.setFrameStyle(QFrame.Panel | QFrame.Sunken)
 
@@ -457,7 +457,8 @@ class MainTab:
 
         Globals.ui.statusBar().addPermanentWidget(
             MainTab.statusBarApplicationStatus, 1)
-        Globals.ui.statusBar().addPermanentWidget(MainTab.statusBarInterface, 2)
+        Globals.ui.statusBar().addPermanentWidget(MainTab.statusBarInterface,
+                                                  2)
         Globals.ui.statusBar().addPermanentWidget(MainTab.statusBarProject, 3)
 
     @staticmethod

@@ -225,6 +225,7 @@ if __name__ == '__main__':
         sys.exit(0)
 
     app = QApplication(sys.argv)
+    QFontDatabase.addApplicationFont(":/fonts/ui/res/OCRA.ttf")
     mainWin = MainWindow()
     mainWin.setFixedSize(mainWin.size())
     ret = app.exec_()

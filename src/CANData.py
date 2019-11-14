@@ -30,6 +30,7 @@ import socket
 from Logger import Logger
 import Globals
 import Strings
+import Toolbox
 
 
 class CANData():
@@ -122,7 +123,7 @@ class CANData():
 
     def checkVCAN(self):
         """
-        Checks if the SocketCAN device is phyisical or virtual using a ``ls`` call to ``/sys/devices/virtual/net``.
+        Checks if the SocketCAN device is physical or virtual using a ``ls`` call to ``/sys/devices/virtual/net``.
 
         :return: A boolean value indicating if the device is virtual (True) or not (False)
         """
@@ -147,9 +148,7 @@ class CANData():
         if not self.VCAN:
             # Put interface down first so the new bitrate can be applied
             cmd = "ip link set " + self.ifaceName + " down"
-            process = subprocess.Popen(
-                cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            output, error = process.communicate()
+            output, error = Toolbox.Toolbox.runRootshell(cmd)
             # prepare cmd for next call
             cmd = "ip link set " + self.ifaceName + \
                 " up type can bitrate " + str(bitrate)
@@ -158,10 +157,7 @@ class CANData():
             cmd = "ip link set up " + self.ifaceName
 
         # Apply
-        process = subprocess.Popen(
-            cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-
+        output, error = Toolbox.Toolbox.runRootshell(cmd)
         if output.decode("utf-8") == "" and error.decode("utf-8") == "":
             if self.VCAN:
                 self.bitrate = -1

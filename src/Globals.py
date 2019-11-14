@@ -48,3 +48,6 @@ comparerTabInstance = None
 searcherTabInstance = None
 filterTabInstance = None
 managerTabInstance = None
+
+# the rootshell to manage the CAN interfaces
+rootshell = None

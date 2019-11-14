@@ -15,12 +15,13 @@ sudo apt -y install \
    ffmpeg \
    iproute2 \
    python3-pip \
+   python3-pexpect \
    python3-pyside \
    python3.5
 
 # Pip dependencies
 sudo pip3 install --upgrade pip
-sudo pip3 install pipenv
+sudo pip3 install pipenv 
 
 # Create a new pipenv
 cd $DIR

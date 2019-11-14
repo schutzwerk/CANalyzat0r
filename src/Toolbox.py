@@ -508,3 +508,32 @@ class Toolbox():
         process = Toolbox.mp3Processes[filePath]
         os.killpg(process.pid, signal.SIGTERM)
         del Toolbox.mp3Processes[filePath]
+
+    @staticmethod
+    def runRootshell(cmd):
+        """
+        Runs a command in the global rootshell without closing it,
+        unlike communicate() does.
+        Any output of the command will be treated as error.
+        :param cmd: the command to run, will be encoded
+        """
+        import pexpect
+        import Globals
+
+        if Globals.rootshell is None:
+            Toolbox.logger.error(Strings.noRootshell)
+            return "", Strings.noRootshell
+        else:
+            Toolbox.logger.info("executing as root: " + cmd)
+            Globals.rootshell.sendline(cmd)
+            Globals.rootshell.expect_exact(['$', '>', '#'])
+            error = Globals.rootshell.before
+            if Globals.rootshell.before:
+                Globals.rootshell.expect(r'.+')  # clear pexpects buffer
+            normalizedError = ' '.join(error.split()).strip()
+            normalizedCmd = ' '.join(cmd.split()).strip()
+            # simple echo is no error
+            if normalizedError == "" or normalizedError == normalizedCmd:
+                error = ""
+            error = error.encode("utf-8")
+            return "".encode("utf-8"), error

@@ -25,6 +25,7 @@ import sys
 import os
 import traceback
 import atexit
+import pexpect
 
 from PySide.QtGui import *
 
@@ -53,7 +54,7 @@ class MainWindow(QMainWindow, Ui_CANalyzatorMainWindow):
          4. Call the prepareUI()-method of every tab
          5. {En, Dis}able GUI elements based on the presence of a CAN device
          6. Setup logging
-         7. Install a globlal exception hook that will catch all "remaining" exceptions
+         7. Install a global exception hook that will catch all "remaining" exceptions
             to log it to the GUI
          8. Load the CAN kernel modules
          9. Check if superuser privileges are present - exit if not present
@@ -82,11 +83,17 @@ class MainWindow(QMainWindow, Ui_CANalyzatorMainWindow):
 
         # Check privileges
         if not self.checkSU():
-            self.logger.fatal(Strings.mainTabNoSU)
-            QMessageBox.critical(None, Strings.messageBoxErrorTitle,
-                                 Strings.mainTabMessageBoxNoSUHint,
-                                 QMessageBox.Ok)
-            exit(1)
+            self.logger.info(Strings.mainTabNoSU)
+            QMessageBox.warning(None, Strings.messageBoxNoticeTitle,
+                                Strings.mainTabMessageBoxNoSUHint,
+                                QMessageBox.Ok)
+            shellcmd = "pkexec /bin/sh"
+        else:
+            shellcmd = "/bin/sh"
+
+        # launch a long lived rootshell
+        Globals.rootshell = pexpect.spawnu(shellcmd)
+        Globals.rootshell.expect_exact(['$', '>', '#'])
 
         self.setupUi(self)
         atexit.register(MainWindow.cleanup)

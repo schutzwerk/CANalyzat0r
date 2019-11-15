@@ -218,10 +218,7 @@ class MainTab:
         Load kernel modules to interact with CAN networks (``can`` and ``vcan``).
         """
 
-        cmds = '''
-            modprobe can
-            modprobe vcan
-        '''
+        cmds = "modprobe can; modprobe vcan"
         output, error = Toolbox.Toolbox.runRootshell(cmds)
 
     @staticmethod

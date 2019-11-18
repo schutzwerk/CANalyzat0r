@@ -76,7 +76,7 @@ class MainTab:
     def removeApplicationStatus(status):
         """
         Remove a status from the status bar.
-        For statuses with mutiple possible values (e.g. ``Sending (X Threads)``
+        For statuses with multiple possible values (e.g. ``Sending (X Threads)``
         the search will be done using a substring search
 
         :param status: The status to remove
@@ -218,11 +218,8 @@ class MainTab:
         Load kernel modules to interact with CAN networks (``can`` and ``vcan``).
         """
 
-        cmds = ["modprobe can", "modprobe vcan"]
-        for cmd in cmds:
-            process = subprocess.Popen(
-                cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            output, error = process.communicate()
+        cmds = "modprobe can; modprobe vcan"
+        output, error = Toolbox.Toolbox.runRootshell(cmds)
 
     @staticmethod
     def easterEgg(event):
@@ -249,9 +246,7 @@ class MainTab:
             "ip link set up " + vifaceName
         ]
         for cmd in cmds:
-            process = subprocess.Popen(
-                cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            output, error = process.communicate()
+            output, error = Toolbox.Toolbox.runRootshell(cmd)
 
         if error is not None and error.decode("utf-8") == "":
             CANData.createCANDataInstance(vifaceName)
@@ -280,9 +275,7 @@ class MainTab:
             return
 
         cmd = "ip link delete " + vifaceName
-        process = subprocess.Popen(
-            cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
+        output, error = Toolbox.Toolbox.runRootshell(cmd)
         SnifferTab.SnifferTab.removeSniffer(snifferTabName=vifaceName)
         MainTab.detectCANInterfaces()
 

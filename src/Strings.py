@@ -27,17 +27,18 @@ import Settings
 
 # MainTab
 mainTabLoggerName = "MainTab"
-mainTabNoSU = "No superuser privileges found, exiting"
+mainTabNoSU = "No superuser privileges found, asking"
 mainTabProjectSet = "Switched project to"
 mainTabVCANAdded = "Virtual CAN interface added:"
 mainTabVCANRemoved = "Virtual CAN interface removed:"
-mainTabMessageBoxNoSUHint = "Please run this application as root!"
+mainTabMessageBoxNoSUHint = "This application was not run as root. You will be asked for your sudo password in a moment."
 mainTabCANConfigUpdated = "CAN configuration updated"
 mainTabLogLevelChanged = "Loglevel changed"
 
 # Shared and misc
 uncaughtExceptionLoggerName = "UncaughtException"
 messageBoxErrorTitle = "Error"
+messageBoxNoticeTitle = "Notice"
 uncaughtExceptionLabel = "Uncaught exception"
 confirmDeleteMessageBoxTitle = "Confirmation"
 confirmDeleteMessageBoxText = "Are you sure you want to proceed?"
@@ -67,6 +68,7 @@ activeCANDataWontSave = "Active interface found, won't save: "
 gotSocketError = "Socket error received"
 dialogFiltering = "Filtering..."
 dialogSending = "Sending...."
+noRootshell = "No shell process with elevated privileges available."
 
 # SnifferTab
 snifferTabLoggerName = "SnifferTab"

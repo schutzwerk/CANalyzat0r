@@ -27,5 +27,5 @@ sudo pip3 install pipenv
 cd $DIR
 mkdir -p pipenv && cd pipenv
 pipenv --three
-pipenv install python3-pexpect pyvit sphinx_rtd_theme
+pipenv install pexpect pyvit sphinx_rtd_theme
 cp -rf /usr/lib/python3/dist-packages/PySide $(pipenv --venv)/lib/python3*/site-packages

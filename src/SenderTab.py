@@ -108,11 +108,15 @@ class SenderTab():
 
         if senderTabName is None:
             # Get the name of the new sender tab from the tuple returned by the dialog
-            senderTabName = QInputDialog.getText(Globals.ui.tabWidgetMain,
+            senderTabNameObject = QInputDialog.getText(Globals.ui.tabWidgetMain,
                                                  Strings.senderTabNewSenderMessageBoxTitle,
                                                  Strings.senderTabNewSenderMessageBoxText,
-                                                 )[0]
+                                                 )
+            if senderTabNameObject is None or senderTabNameObject[1] is False:
+                return
 
+            senderTabName = senderTabNameObject[0]
+        
         if len(senderTabName) == 0:
             SenderTab.logger.error(Strings.senderTabSenderInvalidName)
             return

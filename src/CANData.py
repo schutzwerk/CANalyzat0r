@@ -162,7 +162,11 @@ class CANData():
         if not self.VCAN:
             # Put interface down first so the new bitrate can be applied
             cmd = "ip link set " + self.ifaceName + " down"
-            output, error = Toolbox.Toolbox.runRootshell(cmd)
+
+            process = subprocess.Popen(
+                cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            output, error = process.communicate()
+
             # prepare cmd for next call
             cmd = "ip link set " + self.ifaceName + \
                 " up type can bitrate " + str(bitrate)
@@ -170,8 +174,10 @@ class CANData():
         else:
             cmd = "ip link set up " + self.ifaceName
 
-        # Apply
-        output, error = Toolbox.Toolbox.runRootshell(cmd)
+        process = subprocess.Popen(
+            cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        output, error = process.communicate()
+
         if output.decode("utf-8") == "" and error.decode("utf-8") == "":
             if self.VCAN:
                 self.bitrate = -1

@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 22, 2017
 
@@ -35,7 +34,6 @@ from CANData import CANData
 
 
 class Toolbox():
-
     """
     This calls offers helpful static methods that every tab can use to unify program logic and simplify code.
     """
@@ -90,10 +88,9 @@ class Toolbox():
         selectedRows = selectionModel.selectedRows()
 
         if len(selectedRows) == 0:
-            QtGui.QMessageBox.critical(Globals.ui.tabWidgetMain,
-                                       Strings.messageBoxErrorTitle,
-                                       Strings.rowSelectionHint,
-                                       QtGui.QMessageBox.Ok)
+            QtGui.QMessageBox.critical(
+                Globals.ui.tabWidgetMain, Strings.messageBoxErrorTitle,
+                Strings.rowSelectionHint, QtGui.QMessageBox.Ok)
             return
 
         rawData = []
@@ -136,13 +133,15 @@ class Toolbox():
         """
 
         state = Globals.project is not None
-        for GUIElement in [Globals.ui.buttonManagerDeleteDump,
-                           Globals.ui.buttonManagerUpdateDump,
-                           Globals.ui.buttonManagerCreateDump,
-                           Globals.ui.buttonAddKnownPacket,
-                           Globals.ui.buttonKnownPacketRemove,
-                           Globals.ui.buttonManagerEditKnownPacket,
-                           Globals.ui.comboBoxManagerDumps]:
+        for GUIElement in [
+                Globals.ui.buttonManagerDeleteDump,
+                Globals.ui.buttonManagerUpdateDump,
+                Globals.ui.buttonManagerCreateDump,
+                Globals.ui.buttonAddKnownPacket,
+                Globals.ui.buttonKnownPacketRemove,
+                Globals.ui.buttonManagerEditKnownPacket,
+                Globals.ui.comboBoxManagerDumps
+        ]:
             GUIElement.setEnabled(state)
 
     @staticmethod
@@ -153,7 +152,10 @@ class Toolbox():
 
         state = len(CANData.CANDataInstances) > 0
 
-        for tab in [SenderTab, Globals.fuzzerTabInstance, Globals.searcherTabInstance, Globals.filterTabInstance]:
+        for tab in [
+                SenderTab, Globals.fuzzerTabInstance,
+                Globals.searcherTabInstance, Globals.filterTabInstance
+        ]:
             tab.toggleGUIElements(state)
             tab.updateInterfaceLabel()
 
@@ -204,7 +206,7 @@ class Toolbox():
 
         progressBar = progressDialog.findChild(QProgressBar)
         # :S:S
-        progressBar.setMinimumWidth(progressDialog.width()+20)
+        progressBar.setMinimumWidth(progressDialog.width() + 20)
 
         return progressDialog
 
@@ -227,9 +229,7 @@ class Toolbox():
         :return: True if the user has clicked on Yes, else False
         """
 
-        answer = QMessageBox.question(Globals.ui.tabWidgetMain,
-                                      title,
-                                      text,
+        answer = QMessageBox.question(Globals.ui.tabWidgetMain, title, text,
                                       QMessageBox.Yes | QMessageBox.No)
 
         return answer == QMessageBox.Yes
@@ -251,7 +251,8 @@ class Toolbox():
             Toolbox.populateInterfaceComboBox(
                 Toolbox.interfaceDialogWidget.comboBoxDialogInterface)
         else:
-            for CANDataOverrideValue in sorted(CANDataOverrideValues, key=lambda x: x.ifaceName):
+            for CANDataOverrideValue in sorted(
+                    CANDataOverrideValues, key=lambda x: x.ifaceName):
                 Toolbox.interfaceDialogWidget.comboBoxDialogInterface.addItem(
                     CANDataOverrideValue.ifaceName, CANDataOverrideValue)
 
@@ -259,12 +260,13 @@ class Toolbox():
             return
 
         # Check if there are active CANData instances
-        for i in range(Toolbox.interfaceDialogWidget.comboBoxDialogInterface.count()):
+        for i in range(
+                Toolbox.interfaceDialogWidget.comboBoxDialogInterface.count()):
             CANDataInstance = Toolbox.interfaceDialogWidget.comboBoxDialogInterface.itemData(
                 i)
             if CANDataInstance.active:
-                Toolbox.logger.info(
-                    Strings.activeCANDataWontSave + CANDataInstance.ifaceName)
+                Toolbox.logger.info(Strings.activeCANDataWontSave +
+                                    CANDataInstance.ifaceName)
 
         # Prepopulate the elements
         Toolbox.interfaceDialogWidget.comboBoxDialogInterface.setCurrentIndex(
@@ -303,17 +305,20 @@ class Toolbox():
 
             # Get the CANData instance the user selected
             selectedCANData = Toolbox.interfaceDialogWidget.comboBoxDialogInterface.itemData(
-                Toolbox.interfaceDialogWidget.comboBoxDialogInterface.currentIndex()
-            )
+                Toolbox.interfaceDialogWidget.comboBoxDialogInterface.
+                currentIndex())
 
             # Only create a new instance if the interface isn't active
             if not selectedCANData.active:
 
-                selectedCANData.VCAN = Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked()
+                selectedCANData.VCAN = Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked(
+                )
 
                 if not selectedCANData.VCAN:
                     # Physical interface - lets update the bitrate too
-                    if selectedCANData.updateBitrate(Toolbox.interfaceDialogWidget.spinBoxDialogBitrate.value()):
+                    if selectedCANData.updateBitrate(
+                            Toolbox.interfaceDialogWidget.spinBoxDialogBitrate.
+                            value()):
                         Toolbox.logger.info(Strings.mainTabCANConfigUpdated)
                 else:
                     Toolbox.logger.info(Strings.mainTabCANConfigUpdated)
@@ -336,8 +341,7 @@ class Toolbox():
         """
 
         Toolbox.interfaceDialogWidget.spinBoxDialogBitrate.setEnabled(
-            not Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked()
-        )
+            not Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked())
 
     @staticmethod
     def interfaceSettingsDialogComboBoxChanged():
@@ -346,8 +350,8 @@ class Toolbox():
         pre-populate the GUI elements accordingly.
         """
         selectedCANData = Toolbox.interfaceDialogWidget.comboBoxDialogInterface.itemData(
-            Toolbox.interfaceDialogWidget.comboBoxDialogInterface.currentIndex()
-        )
+            Toolbox.interfaceDialogWidget.comboBoxDialogInterface.currentIndex(
+            ))
         isVCAN = selectedCANData.VCAN
         isActive = selectedCANData.active
 
@@ -416,7 +420,9 @@ class Toolbox():
         return False
 
     @staticmethod
-    def populateInterfaceComboBox(comboBoxWidget, reselectCurrentItem=True, ignoreActiveInstances=False):
+    def populateInterfaceComboBox(comboBoxWidget,
+                                  reselectCurrentItem=True,
+                                  ignoreActiveInstances=False):
         """
         Inserts all available interface values into the passed ComboBox widget
 
@@ -437,8 +443,8 @@ class Toolbox():
             CANDataInstance = CANDataInstances[i]
 
             if ignoreActiveInstances and CANDataInstance.active:
-                Toolbox.logger.info(
-                    Strings.ignoringCANDataStillActive + CANDataInstance.ifaceName)
+                Toolbox.logger.info(Strings.ignoringCANDataStillActive +
+                                    CANDataInstance.ifaceName)
                 continue
 
             comboBoxWidget.addItem(CANDataInstance.ifaceName, CANDataInstance)
@@ -456,7 +462,10 @@ class Toolbox():
         """
 
         SenderTab.updateCANDataInstance(CANDataInstance, delegate=True)
-        for tab in [Globals.fuzzerTabInstance, Globals.searcherTabInstance, Globals.filterTabInstance]:
+        for tab in [
+                Globals.fuzzerTabInstance, Globals.searcherTabInstance,
+                Globals.filterTabInstance
+        ]:
             tab.updateCANDataInstance(CANDataInstance)
 
     @staticmethod
@@ -465,7 +474,10 @@ class Toolbox():
         Calls ``updateInterfaceLabel`` for every tab.
         """
 
-        for tab in [SnifferTab.SnifferTab, SenderTab, Globals.fuzzerTabInstance, Globals.searcherTabInstance, Globals.filterTabInstance]:
+        for tab in [
+                SnifferTab.SnifferTab, SenderTab, Globals.fuzzerTabInstance,
+                Globals.searcherTabInstance, Globals.filterTabInstance
+        ]:
             tab.updateInterfaceLabel()
 
     @staticmethod
@@ -490,10 +502,11 @@ class Toolbox():
         import subprocess
         import os
         devnull = open(os.devnull, 'w')
-        process = subprocess.Popen("ffplay -autoexit -nodisp -loglevel panic " + filePath,
-                                   stdout=devnull,
-                                   shell=True,
-                                   preexec_fn=os.setsid)
+        process = subprocess.Popen(
+            "ffplay -autoexit -nodisp -loglevel panic " + filePath,
+            stdout=devnull,
+            shell=True,
+            preexec_fn=os.setsid)
 
         Toolbox.mp3Processes[filePath] = process
 
@@ -508,32 +521,3 @@ class Toolbox():
         process = Toolbox.mp3Processes[filePath]
         os.killpg(process.pid, signal.SIGTERM)
         del Toolbox.mp3Processes[filePath]
-
-    @staticmethod
-    def runRootshell(cmd):
-        """
-        Runs a command in the global rootshell without closing it,
-        unlike communicate() does.
-        Any output of the command will be treated as error.
-        :param cmd: the command to run, will be encoded
-        """
-        import pexpect
-        import Globals
-
-        if Globals.rootshell is None:
-            Toolbox.logger.error(Strings.noRootshell)
-            return "", Strings.noRootshell
-        else:
-            Toolbox.logger.info("executing as root: " + cmd)
-            Globals.rootshell.sendline(cmd)
-            Globals.rootshell.expect_exact(['$', '>', '#'])
-            error = Globals.rootshell.before
-            if Globals.rootshell.before:
-                Globals.rootshell.expect(r'.+')  # clear pexpects buffer
-            normalizedError = ' '.join(error.split()).strip()
-            normalizedCmd = ' '.join(cmd.split()).strip()
-            # simple echo is no error
-            if normalizedError == "" or normalizedError == normalizedCmd:
-                error = ""
-            error = error.encode("utf-8")
-            return "".encode("utf-8"), error

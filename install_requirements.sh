@@ -14,7 +14,6 @@ sudo apt -y install \
    can-utils \
    ffmpeg \
    iproute2 \
-   policykit-1 \
    python3-pip \
    python3-pyside \
    python3.5
@@ -27,5 +26,5 @@ sudo pip3 install pipenv
 cd $DIR
 mkdir -p pipenv && cd pipenv
 pipenv --three
-pipenv install pexpect pyvit sphinx_rtd_theme
+pipenv install pyvit sphinx_rtd_theme
 cp -rf /usr/lib/python3/dist-packages/PySide $(pipenv --venv)/lib/python3*/site-packages

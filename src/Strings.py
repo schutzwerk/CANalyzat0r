@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 17, 2017
 
@@ -27,11 +26,11 @@ import Settings
 
 # MainTab
 mainTabLoggerName = "MainTab"
-mainTabNoSU = "No superuser privileges found, asking"
+mainTabNoSU = "No superuser privileges found, exiting"
 mainTabProjectSet = "Switched project to"
 mainTabVCANAdded = "Virtual CAN interface added:"
 mainTabVCANRemoved = "Virtual CAN interface removed:"
-mainTabMessageBoxNoSUHint = "This application was not run as root. You will be asked for your sudo password in a moment."
+mainTabMessageBoxNoSUHint = "Please run this application as root!"
 mainTabCANConfigUpdated = "CAN configuration updated"
 mainTabLogLevelChanged = "Loglevel changed"
 
@@ -68,7 +67,6 @@ activeCANDataWontSave = "Active interface found, won't save: "
 gotSocketError = "Socket error received"
 dialogFiltering = "Filtering..."
 dialogSending = "Sending...."
-noRootshell = "No shell process with elevated privileges available."
 
 # SnifferTab
 snifferTabLoggerName = "SnifferTab"

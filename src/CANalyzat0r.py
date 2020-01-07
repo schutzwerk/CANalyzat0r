@@ -25,7 +25,6 @@ import sys
 import os
 import traceback
 import atexit
-import pexpect
 
 from PySide.QtGui import *
 
@@ -83,17 +82,11 @@ class MainWindow(QMainWindow, Ui_CANalyzatorMainWindow):
 
         # Check privileges
         if not self.checkSU():
-            self.logger.info(Strings.mainTabNoSU)
-            QMessageBox.warning(None, Strings.messageBoxNoticeTitle,
-                                Strings.mainTabMessageBoxNoSUHint,
-                                QMessageBox.Ok)
-            shellcmd = "pkexec /bin/sh"
-        else:
-            shellcmd = "/bin/sh"
-
-        # launch a long lived rootshell
-        Globals.rootshell = pexpect.spawnu(shellcmd)
-        Globals.rootshell.expect_exact(['$', '>', '#'])
+            self.logger.fatal(Strings.mainTabNoSU)
+            QMessageBox.critical(None, Strings.messageBoxErrorTitle,
+                                 Strings.mainTabMessageBoxNoSUHint,
+                                 QMessageBox.Ok)
+            exit(1)
 
         self.setupUi(self)
         atexit.register(MainWindow.cleanup)

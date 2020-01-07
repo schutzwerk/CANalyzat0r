@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 18, 2017
 
@@ -29,13 +28,16 @@ import Globals
 
 
 class SnifferProcess(Process):
-
     """
     Spawn a new process that will sniff packets from the specified CANData instance.
     Captured data will be transmitted via the ``snifferSendPipe``.
     """
 
-    def __init__(self, snifferSendPipe, sharedEnabledFlag, snifferName, CANData=None):
+    def __init__(self,
+                 snifferSendPipe,
+                 sharedEnabledFlag,
+                 snifferName,
+                 CANData=None):
         """
         Set the passed parameters.
 
@@ -52,8 +54,8 @@ class SnifferProcess(Process):
         self.sharedEnabledFlag = sharedEnabledFlag
         self.snifferName = snifferName
 
-        self.logger = Logger(Strings.snifferProcessLoggerName +
-                             " (" + self.snifferName + ")").getLogger()
+        self.logger = Logger(Strings.snifferProcessLoggerName + " (" +
+                             self.snifferName + ")").getLogger()
 
     def run(self):
         """
@@ -61,14 +63,16 @@ class SnifferProcess(Process):
         and transmit the received pyvit frame via the pipe.
         """
         errorCount = 0
+
+        self.CANData.clearSocket()
         while self.sharedEnabledFlag.value == 1:
             # This will either return a packet or None (timeout)
             try:
                 frame = self.CANData.readPacketAsync()
             except OSError:
                 if errorCount % 10000 == 0:
-                    self.logger.error(Strings.OSError +
-                                      " (" + self.snifferName + ")")
+                    self.logger.error(Strings.OSError + " (" +
+                                      self.snifferName + ")")
                     errorCount = 1
                 errorCount += 1
 

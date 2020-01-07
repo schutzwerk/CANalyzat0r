@@ -26,6 +26,7 @@ from socket import timeout as TimeoutException
 import subprocess
 import os
 import socket
+import select
 
 from Logger import Logger
 import Globals
@@ -64,6 +65,19 @@ class CANData():
 
         self.active = False
         self.iface.start()
+
+    def clearSocket(self):
+        """
+        Clear the socket by reading and discarding all contained data
+        Fixes #4
+        """
+
+        sock = [self.iface.socket]
+        while True:
+            available, _, _ = select.select(sock, [], [], 0.0)
+            if len(available) == 0: return
+            for b in available:
+                b.recv(1)
 
     def sendPacket(self, packet):
         """

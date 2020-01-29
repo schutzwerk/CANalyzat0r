@@ -13,6 +13,7 @@ sudo apt update
 sudo apt -y install \
    can-utils \
    ffmpeg \
+   git \
    iproute2 \
    python3-pip \
    python3-pyside \
@@ -26,5 +27,6 @@ sudo pip3 install pipenv
 cd $DIR
 mkdir -p pipenv && cd pipenv
 pipenv --three
-pipenv install pyvit sphinx_rtd_theme
+pipenv install -e 'git+https://github.com/hardbyte/python-can.git@3.3.2#egg=can'
+pipenv install sphinx_rtd_theme
 cp -rf /usr/lib/python3/dist-packages/PySide $(pipenv --venv)/lib/python3*/site-packages

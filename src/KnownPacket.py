@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 22, 2017
 
@@ -26,7 +25,6 @@ import json
 
 
 class KnownPacket():
-
     """
     This class is being used to handle known packet data.
     It's more comfortable to use a object to pass data
@@ -61,9 +59,8 @@ class KnownPacket():
 
         """
 
-        return json.dumps(self,
-                          default=lambda o: o.__dict__,
-                          sort_keys=True, indent=4)
+        return json.dumps(
+            self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
     @staticmethod
     def fromJSON(importJSON):

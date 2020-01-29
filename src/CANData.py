@@ -20,8 +20,7 @@ Created on May 17, 2017
 
 @author: pschmied
 """
-from pyvit import can
-from pyvit.hw import socketcan
+import can
 from socket import timeout as TimeoutException
 import subprocess
 import os
@@ -43,9 +42,13 @@ class CANData():
     #: Class specific logger instance
     logger = Logger(Strings.CANDataLoggerName).getLogger()
 
-    def __init__(self, ifaceName, bitrate=500000):
+    def __init__(self,
+                 ifaceName,
+                 bitrate=500000,
+                 fdBitrate=2000000,
+                 isFD=False):
         """
-        This method initializes the pyvit CAN interface using the passed parameters and the start() method.
+        This method initializes the can.Message CAN interface using the passed parameters and the start() method.
         Please note the active-flag which protects the object from being deleted while being in use.
 
         :param ifaceName: Name of the interface as displayed by ``ifconfig -a``
@@ -56,15 +59,21 @@ class CANData():
         self.VCAN = self.checkVCAN()
 
         self.bitrate = bitrate if not self.VCAN else -1
+        self.fdBitrate = fdBitrate if not self.VCAN else -1
+        self.isFD = isFD
 
-        self.iface = socketcan.SocketCanDev(ifaceName)
-        self.updateBitrate(bitrate)
+        self.iface = can.Bus(
+            interface="socketcan",
+            channel=self.ifaceName,
+            receive_own_messages=False,
+            fd=isFD)
+
+        self.updateBitrate(bitrate, fdBitrate, fd=isFD)
 
         #: 100 ms read timeout for async reads (see :func:`readPacketAsync`)
         self.timeout = 0.1
 
         self.active = False
-        self.iface.start()
 
     def clearSocket(self):
         """
@@ -83,7 +92,7 @@ class CANData():
         """
         Sends a packet using the SocketCAN interface.
 
-        :param packet: A packet as pyvit frame (see :func:`tryBuildPacket`)
+        :param packet: A packet as can.Message oject (see :func:`tryBuildPacket`)
         """
 
         assert self.iface is not None
@@ -96,7 +105,7 @@ class CANData():
         You can use :func:`readPacketAsync` to read
         packets with a timeout.
 
-        :return: A packet as pyvit frame
+        :return: A packet as can.Message object
         """
 
         self.iface.socket.settimeout(0)
@@ -106,17 +115,18 @@ class CANData():
         """
         Read a packet from the queue using the SocketCAN interface **and a timeout**.
 
-        :return: A packet as pyvit frame or None of no packet was received
+        :return: A packet as can.Message object  or None of no packet was received
         """
 
         # If no packet is received within timeout second --> break
         # this is used to be able to stop sniffing processes which will then
         # use nonblocking recv-calls
-        self.iface.socket.settimeout(self.timeout)
+        #  self.iface.socket.settimeout(self.timeout)
         # If no packet is received withing the timeout
         # return no data
         try:
-            return self.iface.recv()
+            p = self.iface.recv(timeout=self.timeout)
+            return p
         except TimeoutException:
             return None
 
@@ -130,7 +140,11 @@ class CANData():
 
         if self.VCAN:
             return self.ifaceName
+        elif self.isFD:
 
+            return self.ifaceName + " (" + str(
+                self.bitrate / 1000) + " kBit/s) (FD: " + str(
+                    self.fdBitrate / 1000) + " kBit/s)"
         else:
             return self.ifaceName + " (" + str(
                 self.bitrate / 1000) + " kBit/s)"
@@ -150,7 +164,7 @@ class CANData():
                 return True
         return False
 
-    def updateBitrate(self, bitrate):
+    def updateBitrate(self, bitrate, fdBitrate, fd=False):
         """
         Updates the bitrate of the SocketCAN interface (if possible).
 
@@ -158,18 +172,29 @@ class CANData():
         :return: A boolean value indicating success of updating the bitrate value
         """
 
-        # Physical CAN or virtual CAN ?
+        # Physical CAN or CAN FD or virtual CAN ?
         if not self.VCAN:
             # Put interface down first so the new bitrate can be applied
-            cmd = "ip link set " + self.ifaceName + " down"
+            cmds = []
+            cmds.append("ip link set " + self.ifaceName + " down")
+            cmds.append("ip link set " + self.ifaceName + " type can fd off")
 
-            process = subprocess.Popen(
-                cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            output, error = process.communicate()
+            for cmd in cmds:
+                process = subprocess.Popen(
+                    cmd.split(),
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE)
+                output, error = process.communicate()
 
             # prepare cmd for next call
-            cmd = "ip link set " + self.ifaceName + \
-                " up type can bitrate " + str(bitrate)
+            if fd:
+
+                cmd = "ip link set " + self.ifaceName + " up type can bitrate " + str(
+                    bitrate) + " dbitrate " + str(fdBitrate) + " fd on"
+
+            else:
+                cmd = "ip link set " + self.ifaceName + \
+                    " up type can bitrate " + str(bitrate)
 
         else:
             cmd = "ip link set up " + self.ifaceName
@@ -181,11 +206,18 @@ class CANData():
         if output.decode("utf-8") == "" and error.decode("utf-8") == "":
             if self.VCAN:
                 self.bitrate = -1
+                self.fdBitrate = -1
+                self.isFD = False
             else:
                 self.bitrate = bitrate
+                self.fdBitrate = fdBitrate
+                self.isFD = fd
 
-            self.iface = socketcan.SocketCanDev(self.ifaceName)
-            self.iface.start()
+            self.iface = can.Bus(
+                interface="socketcan",
+                channel=self.ifaceName,
+                receive_own_messages=False,
+                fd=fd)
 
             return True
 
@@ -215,12 +247,12 @@ class CANData():
     @staticmethod
     def tryBuildPacket(CANID, data):
         """
-        Builds a pyvit frame using the passed parameters.
+        Builds a can.Message object using the passed parameters.
         This method automatically uses the extended CAN format if needed.
 
         :param CANID: The CAN ID as hex string
         :param data: The desired packet data (length must be even)
-        :return: A packet as pyvit frame containing the passed data or None of no frame can be created
+        :return: A packet as can.Message object containing the passed data or None of no frame can be created
         """
 
         assert len(data) % 2 == 0, "the data length has to be even"
@@ -229,24 +261,20 @@ class CANData():
         data = list(bytearray.fromhex(data))
 
         try:
-            # Convert id to hexvalue
-            # Convert data to list of bytes
-            packet = can.Frame(arb_id=arbID, data=data)
+            packet = can.Message(arbitration_id=arbID, data=data)
         except ValueError:
 
             # Uh oh, try to create an extended packet
             try:
-                packet = can.Frame(
-                    arb_id=arbID, data=data, is_extended_id=True)
+                packet = can.Message(
+                    arbitration_id=arbID, data=data, is_extended_id=True)
             except TypeError:
+                CANData.logger.error(Strings.packetBuildError +
+                                     ": %s" % (str(e)))
+                return None
 
-                # The flag to mark an extended packet was changed in some git commit - try that
-                try:
-                    packet = can.Frame(arb_id=arbID, data=data, extended=True)
-                except Exception as e:
-                    CANData.logger.error(Strings.packetBuildError + ": " +
-                                         str(e))
-                    return None
+        if len(data) > 8:
+            packet.is_fd = True
 
         return packet
 

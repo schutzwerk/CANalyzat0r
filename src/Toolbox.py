@@ -31,6 +31,7 @@ import SnifferTab
 from SenderTab import SenderTab
 from Logger import Logger
 from CANData import CANData
+from MainTab import MainTab
 
 
 class Toolbox():
@@ -277,6 +278,9 @@ class Toolbox():
         Toolbox.interfaceDialogWidget.spinBoxDialogBitrate.setValue(
             initialSelectedCANData.bitrate)
 
+        Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setValue(
+            initialSelectedCANData.fdBitrate)
+
         if initialSelectedCANData.VCAN:
             Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.setChecked(True)
             Toolbox.interfaceDialogWidget.spinBoxDialogBitrate.setEnabled(
@@ -286,10 +290,21 @@ class Toolbox():
                 False)
             Toolbox.interfaceDialogWidget.spinBoxDialogBitrate.setEnabled(True)
 
+        if initialSelectedCANData.isFD:
+            Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.setChecked(True)
+            Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(True)
+        else:
+            Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.setChecked(False)
+            Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(False)
+
+
         Toolbox.interfaceDialogWidget.comboBoxDialogInterface.currentIndexChanged.connect(
             Toolbox.interfaceSettingsDialogComboBoxChanged)
         Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.stateChanged.connect(
             Toolbox.interfaceSettingsDialogCheckBoxChanged)
+
+        Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.stateChanged.connect(
+            Toolbox.interfaceSettingsDialogFDCheckBoxChanged)
 
         # If the CANData instance is active, we can't update the values, only select or deselect it
         # --> Disable edit GUI elements
@@ -314,18 +329,26 @@ class Toolbox():
                 selectedCANData.VCAN = Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked(
                 )
 
+                selectedCANData.isFD = Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.isChecked(
+                )
+
                 if not selectedCANData.VCAN:
                     # Physical interface - lets update the bitrate too
                     if selectedCANData.updateBitrate(
                             Toolbox.interfaceDialogWidget.spinBoxDialogBitrate.
-                            value()):
+                            value(),
+                            Toolbox.interfaceDialogWidget.
+                            spinBoxDialogFDBitrate.value(),
+                            fd=selectedCANData.isFD):
                         Toolbox.logger.info(Strings.mainTabCANConfigUpdated)
                 else:
                     Toolbox.logger.info(Strings.mainTabCANConfigUpdated)
 
+                MainTab.setGlobalInterfaceStatus()
                 return selectedCANData
 
             else:
+                MainTab.setGlobalInterfaceStatus()
                 return selectedCANData
 
         else:
@@ -343,6 +366,30 @@ class Toolbox():
         Toolbox.interfaceDialogWidget.spinBoxDialogBitrate.setEnabled(
             not Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked())
 
+        Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(
+            not Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked())
+
+        Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.setEnabled(
+            not Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked())
+
+        if Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked():
+            Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.setChecked(False)
+            Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.setEnabled(False)
+
+        __class__.interfaceSettingsDialogFDCheckBoxChanged("1337")
+
+    @staticmethod
+    def interfaceSettingsDialogFDCheckBoxChanged(state):
+        """
+        Gets called when the "use FD" CheckBox of the interface dialog gets changed to
+        handle the enabled state of the FD bitrate SpinBox
+
+        :param state: Not used, state is determined by ``isChecked``
+        """
+
+        Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(
+            Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.isChecked())
+
     @staticmethod
     def interfaceSettingsDialogComboBoxChanged():
         """
@@ -350,8 +397,8 @@ class Toolbox():
         pre-populate the GUI elements accordingly.
         """
         selectedCANData = Toolbox.interfaceDialogWidget.comboBoxDialogInterface.itemData(
-            Toolbox.interfaceDialogWidget.comboBoxDialogInterface.currentIndex(
-            ))
+            Toolbox.interfaceDialogWidget.comboBoxDialogInterface.
+            currentIndex())
         isVCAN = selectedCANData.VCAN
         isActive = selectedCANData.active
 
@@ -505,6 +552,7 @@ class Toolbox():
         process = subprocess.Popen(
             "ffplay -autoexit -nodisp -loglevel panic " + filePath,
             stdout=devnull,
+            stderr=devnull,
             shell=True,
             preexec_fn=os.setsid)
 

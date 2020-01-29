@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on Jun 26, 2017
 
@@ -29,7 +28,6 @@ import Settings
 
 
 class AboutTab:
-
     """
     This class handles the logic of the about tab.
     """
@@ -66,8 +64,9 @@ class AboutTab:
         :param event: Dummy, not used.
         """
 
-        QtGui.QDesktopServices.openUrl(QtCore.QUrl(
-            "https://www.schutzwerk.com", QtCore.QUrl.TolerantMode))
+        QtGui.QDesktopServices.openUrl(
+            QtCore.QUrl("https://www.schutzwerk.com",
+                        QtCore.QUrl.TolerantMode))
 
     @staticmethod
     def browseGitHub(event):
@@ -77,6 +76,5 @@ class AboutTab:
         :param event: Dummy, not used.
         """
 
-        QtGui.QDesktopServices.openUrl(QtCore.QUrl(
-            Settings.GITHUB_URL, QtCore.QUrl.TolerantMode)
-        )
+        QtGui.QDesktopServices.openUrl(
+            QtCore.QUrl(Settings.GITHUB_URL, QtCore.QUrl.TolerantMode))

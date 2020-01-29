@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on Jun 02, 2017
 
@@ -37,19 +36,18 @@ from Packet import Packet
 
 
 class FilterTab(AbstractTab):
-
     """
     This class handles the logic of the filter tab
     """
 
     def __init__(self, tabWidget):
-        AbstractTab.__init__(self,
-                             tabWidget,
-                             Strings.filterTabLoggerName,
-                             [0, 1, 2, 3, 4],
-                             Strings.filterTabPacketTableViewName,
-                             Strings.filterTabLabelInterfaceValueName,
-                             allowTablePaste=False)
+        AbstractTab.__init__(
+            self,
+            tabWidget,
+            Strings.filterTabLoggerName, [0, 1, 2, 3, 4],
+            Strings.filterTabPacketTableViewName,
+            Strings.filterTabLabelInterfaceValueName,
+            allowTablePaste=False)
 
         #: Noise that will be substracted from the collected data
         self.noiseData = []
@@ -74,11 +72,11 @@ class FilterTab(AbstractTab):
         self.buttonFilterDataClear = self.tabWidget.findChild(
             QtGui.QPushButton, "buttonFilterDataClear")
 
-        assert all(GUIElem is not None for GUIElem in [self.spinBoxFilterTimeCollectNoise,
-                                                       self.spinBoxFilterSampleAmount,
-                                                       self.buttonFilterInterfaceSettings,
-                                                       self.buttonFilterStart,
-                                                       self.buttonFilterDataClear]), "GUI Elements not found"
+        assert all(GUIElem is not None for GUIElem in [
+            self.spinBoxFilterTimeCollectNoise, self.spinBoxFilterSampleAmount,
+            self.buttonFilterInterfaceSettings, self.buttonFilterStart, self.
+            buttonFilterDataClear
+        ]), "GUI Elements not found"
 
         self.buttonFilterInterfaceSettings.clicked.connect(
             self.handleInterfaceSettingsDialog)
@@ -127,12 +125,12 @@ class FilterTab(AbstractTab):
         Analyze captured data:
          1. Remove sorted noise data (if collected):
             For each sample:
-             - Sort the sample to increase filtering speed
-             - Remove noise
+            - Sort the sample to increase filtering speed
+            - Remove noise
          2. Find relevant packets:
-             - Sort each sample to increase filtering speed
-             - Assume that all packets of the first sample occurred in every other sample
-             - Take every other sample and compare
+            - Sort each sample to increase filtering speed
+            - Assume that all packets of the first sample occurred in every other sample
+            - Take every other sample and compare
 
         Depending on ``removeNoiseWithIDAndData`` noise will be filtered by
         ID and data (default) or ID only
@@ -178,7 +176,9 @@ class FilterTab(AbstractTab):
 
                             if removeNoiseWithIDAndData:
 
-                                if sniffedPacket[0] == noisePacket[0] and sniffedPacket[1] == noisePacket[1]:
+                                if sniffedPacket[0] == noisePacket[
+                                        0] and sniffedPacket[1] == noisePacket[
+                                            1]:
                                     curSampleSorted.remove(sniffedPacket)
 
                             # Filter it by ID only
@@ -192,8 +192,7 @@ class FilterTab(AbstractTab):
             else:
                 for curSample in self.rawData:
                     sortedSamplesWithoutNoise.append(
-                        sorted(curSample, key=itemgetter(0))
-                    )
+                        sorted(curSample, key=itemgetter(0)))
 
             # Noise has been removed --> find relevant packets now
             self.logger.info(Strings.filterTabStartAnalyzing)
@@ -223,7 +222,8 @@ class FilterTab(AbstractTab):
                             break
 
                     # Check if ID and data are equal
-                        if samplePacket[0] == packetInAllSamples[0] and samplePacket[1] == packetInAllSamples[1]:
+                        if samplePacket[0] == packetInAllSamples[
+                                0] and samplePacket[1] == packetInAllSamples[1]:
                             # The packet exists in both lists --> break the inner loop because all following
                             # packets would have greater IDs
                             remainingPackets.append(packetInAllSamples)
@@ -250,16 +250,15 @@ class FilterTab(AbstractTab):
 
         self.noiseData = []
         # Setup the ProgressDialog
-        progressDialog = QProgressDialog(Strings.filterTabCollectingNoiseMessageBoxText,
-                                         "Cancel",
-                                         0,
-                                         seconds)
+        progressDialog = QProgressDialog(
+            Strings.filterTabCollectingNoiseMessageBoxText, "Cancel", 0,
+            seconds)
 
         progressDialog.setMinimumDuration(0)
         progressDialog.setMinimum(0)
         progressDialog.setMaximum(seconds)
         progressDialog.adjustSize()
-        progressDialog.setFixedSize(progressDialog.width()+40,
+        progressDialog.setFixedSize(progressDialog.width() + 40,
                                     progressDialog.height())
 
         # Users still can click on the "X"
@@ -274,8 +273,8 @@ class FilterTab(AbstractTab):
         while secondsToCollect > 0 and not progressDialog.wasCanceled():
             time.sleep(0.5)
             secondsToCollect -= 0.5
-            self.updateNoiseCollectProgress(
-                progressDialog, seconds - secondsToCollect)
+            self.updateNoiseCollectProgress(progressDialog,
+                                            seconds - secondsToCollect)
 
         self.stopSnifferAndAdder()
         return not progressDialog.wasCanceled()
@@ -315,16 +314,15 @@ class FilterTab(AbstractTab):
         else:
             messageBoxText = Strings.filterTabSniffingMessageBoxText
 
-        self.startSnifferAndAdder(
-            self.addSniffedPacketToSample, curSampleIndex)
+        self.startSnifferAndAdder(self.addSniffedPacketToSample,
+                                  curSampleIndex)
 
         # Sniff and wait for the user to do an action
-        QMessageBox.information(Globals.ui.tableViewFilterData,
-                                Strings.filterTabSniffingMessageBoxTitle +
-                                " (" + str(curSampleIndex + 1) +
-                                "/" + str(sampleAmount) + ")",
-                                messageBoxText,
-                                QMessageBox.Ok)
+        QMessageBox.information(
+            Globals.ui.tableViewFilterData,
+            Strings.filterTabSniffingMessageBoxTitle + " (" +
+            str(curSampleIndex + 1) + "/" + str(sampleAmount) + ")",
+            messageBoxText, QMessageBox.Ok)
 
         self.stopSnifferAndAdder()
 
@@ -354,17 +352,16 @@ class FilterTab(AbstractTab):
         self.dataAdderThread.start()
 
         # ... then start the SnifferProcess
-        self.snifferProcess = SnifferProcess(snifferSendPipe,
-                                             self.sharedSnifferEnabledFlag,
-                                             Strings.filterTabLoggerName,
-                                             self.CANData)
+        self.snifferProcess = SnifferProcess(
+            snifferSendPipe, self.sharedSnifferEnabledFlag,
+            Strings.filterTabLoggerName, self.CANData)
         self.snifferProcess.start()
 
         if curSampleIndex == -1:
             self.logger.info(Strings.filterTabCollectingNoiseLog)
         else:
-            self.logger.info(Strings.filterTabNewRunStarted +
-                             " " + str(curSampleIndex))
+            self.logger.info(Strings.filterTabNewRunStarted + " " +
+                             str(curSampleIndex))
 
     def stopSnifferAndAdder(self):
         """
@@ -413,10 +410,8 @@ class FilterTab(AbstractTab):
 
         assert packet is not None
         # Use a list of values because it's much faster than creating "Packet" objects
-        self.noiseData.append([packet.CANID,
-                               packet.data,
-                               packet.length,
-                               packet.timestamp])
+        self.noiseData.append(
+            [packet.CANID, packet.data, packet.length, packet.timestamp])
 
     def addSniffedPacketToSample(self, curSampleIndex, packet):
         """
@@ -431,10 +426,8 @@ class FilterTab(AbstractTab):
         assert packet is not None
 
         # Use a list of values because it's much faster than creating "Packet" objects
-        self.rawData[curSampleIndex].append([packet.CANID,
-                                             packet.data,
-                                             packet.length,
-                                             packet.timestamp])
+        self.rawData[curSampleIndex].append(
+            [packet.CANID, packet.data, packet.length, packet.timestamp])
 
     def toggleGUIElements(self, state):
         """
@@ -443,19 +436,19 @@ class FilterTab(AbstractTab):
         :param state: Boolean value to indicate whether to enable or disable elements
         """
 
-        for GUIElement in [self.spinBoxFilterTimeCollectNoise,
-                           self.spinBoxFilterSampleAmount,
-                           self.buttonFilterStart,
-                           self.buttonFilterInterfaceSettings,
-                           self.buttonFilterDataClear,
-                           self.packetTableView]:
+        for GUIElement in [
+                self.spinBoxFilterTimeCollectNoise,
+                self.spinBoxFilterSampleAmount, self.buttonFilterStart,
+                self.buttonFilterInterfaceSettings, self.buttonFilterDataClear,
+                self.packetTableView
+        ]:
             GUIElement.setEnabled(state)
 
 
 ####
 
-class DataAdderThread(QtCore.QThread):
 
+class DataAdderThread(QtCore.QThread):
     """
     This thread receives data from the sniffer process and
     emits a signal which causes the main thread to add the packets.
@@ -475,14 +468,14 @@ class DataAdderThread(QtCore.QThread):
 
     def frameToList(self, frame):
         """
-        Converts a received pyvit frame to raw list data.
+        Converts a received can.Message frame to raw list data.
         After that, the data is emitted using ``signalSniffedPacket``
 
-        :param frame: pyvit CAN frame
+        :param frame: can.Message CAN frame
         """
 
         # Extract the data to be displayed
-        id = str(hex(frame.arb_id)).replace("0x", "").upper()
+        id = str(hex(frame.arbitration_id)).replace("0x", "").upper()
         # cut "0x" and always use an additional leading zero if needed
         data = "".join(hex(value)[2:].zfill(2) for value in frame.data).upper()
         length = frame.dlc
@@ -490,8 +483,7 @@ class DataAdderThread(QtCore.QThread):
 
         packet = Packet(None, id, data, timestamp, "", length=length)
 
-        self.signalSniffedPacket.emit(self.curSampleIndex,
-                                      packet)
+        self.signalSniffedPacket.emit(self.curSampleIndex, packet)
 
     def run(self):
         """

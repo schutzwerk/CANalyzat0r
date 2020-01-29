@@ -51,6 +51,14 @@ class Packet():
         self.data = data
         self.id = id
 
+        if len(self.id) <= 3:
+            neededLength = 3
+        else:
+            neededLength = 8
+
+        while len(self.id) < neededLength:
+            self.id = "0" + self.id
+
         # Use the parameter or calculate it
         if length is None:
             # 1 byte = 8 bit = 2x 4 bit; 2^4 = 16 --> 2 chars

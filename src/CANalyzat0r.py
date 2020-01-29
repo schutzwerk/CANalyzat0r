@@ -145,6 +145,7 @@ class MainWindow(QMainWindow, Ui_CANalyzatorMainWindow):
             MainTab.preselectUseBitrateCheckBox)
         self.checkBoxMainUseVCAN.stateChanged.connect(
             MainTab.VCANCheckboxChanged)
+        self.checkBoxMainUseFD.stateChanged.connect(MainTab.FDCheckboxChanged)
         self.buttonReadInterfaces.clicked.connect(MainTab.detectCANInterfaces)
         self.buttonVCANAdd.clicked.connect(MainTab.addVCANInterface)
         self.buttonVCANRemove.clicked.connect(MainTab.removeVCANInterface)
@@ -202,12 +203,14 @@ def globalLoggingHandler(type, value, tb):
         Strings.uncaughtExceptionLabel + ": \n " + fileName + " (" + line +
         "): " + method + ": " + "{0}".format(str(value)))
 
+    uncaughtExceptionLogger.exception(traceback.format_exc(chain=True))
+
 
 def __smoketest__():
     """
     Make quick smoketest to check if the application is ready to run.
     """
-    from pyvit import can
+    import can
     import PySide.QtGui
 
     # We need the "ip" command available
@@ -216,6 +219,16 @@ def __smoketest__():
         exit(1)
 
     print("It works")
+
+
+def tracefunc(frame, event, arg, indent=[0]):
+    if event == "call":
+        indent[0] += 2
+        print("-" * indent[0] + "> call function", frame.f_code.co_name)
+    elif event == "return":
+        print("<" + "-" * indent[0], "exit function", frame.f_code.co_name)
+        indent[0] -= 2
+    return tracefunc
 
 
 if __name__ == '__main__':

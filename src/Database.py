@@ -15,13 +15,11 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 17, 2017
 
 @author: pschmied
 """
-
 
 import sqlite3
 import os
@@ -40,7 +38,6 @@ import Strings
 
 
 class DatabaseStatements():
-
     """
     This class is used to store and generate database statements.
     """
@@ -104,10 +101,10 @@ class DatabaseStatements():
     );"""
 
     #: Holds all needed create table statements
-    createTableStatementsList = [createProjectTableStatement,
-                                 createPacketTableStatement,
-                                 createPacketSetTableStatement,
-                                 createKnownPacketTableStatement]
+    createTableStatementsList = [
+        createProjectTableStatement, createPacketTableStatement,
+        createPacketSetTableStatement, createKnownPacketTableStatement
+    ]
 
     #: The Amount of tables that must be present
     tableCount = len(createTableStatementsList)
@@ -156,7 +153,9 @@ class DatabaseStatements():
 
         # List of 'column = value'-pairs
         singleSetStatements = [
-            str(colName) + " = " + "'" + str(value) + "'" for colName, value in colValuePairs]
+            str(colName) + " = " + "'" + str(value) + "'"
+            for colName, value in colValuePairs
+        ]
         setStatement = ", ".join(singleSetStatements)
 
         finalStatement = rawStatement
@@ -176,9 +175,9 @@ class DatabaseStatements():
         :return: The SQL insert statement with all project specific values set
         """
 
-        return DatabaseStatements.getInsertStatement(DatabaseStatements.projectTableName,
-                                                     ["Name", "Description", "Date"],
-                                                     [name, desription, date])
+        return DatabaseStatements.getInsertStatement(
+            DatabaseStatements.projectTableName,
+            ["Name", "Description", "Date"], [name, desription, date])
 
     @staticmethod
     def getInsertPacketSetStatement(projectID, name, date):
@@ -191,9 +190,9 @@ class DatabaseStatements():
         :return: The SQL insert statement with all PacketSet specific values set
         """
 
-        return DatabaseStatements.getInsertStatement(DatabaseStatements.packetSetTableName,
-                                                     ["ProjectID", "Name", "Date"],
-                                                     [projectID, name, date])
+        return DatabaseStatements.getInsertStatement(
+            DatabaseStatements.packetSetTableName,
+            ["ProjectID", "Name", "Date"], [projectID, name, date])
 
     @staticmethod
     def getInsertPacketStatement(packetSetID, CANID, data, timestamp, iface):
@@ -208,10 +207,10 @@ class DatabaseStatements():
         :return: The SQL insert statement with all Packet specific values set
         """
 
-        return DatabaseStatements.getInsertStatement(DatabaseStatements.packetTableName,
-                                                     ["PacketSetID", "CANID", "Data",
-                                                         "Timestamp", "Interface"],
-                                                     [packetSetID, CANID, data, timestamp, iface])
+        return DatabaseStatements.getInsertStatement(
+            DatabaseStatements.packetTableName,
+            ["PacketSetID", "CANID", "Data", "Timestamp", "Interface"],
+            [packetSetID, CANID, data, timestamp, iface])
 
     @staticmethod
     def getInsertKnownPacketStatement(projectID, CANID, data, description):
@@ -225,10 +224,10 @@ class DatabaseStatements():
         :return: The SQL insert statement with all KnownPacket specific values set
         """
 
-        return DatabaseStatements.getInsertStatement(DatabaseStatements.knownPacketTableName,
-                                                     ["ProjectID", "CANID",
-                                                         "Data", "Description"],
-                                                     [projectID, CANID, data, description])
+        return DatabaseStatements.getInsertStatement(
+            DatabaseStatements.knownPacketTableName,
+            ["ProjectID", "CANID", "Data", "Description"],
+            [projectID, CANID, data, description])
 
     @staticmethod
     def getSelectAllStatement(tableName):
@@ -290,7 +289,8 @@ class DatabaseStatements():
                  e.g.: ``DELETE FROM TABLE1 WHERE ID = 1337``
         """
 
-        return DatabaseStatements.getDeleteByValueStatement(tableName, "ID", id)
+        return DatabaseStatements.getDeleteByValueStatement(
+            tableName, "ID", id)
 
     @staticmethod
     def getDeleteByValueStatement(tableName, column, value):
@@ -315,7 +315,6 @@ class DatabaseStatements():
 
 
 class Database():
-
     """
     This class handles the database connection and is responsible for creating, deleting and updating values
     """
@@ -354,10 +353,7 @@ class Database():
 
             # Get the parent folder if the database file
             dbFolder = os.path.abspath(
-                    os.path.join(
-                            Settings.DB_PATH, os.pardir
-                        )
-                    )
+                os.path.join(Settings.DB_PATH, os.pardir))
             if not os.path.exists(dbFolder):
                 os.makedirs(dbFolder)
 
@@ -375,8 +371,8 @@ class Database():
         Checks if all the table count of the SQLite database matches the needed table count.
         If the check does pass the user will be notified to create a project if no project is exisiting yet.
         If the check does not pass the user will be prompted for an action:
-         - Truncate the database and create an empty one
-         - Keep the database and exit
+        - Truncate the database and create an empty one
+        - Keep the database and exit
 
         :return: A boolean value indicating the database integrity status (True = good)
         """
@@ -388,15 +384,16 @@ class Database():
         # All tables present
         if len(data) == DatabaseStatements.tableCount:
             # Check if theres at least one project
-            if self.getOverallTableCount(DatabaseStatements.projectTableName) > 0:
+            if self.getOverallTableCount(
+                    DatabaseStatements.projectTableName) > 0:
                 return True
 
             # Tell the user to setup a project
             else:
-                QMessageBox.information(Globals.ui.tabWidgetMain,
-                                        Strings.databaseFirstRunMessageBoxTitle,
-                                        Strings.databaseFirstRunMessageBoxText,
-                                        QMessageBox.Ok)
+                QMessageBox.information(
+                    Globals.ui.tabWidgetMain,
+                    Strings.databaseFirstRunMessageBoxTitle,
+                    Strings.databaseFirstRunMessageBoxText, QMessageBox.Ok)
                 return True
 
         # Empty DB
@@ -406,11 +403,12 @@ class Database():
         # Table missing -- corrupt DB
         elif len(data) > 0 and len(data) < DatabaseStatements.tableCount:
             # Ask user for action
-            answer = QMessageBox.question(Globals.ui.tabWidgetMain,
-                                          Strings.databaseCorruptMessageBoxTitle,
-                                          Strings.databaseCorruptMessageBoxText,
-                                          QMessageBox.Yes | QMessageBox.No)
-            if(answer == QMessageBox.Yes):
+            answer = QMessageBox.question(
+                Globals.ui.tabWidgetMain,
+                Strings.databaseCorruptMessageBoxTitle,
+                Strings.databaseCorruptMessageBoxText,
+                QMessageBox.Yes | QMessageBox.No)
+            if (answer == QMessageBox.Yes):
                 self.logger.info(Strings.databaseCorruptAction)
                 # Delete sqlite file and create a fresh db in the next step
                 os.remove(Settings.DB_PATH)
@@ -458,8 +456,9 @@ class Database():
         """
 
         cursor = self.connection.cursor()
-        cursor.execute(DatabaseStatements.getSelectAllStatement(
-            DatabaseStatements.projectTableName))
+        cursor.execute(
+            DatabaseStatements.getSelectAllStatement(
+                DatabaseStatements.projectTableName))
         rows = cursor.fetchall()
         projects = []
         for row in rows:
@@ -482,15 +481,16 @@ class Database():
             return
 
         cursor = self.connection.cursor()
-        cursor.execute(DatabaseStatements.getSelectAllStatementWhereEquals(DatabaseStatements.knownPacketTableName,
-                                                                           "ProjectID",
-                                                                           project.id))
+        cursor.execute(
+            DatabaseStatements.getSelectAllStatementWhereEquals(
+                DatabaseStatements.knownPacketTableName, "ProjectID",
+                project.id))
         rows = cursor.fetchall()
         knownPackets = []
         for row in rows:
             assert len(row) == 5
-            knownPackets.append(KnownPacket(
-                row[0], row[1], row[2], row[3], row[4]))
+            knownPackets.append(
+                KnownPacket(row[0], row[1], row[2], row[3], row[4]))
         return knownPackets
 
     def getPacketSets(self, project=None):
@@ -508,9 +508,10 @@ class Database():
             return
 
         cursor = self.connection.cursor()
-        cursor.execute(DatabaseStatements.getSelectAllStatementWhereEquals(DatabaseStatements.packetSetTableName,
-                                                                           "ProjectID",
-                                                                           project.id))
+        cursor.execute(
+            DatabaseStatements.getSelectAllStatementWhereEquals(
+                DatabaseStatements.packetSetTableName, "ProjectID",
+                project.id))
         rows = cursor.fetchall()
         packetSets = []
         for row in rows:
@@ -532,9 +533,10 @@ class Database():
         """
 
         cursor = self.connection.cursor()
-        cursor.execute(DatabaseStatements.getSelectAllStatementWhereEquals(DatabaseStatements.packetTableName,
-                                                                           "PacketSetID",
-                                                                           packetSet.id))
+        cursor.execute(
+            DatabaseStatements.getSelectAllStatementWhereEquals(
+                DatabaseStatements.packetTableName, "PacketSetID",
+                packetSet.id))
         rows = cursor.fetchall()
         packets = []
         for row in rows:
@@ -543,8 +545,14 @@ class Database():
             if raw:
                 packets.append([field for field in row])
             else:
-                packets.append(Packet.Packet(
-                    packetSet.id, row[2], row[3], row[4], row[5], id=row[0]))
+                packets.append(
+                    Packet.Packet(
+                        packetSet.id,
+                        row[2],
+                        row[3],
+                        row[4],
+                        row[5],
+                        id=row[0]))
 
         return packets
 
@@ -587,9 +595,8 @@ class Database():
 
         # Get the IDs of all associated PacketSets
         cursor = self.connection.cursor()
-        statement = DatabaseStatements.getSelectAllStatementWhereEquals(DatabaseStatements.packetSetTableName,
-                                                                        "ProjectID",
-                                                                        project.id)
+        statement = DatabaseStatements.getSelectAllStatementWhereEquals(
+            DatabaseStatements.packetSetTableName, "ProjectID", project.id)
         cursor.execute(statement)
         rows = cursor.fetchall()
         packetSetIDs = []
@@ -598,21 +605,21 @@ class Database():
             packetSetIDs.append(row[0])
 
         # Delete the associated PacketSets
-        self.deleteFromTableByValue(
-            DatabaseStatements.packetSetTableName, "ProjectID", project.id)
+        self.deleteFromTableByValue(DatabaseStatements.packetSetTableName,
+                                    "ProjectID", project.id)
 
         # Delete the associated KnownPackets
-        self.deleteFromTableByValue(
-            DatabaseStatements.knownPacketTableName, "ProjectID", project.id)
+        self.deleteFromTableByValue(DatabaseStatements.knownPacketTableName,
+                                    "ProjectID", project.id)
 
         # Delete the packets
         for packetSetID in packetSetIDs:
-            self.deleteFromTableByValue(
-                DatabaseStatements.packetTableName, "PacketSetID", packetSetID)
+            self.deleteFromTableByValue(DatabaseStatements.packetTableName,
+                                        "PacketSetID", packetSetID)
 
         # Delete the project
-        self.deleteFromTableByID(
-            DatabaseStatements.projectTableName, project.id)
+        self.deleteFromTableByID(DatabaseStatements.projectTableName,
+                                 project.id)
         self.connection.commit()
         self.logger.info(Strings.databaseProjectDeleted)
 
@@ -625,11 +632,11 @@ class Database():
         """
 
         # Delete the PacketSet
-        self.deleteFromTableByValue(
-            DatabaseStatements.packetSetTableName, "ID", packetSet.id)
+        self.deleteFromTableByValue(DatabaseStatements.packetSetTableName,
+                                    "ID", packetSet.id)
         # Delete the packets
-        self.deleteFromTableByValue(
-            DatabaseStatements.packetTableName, "PacketSetID", packetSet.id)
+        self.deleteFromTableByValue(DatabaseStatements.packetTableName,
+                                    "PacketSetID", packetSet.id)
 
     def deleteKnownPacket(self, knownPacket):
         """
@@ -654,9 +661,8 @@ class Database():
         """
 
         cursor = self.connection.cursor()
-        statement = DatabaseStatements.getInsertProjectStatement(project.name,
-                                                                 project.description,
-                                                                 project.date)
+        statement = DatabaseStatements.getInsertProjectStatement(
+            project.name, project.description, project.date)
         self.logger.debug(Strings.databaseLogInsertStatement + " " + statement)
         cursor.execute(statement)
         self.connection.commit()
@@ -675,14 +681,16 @@ class Database():
 
         colValuePairs = []
 
+        colValuePairs.append((DatabaseStatements.projectTableNameColName,
+                              project.name))
         colValuePairs.append(
-            (DatabaseStatements.projectTableNameColName, project.name))
-        colValuePairs.append(
-            (DatabaseStatements.projectTableDescriptionColName, project.description))
+            (DatabaseStatements.projectTableDescriptionColName,
+             project.description))
 
-        cursor.execute(DatabaseStatements.getUpdateByIDStatement(DatabaseStatements.projectTableName,
-                                                                 colValuePairs,
-                                                                 project.id))
+        cursor.execute(
+            DatabaseStatements.getUpdateByIDStatement(
+                DatabaseStatements.projectTableName, colValuePairs,
+                project.id))
 
         self.connection.commit()
 
@@ -700,16 +708,18 @@ class Database():
 
         colValuePairs = []
 
+        colValuePairs.append((DatabaseStatements.knownPacketTableCANIDColName,
+                              knownPacket.CANID))
+        colValuePairs.append((DatabaseStatements.knownPacketTableDataColName,
+                              knownPacket.data))
         colValuePairs.append(
-            (DatabaseStatements.knownPacketTableCANIDColName, knownPacket.CANID))
-        colValuePairs.append(
-            (DatabaseStatements.knownPacketTableDataColName, knownPacket.data))
-        colValuePairs.append(
-            (DatabaseStatements.knownPacketTableDescriptionColName, knownPacket.description))
+            (DatabaseStatements.knownPacketTableDescriptionColName,
+             knownPacket.description))
 
-        cursor.execute(DatabaseStatements.getUpdateByIDStatement(DatabaseStatements.knownPacketTableName,
-                                                                 colValuePairs,
-                                                                 knownPacket.id))
+        cursor.execute(
+            DatabaseStatements.getUpdateByIDStatement(
+                DatabaseStatements.knownPacketTableName, colValuePairs,
+                knownPacket.id))
 
         self.connection.commit()
 
@@ -725,9 +735,9 @@ class Database():
         while True:
             try:
                 cursor = self.connection.cursor()
-                cursor.execute(DatabaseStatements.getInsertPacketSetStatement(packetSet.projectID,
-                                                                              packetSet.name,
-                                                                              packetSet.date))
+                cursor.execute(
+                    DatabaseStatements.getInsertPacketSetStatement(
+                        packetSet.projectID, packetSet.name, packetSet.date))
                 self.connection.commit()
                 # Return the ID of the created object
                 return cursor.lastrowid
@@ -735,10 +745,13 @@ class Database():
             # Uh oh, PacketSet with same name already present for the project
             except sqlite3.IntegrityError:
                 # Get the name from the tuple returned by the dialog
-                newPacketSetName = QInputDialog.getText(Globals.ui.tabWidgetManagerTabs,
-                                                        Strings.managerTabDBIntegrityNewPacketSetNameMessageBoxTitle,
-                                                        Strings.managerTabDBIntegrityNewPacketSetNameMessageBoxText + currentName,
-                                                        )[0]
+                newPacketSetName = QInputDialog.getText(
+                    Globals.ui.tabWidgetManagerTabs,
+                    Strings.
+                    managerTabDBIntegrityNewPacketSetNameMessageBoxTitle,
+                    Strings.managerTabDBIntegrityNewPacketSetNameMessageBoxText
+                    + currentName,
+                )[0]
 
                 if len(newPacketSetName) == 0:
                     self.logger.error(Strings.managerTabInvalidPacketSetName)
@@ -776,26 +789,33 @@ class Database():
             # and set the ID accordingly
             if ID == -1:
                 for colValueTuple in row:
-                    if colValueTuple[0] == DatabaseStatements.packetTableCANIDColName:
+                    if colValueTuple[
+                            0] == DatabaseStatements.packetTableCANIDColName:
                         CANID = colValueTuple[1]
-                    elif colValueTuple[0] == DatabaseStatements.packetTableDataColName:
+                    elif colValueTuple[
+                            0] == DatabaseStatements.packetTableDataColName:
                         data = colValueTuple[1]
 
                 newPacket = Packet.Packet(packetSet.id, CANID, data)
                 ID = self.savePacket(newPacket)
 
-            cursor.execute(DatabaseStatements.getUpdateByIDStatement(DatabaseStatements.packetTableName,
-                                                                     row,
-                                                                     ID))
+            cursor.execute(
+                DatabaseStatements.getUpdateByIDStatement(
+                    DatabaseStatements.packetTableName, row, ID))
         # Remove all deleted packets
         for packetIDToRemove in packetIDsToRemove:
-            cursor.execute(DatabaseStatements.getDeleteByIDStatement(DatabaseStatements.packetTableName,
-                                                                     packetIDToRemove))
+            cursor.execute(
+                DatabaseStatements.getDeleteByIDStatement(
+                    DatabaseStatements.packetTableName, packetIDToRemove))
 
         # Everything worked --> commit
         self.connection.commit()
 
-    def savePacketSetWithData(self, packetSetName, rawPackets=None, project=None, packets=None):
+    def savePacketSetWithData(self,
+                              packetSetName,
+                              rawPackets=None,
+                              project=None,
+                              packets=None):
         """
         Save a packet set in the database with the given data.
         If no project is given, the global project will be used.
@@ -829,7 +849,14 @@ class Database():
 
         return packetSetID
 
-    def savePacket(self, packet=None, packetSetID=None, CANID=None, data=None, timestamp="", iface="", commit=True):
+    def savePacket(self,
+                   packet=None,
+                   packetSetID=None,
+                   CANID=None,
+                   data=None,
+                   timestamp="",
+                   iface="",
+                   commit=True):
         """
         Save a packet to the database: Either by object Oo by list-values --> Faster for many values
         If the value in packet is not None: The passed object will be used
@@ -851,18 +878,16 @@ class Database():
         cursor = self.connection.cursor()
 
         if packet is not None:
-            cursor.execute(DatabaseStatements.getInsertPacketStatement(packet.packetSetID,
-                                                                       packet.CANID,
-                                                                       packet.data,
-                                                                       packet.timestamp,
-                                                                       packet.iface))
+            cursor.execute(
+                DatabaseStatements.getInsertPacketStatement(
+                    packet.packetSetID, packet.CANID, packet.data,
+                    packet.timestamp, packet.iface))
 
         elif listVals is not None and len(listVals) != 0:
-            cursor.execute(DatabaseStatements.getInsertPacketStatement(listVals[0],
-                                                                       listVals[1],
-                                                                       listVals[2],
-                                                                       listVals[3],
-                                                                       listVals[4]))
+            cursor.execute(
+                DatabaseStatements.getInsertPacketStatement(
+                    listVals[0], listVals[1], listVals[2], listVals[3],
+                    listVals[4]))
 
         if commit:
             self.connection.commit()
@@ -893,11 +918,10 @@ class Database():
                     QtCore.QCoreApplication.processEvents()
                     counter += 1
 
-                cursor.execute(DatabaseStatements.getInsertPacketStatement(packetSetID,
-                                                                           packet.CANID,
-                                                                           packet.data,
-                                                                           packet.timestamp,
-                                                                           packet.iface))
+                cursor.execute(
+                    DatabaseStatements.getInsertPacketStatement(
+                        packetSetID, packet.CANID, packet.data,
+                        packet.timestamp, packet.iface))
 
         # Use raw data as fallback
         else:
@@ -908,11 +932,10 @@ class Database():
                     QtCore.QCoreApplication.processEvents()
                     counter += 1
 
-                cursor.execute(DatabaseStatements.getInsertPacketStatement(packetSetID,
-                                                                           rawPacket[0],
-                                                                           rawPacket[1],
-                                                                           rawPacket[3],
-                                                                           ""))
+                cursor.execute(
+                    DatabaseStatements.getInsertPacketStatement(
+                        packetSetID, rawPacket[0], rawPacket[1], rawPacket[3],
+                        ""))
         self.connection.commit()
 
     def saveKnownPacket(self, knownPacket):
@@ -924,10 +947,10 @@ class Database():
         """
 
         cursor = self.connection.cursor()
-        cursor.execute(DatabaseStatements.getInsertKnownPacketStatement(knownPacket.projectID,
-                                                                        knownPacket.CANID,
-                                                                        knownPacket.data,
-                                                                        knownPacket.description))
+        cursor.execute(
+            DatabaseStatements.getInsertKnownPacketStatement(
+                knownPacket.projectID, knownPacket.CANID, knownPacket.data,
+                knownPacket.description))
         self.connection.commit()
         # Return the ID of the created object
         return cursor.lastrowid

@@ -32,8 +32,9 @@ DB_NAME = "../data/database.db"
 #: Optionally we can specify a different database path
 DB_PATH = DB_NAME
 
-#: Where to find the app icon
+#: Where to find the app icons
 ICON_PATH = "./ui/icon/icon.png"
+ICON_PRO_PATH = "./ui/icon/pro.png"
 #: Where to find the company logo
 LOGO_PATH = "./ui/icon/swlogo_small.png"
 #: Where to find the "Fork Me" icon

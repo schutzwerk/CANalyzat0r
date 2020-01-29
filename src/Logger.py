@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 17, 2017
 
@@ -28,7 +27,6 @@ import Settings
 
 
 class Logger(object):
-
     """
     This class implements a simple logger with a formatter.
     """
@@ -46,8 +44,10 @@ class Logger(object):
         logger.setLevel(logging.DEBUG)
 
         handler = LogHandler()
-        handler.setFormatter(logging.Formatter(
-            "%(levelname)s: %(filename)s: %(name)s: %(funcName)s: %(lineno)d: %(message)s"))
+        handler.setFormatter(
+            logging.Formatter(
+                "%(levelname)s: %(filename)s: %(name)s: %(funcName)s: %(lineno)d: %(message)s"
+            ))
         logger.addHandler(handler)
 
         self._logger = logger
@@ -57,7 +57,6 @@ class Logger(object):
 
 
 class LogHandler(logging.Handler):
-
     """
     To manage different log levels and custom logging to the log box/text browser, this class is needed.
     """

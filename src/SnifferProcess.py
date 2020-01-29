@@ -60,7 +60,7 @@ class SnifferProcess(Process):
     def run(self):
         """
         As long as the process hasn't been disabled: Read a frame using :func:`~src.CANData.CANData.readPacketAsync`
-        and transmit the received pyvit frame via the pipe.
+        and transmit the received can.Message object via the pipe.
         """
         errorCount = 0
 

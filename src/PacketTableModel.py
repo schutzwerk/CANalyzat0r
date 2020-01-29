@@ -23,6 +23,7 @@ Created on May 31, 2017
 """
 import operator
 from PySide.QtCore import Qt
+import re
 
 import Packet
 import Toolbox
@@ -342,7 +343,8 @@ class PacketTableModel(QtCore.QAbstractTableModel, QtCore.QObject):
 
         rowIndex = index.row()
         colIndex = index.column()
-        self.dataList[rowIndex][colIndex] = str(value)
+        value = re.sub("[^A-Fa-f0-9]+", "", str(value)).upper()
+        self.dataList[rowIndex][colIndex] = value
 
         self.cellChanged.emit(rowIndex, colIndex)
         self.dataChanged.emit(rowIndex, colIndex)

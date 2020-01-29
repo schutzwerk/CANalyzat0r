@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on Jun 26, 2017
 
@@ -35,7 +34,6 @@ import Toolbox
 
 
 class AbstractTab():
-
     """
     This is a base class for *most* tabs. If you're using a tab that uses the following things, you can use this class:
     - Non-static tab - you create instances from it
@@ -96,11 +94,11 @@ class AbstractTab():
         if labelInterfaceValueName is not None:
             self.labelInterfaceValue = self.tabWidget.findChild(
                 QtGui.QLabel, labelInterfaceValueName)
-            assert(
-                self.packetTableView and self.labelInterfaceValue), "GUI elements not found"
+            assert (self.packetTableView
+                    and self.labelInterfaceValue), "GUI elements not found"
         else:
             self.labelInterfaceValue = None
-            assert(self.packetTableView), "tableView not found"
+            assert (self.packetTableView), "tableView not found"
 
         #: The tab specific logger
         self.loggerName = loggerName
@@ -113,16 +111,15 @@ class AbstractTab():
 
         header = ["ID", "Data", "Length", "Timestamp", "Description"]
 
-        self.packetTableModel = PacketTableModel.PacketTableModel(self.packetTableView,
-                                                                  [],
-                                                                  header,
-                                                                  self.readOnlyCols,
-                                                                  IDColIndex=self.IDColIndex,
-                                                                  dataColIndex=self.dataColIndex,
-                                                                  lengthColIndex=self.lengthColIndex,
-                                                                  timestampColIndex=self.timestampColIndex,
-                                                                  descriptionColIndex=self.descriptionColIndex
-                                                                  )
+        self.packetTableModel = PacketTableModel.PacketTableModel(
+            self.packetTableView, [],
+            header,
+            self.readOnlyCols,
+            IDColIndex=self.IDColIndex,
+            dataColIndex=self.dataColIndex,
+            lengthColIndex=self.lengthColIndex,
+            timestampColIndex=self.timestampColIndex,
+            descriptionColIndex=self.descriptionColIndex)
         self.packetTableView.setModel(self.packetTableModel)
 
         if self.hideTimestampCol:
@@ -138,22 +135,30 @@ class AbstractTab():
 
         # Bind custom handlers
         if self.allowTableCopy:
-            QtGui.QShortcut(QtGui.QKeySequence("Ctrl+c"),
-                            self.packetTableView).activated.connect(self.handleCopy)
+            QtGui.QShortcut(
+                QtGui.QKeySequence("Ctrl+c"),
+                self.packetTableView).activated.connect(self.handleCopy)
 
         if self.allowTablePaste:
-            QtGui.QShortcut(QtGui.QKeySequence("Ctrl+v"),
-                            self.packetTableView).activated.connect(self.handlePaste)
+            QtGui.QShortcut(
+                QtGui.QKeySequence("Ctrl+v"),
+                self.packetTableView).activated.connect(self.handlePaste)
 
         if self.allowTableDelete:
             QtGui.QShortcut(QtGui.QKeySequence("Del"),
-                            self.packetTableView).activated.connect(self.removeSelectedPackets)
+                            self.packetTableView).activated.connect(
+                                self.removeSelectedPackets)
 
         if self.CANData is None:
             self.setInitialCANData()
         self.updateInterfaceLabel()
 
-    def addPacket(self, valueList, addAtFront=False, append=True, emit=True, addToRawDataOnly=False):
+    def addPacket(self,
+                  valueList,
+                  addAtFront=False,
+                  append=True,
+                  emit=True,
+                  addToRawDataOnly=False):
         """
         Add a packet to the GUI table.
 
@@ -167,8 +172,8 @@ class AbstractTab():
                                  the packet table model. Default: False
         """
 
-        assert isinstance(
-            valueList, list), "You have to call this with a value list!"
+        assert isinstance(valueList,
+                          list), "You have to call this with a value list!"
 
         CANID = valueList[self.IDColIndex]
         data = valueList[self.dataColIndex]
@@ -230,10 +235,9 @@ class AbstractTab():
         selectedRows = selectionModel.selectedRows()
 
         if len(selectedRows) == 0:
-            QtGui.QMessageBox.critical(self.tabWidget,
-                                       Strings.messageBoxErrorTitle,
-                                       Strings.rowSelectionHint,
-                                       QtGui.QMessageBox.Ok)
+            QtGui.QMessageBox.critical(
+                self.tabWidget, Strings.messageBoxErrorTitle,
+                Strings.rowSelectionHint, QtGui.QMessageBox.Ok)
             return
 
         # Pass the QModelIndex to the method
@@ -305,8 +309,8 @@ class AbstractTab():
         """
         Handle pasting rows into a GUI table.
         Data is being gathered from the clipboard and be of the following types:
-         - Raw data list (list of lists which consist of column data) - Parsing takes place asynchronously
-         - SocketCAN format (see :class:`~src.CANData.SocketCANFormat`)
+        - Raw data list (list of lists which consist of column data) - Parsing takes place asynchronously
+        - SocketCAN format (see :class:`~src.CANData.SocketCANFormat`)
         """
 
         # First, show a progress dialog because this can take longer
@@ -323,8 +327,8 @@ class AbstractTab():
             try:
                 pool = Pool(processes=1)
                 # We need to pass a tuple of args
-                async_result = pool.apply_async(
-                    ast.literal_eval, (clipboard.text(),))
+                async_result = pool.apply_async(ast.literal_eval,
+                                                (clipboard.text(), ))
 
                 refreshCounter = 0
                 while not async_result.ready():
@@ -364,7 +368,8 @@ class AbstractTab():
                         if socketCANPacketIndex % 700 == 0:
                             QtCore.QCoreApplication.processEvents()
 
-                        socketCANPacket = socketCANPackets[socketCANPacketIndex]
+                        socketCANPacket = socketCANPackets[
+                            socketCANPacketIndex]
                         CANID = socketCANPacket.id
                         data = socketCANPacket.data
                         timestamp = socketCANPacket.timestamp
@@ -373,7 +378,8 @@ class AbstractTab():
 
                         # Append the data to the GUI table and to the rawData list
                         # Prepare the datalist
-                        for colIdx in range(self.packetTableModel.columnCount()):
+                        for colIdx in range(
+                                self.packetTableModel.columnCount()):
                             dataList.append("")
                         dataList[self.IDColIndex] = CANID
                         dataList[self.dataColIndex] = data
@@ -443,15 +449,15 @@ class AbstractTab():
         if colIndex == self.dataColIndex or colIndex == self.IDColIndex:
             CANID = self.packetTableModel.getValue(rowIndex, self.IDColIndex)
             data = self.packetTableModel.getValue(rowIndex, self.dataColIndex)
-            length = self.packetTableModel.getValue(
-                rowIndex, self.lengthColIndex)
+            length = self.packetTableModel.getValue(rowIndex,
+                                                    self.lengthColIndex)
 
             # Update the length
             if data is not None and length is not None:
 
                 # Must be even --> bytes!
                 if len(data) % 2 == 0:
-                    dataLengthRes = str(len(data)//2)
+                    dataLengthRes = str(len(data) // 2)
                 else:
                     dataLengthRes = Strings.toolboxInvalidLength
 
@@ -459,15 +465,15 @@ class AbstractTab():
                 if data == "" and CANID == "":
                     dataLengthRes = ""
 
-                self.packetTableModel.setText(
-                    rowIndex, self.lengthColIndex, dataLengthRes)
+                self.packetTableModel.setText(rowIndex, self.lengthColIndex,
+                                              dataLengthRes)
                 # Update this value in rawData too
                 self.rawData[rowIndex][self.lengthColIndex] = 0
 
             # Update the description
             descr = Toolbox.Toolbox.getKnownPacketDescription(CANID, data)
-            self.packetTableModel.setText(
-                rowIndex, self.descriptionColIndex, descr)
+            self.packetTableModel.setText(rowIndex, self.descriptionColIndex,
+                                          descr)
 
     def handleInterfaceSettingsDialog(self, allowOnlyOwnInterface=False):
         """
@@ -527,4 +533,5 @@ class AbstractTab():
             return False
 
     #: Dummies, overriden by subclasses if needed
-    def toggleGUIElements(self, state): pass
+    def toggleGUIElements(self, state):
+        pass

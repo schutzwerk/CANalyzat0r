@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 18, 2017
 
@@ -23,10 +22,10 @@ Created on May 18, 2017
 """
 
 from PySide import QtCore
+import can
 
 
 class ItemAdderThread(QtCore.QThread):
-
     """
     This thread receives data from a process and
     emits a signal which causes the main thread to add the packets
@@ -49,14 +48,23 @@ class ItemAdderThread(QtCore.QThread):
 
     def frameToRow(self, frame):
         """
-        Converts a pyvit frame to a raw value list. This list will be emitted using the signal
+        Converts a can.Message object to a raw value list. This list will be emitted using the signal
         ``appendRow`` along with the table data and rawData list.
 
-        :param frame: Pyvit CAN frame
+        :param frame: can.Message CAN frame
         """
 
         # Extract the data to be displayed
-        id = str(hex(frame.arb_id)).replace("0x", "").upper()
+        id = str(hex(frame.arbitration_id)).replace("0x", "").upper()
+
+        if len(id) <= 3:
+            neededLength = 3
+        else:
+            neededLength = 8
+
+        while len(id) < neededLength:
+            id = "0" + id
+
         # cut "0x" and always use an additional leading zero if needed
         data = "".join(hex(value)[2:].zfill(2) for value in frame.data).upper()
         length = frame.dlc
@@ -87,7 +95,6 @@ class ItemAdderThread(QtCore.QThread):
                 if self.receivePipe.poll(1):
                     frame = self.receivePipe.recv()
             except EOFError:
-                break
-            else:
-                if frame is not None:
-                    self.frameToRow(frame)
+                continue
+            if frame is not None:
+                self.frameToRow(frame)

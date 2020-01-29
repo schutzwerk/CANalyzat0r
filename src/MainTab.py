@@ -208,9 +208,8 @@ class MainTab:
         Globals.managerTabInstance.populateKnownPackets()
         Toolbox.Toolbox.toggleDisabledProjectGUIElements()
 
-        MainTab.logger.info(
-            Strings.mainTabProjectSet + " " +
-            Globals.project.name if Globals.project is not None else "None")
+        MainTab.logger.info(Strings.mainTabProjectSet + " " + Globals.project.
+                            name if Globals.project is not None else "None")
 
     @staticmethod
     def loadKernelModules():
@@ -344,11 +343,19 @@ class MainTab:
         if updateLabels:
             Toolbox.Toolbox.updateInterfaceLabels()
 
+        Globals.ui.spinBoxFDBitrate.setEnabled(False)
+        Globals.ui.checkBoxMainUseFD.setChecked(False)
+
     @staticmethod
     def preselectUseBitrateCheckBox():
         """
-        Preselect the VCAN CheckBox state because we can't use the bitrate along with VCAN interfaces.
+        Preselect the FD and VCAN CheckBox states.
         """
+
+        if Globals.ui.checkBoxMainUseFD.isChecked():
+            Globals.ui.spinBoxFDBitrate.setEnabled(True)
+        else:
+            Globals.ui.spinBoxFDBitrate.setEnabled(False)
 
         currentInterface = Globals.ui.comboBoxInterface.itemData(
             Globals.ui.comboBoxInterface.currentIndex())
@@ -358,6 +365,7 @@ class MainTab:
 
         if currentInterface.VCAN:
             Globals.ui.checkBoxMainUseVCAN.setChecked(True)
+            Globals.ui.checkBoxMainUseFD.setChecked(False)
         else:
             Globals.ui.checkBoxMainUseVCAN.setChecked(False)
         MainTab.VCANCheckboxChanged()
@@ -376,18 +384,20 @@ class MainTab:
             return
 
         selectedBitrate = Globals.ui.spinBoxBitrate.value()
+        selectedFDBitrate = Globals.ui.spinBoxFDBitrate.value()
+        fdSelected = Globals.ui.checkBoxMainUseFD.isChecked()
         selectedCANData = CANData.CANDataInstances[selectedInterfaceName]
 
         # Set all inactive interfaces to the global interface
         Toolbox.Toolbox.updateCANDataInstances(selectedCANData)
         Globals.CANData = selectedCANData
-        MainTab.setGlobalInterfaceStatus()
 
         # It's still active, we set it but won't save the settings though
         if selectedCANData.active:
             MainTab.logger.info(Strings.activeCANDataWontSave +
                                 selectedCANData.ifaceName)
             Globals.ui.spinBoxBitrate.setValue(selectedCANData.bitrate)
+            Globals.ui.spinBoxFDBitrate.setValue(selectedCANData.fdBitrate)
             Globals.ui.checkBoxMainUseVCAN.setChecked(
                 QtCore.Qt.Checked if selectedCANData.VCAN else QtCore.Qt.
                 Unchecked)
@@ -396,7 +406,8 @@ class MainTab:
         # It's not active, updated VCAN and the bitrate
         else:
             selectedCANData.VCAN = Globals.ui.checkBoxMainUseVCAN.isChecked()
-            if selectedCANData.updateBitrate(selectedBitrate):
+            if selectedCANData.updateBitrate(
+                    selectedBitrate, selectedFDBitrate, fd=fdSelected):
                 Globals.ui.buttonApplyInterface.setStyleSheet(
                     "background-color: green")
 
@@ -405,6 +416,7 @@ class MainTab:
                     "background-color: red")
                 return
 
+        MainTab.setGlobalInterfaceStatus()
         MainTab.logger.info(Strings.mainTabCANConfigUpdated)
         # Enable all disabled buttons because an interface was set
         Toolbox.Toolbox.toggleDisabledSenderGUIElements()
@@ -475,10 +487,14 @@ class MainTab:
         MainTab.detectCANInterfaces()
         MainTab.populateProjects()
         MainTab.preselectUseBitrateCheckBox()
+        MainTab.FDCheckboxChanged()
 
         # Setup the "fork me" ribbon
         pixmapLogo = QPixmap(Settings.ICON_PATH)
         Globals.ui.labelMainLogo.setPixmap(pixmapLogo)
+
+        pixmapPro = QPixmap(Settings.ICON_PRO_PATH)
+        Globals.ui.proLogo.setPixmap(pixmapPro)
 
     @staticmethod
     def VCANCheckboxChanged():
@@ -488,5 +504,23 @@ class MainTab:
 
         if Globals.ui.checkBoxMainUseVCAN.isChecked():
             Globals.ui.spinBoxBitrate.setEnabled(False)
+            Globals.ui.spinBoxFDBitrate.setEnabled(False)
+            Globals.ui.checkBoxMainUseFD.setEnabled(False)
+            Globals.ui.checkBoxMainUseFD.setChecked(False)
         else:
             Globals.ui.spinBoxBitrate.setEnabled(True)
+            Globals.ui.spinBoxFDBitrate.setEnabled(True)
+            Globals.ui.checkBoxMainUseFD.setEnabled(True)
+
+        __class__.FDCheckboxChanged()
+
+    @staticmethod
+    def FDCheckboxChanged():
+        """
+        Clickhandler for the FD CheckBox which causes the FD SpinBox to be toggled
+        """
+
+        if Globals.ui.checkBoxMainUseFD.isChecked():
+            Globals.ui.spinBoxFDBitrate.setEnabled(True)
+        else:
+            Globals.ui.spinBoxFDBitrate.setEnabled(False)

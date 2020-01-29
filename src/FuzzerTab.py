@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 31, 2017
 
@@ -39,19 +38,18 @@ from ItemAdderThread import ItemAdderThread
 
 
 class FuzzerTab(AbstractTab):
-
     """
     This class handles the logic of the fuzzer tab
     """
 
     def __init__(self, tabWidget):
-        AbstractTab.__init__(self,
-                             tabWidget,
-                             Strings.fuzzerTabLoggerName,
-                             [2, 3, 4],
-                             Strings.fuzzerTabPacketTableViewName,
-                             Strings.fuzzerTabLabelInterfaceValueName,
-                             allowTablePaste=False)
+        AbstractTab.__init__(
+            self,
+            tabWidget,
+            Strings.fuzzerTabLoggerName, [2, 3, 4],
+            Strings.fuzzerTabPacketTableViewName,
+            Strings.fuzzerTabLabelInterfaceValueName,
+            allowTablePaste=False)
 
         #: The ID is 8 chars max. - initialize it with only X chars
         self.IDMask = "X" * 8
@@ -103,18 +101,15 @@ class FuzzerTab(AbstractTab):
         self.labelFuzzerCountValue = self.tabWidget.findChild(
             QtGui.QLabel, "labelFuzzerCountValue")
 
-        assert all(GUIElem is not None for GUIElem in [self.comboBoxFuzzingMode,
-                                                       self.lineEditFuzzerTabIDMask,
-                                                       self.lineEditFuzzerTabDataMask,
-                                                       self.horizontalSliderFuzzerMinLength,
-                                                       self.horizontalSliderFuzzerMaxLength,
-                                                       self.doubleSpinBoxFuzzerPacketGap,
-                                                       self.buttonFuzzerInterfaceSettings,
-                                                       self.buttonFuzzerTabToggleFuzzing,
-                                                       self.buttonFuzzerClear,
-                                                       self.labelFuzzerMinLengthValue,
-                                                       self.labelFuzzerMaxLengthValue,
-                                                       self.labelFuzzerCountValue]), "GUI Elements not found"
+        assert all(GUIElem is not None for GUIElem in [
+            self.comboBoxFuzzingMode, self.lineEditFuzzerTabIDMask, self.
+            lineEditFuzzerTabDataMask, self.horizontalSliderFuzzerMinLength,
+            self.horizontalSliderFuzzerMaxLength, self.
+            doubleSpinBoxFuzzerPacketGap, self.buttonFuzzerInterfaceSettings,
+            self.buttonFuzzerTabToggleFuzzing, self.buttonFuzzerClear, self.
+            labelFuzzerMinLengthValue, self.labelFuzzerMaxLengthValue, self.
+            labelFuzzerCountValue
+        ]), "GUI Elements not found"
 
         self.buttonFuzzerInterfaceSettings.clicked.connect(
             self.handleInterfaceSettingsDialog)
@@ -168,18 +163,15 @@ class FuzzerTab(AbstractTab):
 
             # Start the Threads
             # First start the ItemAdderThread...
-            self.itemAdderThread = ItemAdderThread(fuzzerReceivePipe,
-                                                   self.packetTableModel,
-                                                   self.rawData)
+            self.itemAdderThread = ItemAdderThread(
+                fuzzerReceivePipe, self.packetTableModel, self.rawData)
 
             self.itemAdderThread.appendRow.connect(self.addPacket)
             self.itemAdderThread.start()
 
             # ... then start the fuzzing thread
-            self.fuzzSenderThread = SenderThread.FuzzSenderThread(sleepTime,
-                                                                  fuzzerSendPipe,
-                                                                  self.CANData,
-                                                                  self.loggerName)
+            self.fuzzSenderThread = SenderThread.FuzzSenderThread(
+                sleepTime, fuzzerSendPipe, self.CANData, self.loggerName)
             self.fuzzSenderThread.start()
             self.logger.info(Strings.fuzzerTabFuzzerThreadStarted)
 
@@ -223,9 +215,9 @@ class FuzzerTab(AbstractTab):
 
     def generateRandomPacket(self):
         """
-        This generates a random pyvit Frame using :func:`~src.CANData.tryBuildPacket`
+        This generates a random can.Message object using :func:`~src.CANData.tryBuildPacket`
 
-        :return: Pyvit frame with random data (random ID, data length and data)
+        :return: can.Message object with random data (random ID, data length and data)
         """
 
         # Has a length of 3 or 8
@@ -247,8 +239,8 @@ class FuzzerTab(AbstractTab):
         randomLength = -1
         while randomLength < 0 or randomLength % 2 == 1:
             # *2 --> 1 byte = 2 chars
-            randomLength = random.randint(
-                self.dataMinLength*2, self.dataMaxLength*2)
+            randomLength = random.randint(self.dataMinLength * 2,
+                                          self.dataMaxLength * 2)
 
         for hexCharIndex in range(randomLength):
             if self.dataMask[hexCharIndex] == "X":
@@ -282,13 +274,23 @@ class FuzzerTab(AbstractTab):
             self.comboBoxFuzzingMode.addItem(valuePair[0])
             self.comboBoxFuzzingMode.setItemData(i, valuePair[1])
 
-    def addPacket(self, valueList, addAtFront=True, append=True, emit=True, addToRawDataOnly=False):
+    def addPacket(self,
+                  valueList,
+                  addAtFront=True,
+                  append=True,
+                  emit=True,
+                  addToRawDataOnly=False):
         """
         Override the parents class method to add packets at front and to update the counter label
         """
 
-        AbstractTab.addPacket(self, valueList=valueList, addAtFront=addAtFront,
-                              append=append, emit=emit, addToRawDataOnly=addToRawDataOnly)
+        AbstractTab.addPacket(
+            self,
+            valueList=valueList,
+            addAtFront=addAtFront,
+            append=append,
+            emit=emit,
+            addToRawDataOnly=addToRawDataOnly)
         # Also update the label
         self.labelFuzzerCountValue.setText(str(len(self.rawData)))
 
@@ -373,11 +375,11 @@ class FuzzerTab(AbstractTab):
 
         #
         if self.active:
-            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(Globals.ui.tabWidgetMain.currentIndex(),
-                                                              QtCore.Qt.red)
+            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(
+                Globals.ui.tabWidgetMain.currentIndex(), QtCore.Qt.red)
         else:
-            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(Globals.ui.tabWidgetMain.currentIndex(),
-                                                              QtCore.Qt.black)
+            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(
+                Globals.ui.tabWidgetMain.currentIndex(), QtCore.Qt.black)
 
     def sliderChanged(self):
         """
@@ -387,8 +389,7 @@ class FuzzerTab(AbstractTab):
         """
 
         self.horizontalSliderFuzzerMinLength.setMaximum(
-            self.horizontalSliderFuzzerMaxLength.value()
-        )
+            self.horizontalSliderFuzzerMaxLength.value())
 
         newMinLength = self.horizontalSliderFuzzerMinLength.value()
         newMaxLength = self.horizontalSliderFuzzerMaxLength.value()
@@ -428,8 +429,7 @@ class FuzzerTab(AbstractTab):
         """
 
         selectedData = self.comboBoxFuzzingMode.itemData(
-            self.comboBoxFuzzingMode.currentIndex()
-        )
+            self.comboBoxFuzzingMode.currentIndex())
 
         # 11 bit IDs
         if selectedData == 1:
@@ -459,14 +459,13 @@ class FuzzerTab(AbstractTab):
         :param state: Boolean value to indicate whether to enable or disable elements
         """
 
-        for GUIElement in [self.buttonFuzzerInterfaceSettings,
-                           self.buttonFuzzerTabToggleFuzzing,
-                           self.comboBoxFuzzingMode,
-                           self.lineEditFuzzerTabIDMask,
-                           self.lineEditFuzzerTabDataMask,
-                           self.horizontalSliderFuzzerMinLength,
-                           self.horizontalSliderFuzzerMaxLength,
-                           self.doubleSpinBoxFuzzerPacketGap,
-                           self.buttonFuzzerClear,
-                           self.packetTableView]:
+        for GUIElement in [
+                self.buttonFuzzerInterfaceSettings,
+                self.buttonFuzzerTabToggleFuzzing, self.comboBoxFuzzingMode,
+                self.lineEditFuzzerTabIDMask, self.lineEditFuzzerTabDataMask,
+                self.horizontalSliderFuzzerMinLength,
+                self.horizontalSliderFuzzerMaxLength,
+                self.doubleSpinBoxFuzzerPacketGap, self.buttonFuzzerClear,
+                self.packetTableView
+        ]:
             GUIElement.setEnabled(state)

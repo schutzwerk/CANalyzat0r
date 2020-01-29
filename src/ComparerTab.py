@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on Jun 30, 2017
 
@@ -28,7 +27,6 @@ from AbstractTab import AbstractTab
 
 
 class ComparerTab(AbstractTab):
-
     """
     This handles the logic of the comparer tab.
     """
@@ -38,12 +36,12 @@ class ComparerTab(AbstractTab):
         This just sets data and adds click handlers.
         """
 
-        AbstractTab.__init__(self,
-                             tabWidget,
-                             Strings.comparerTabLoggerName,
-                             [2, 3, 4],
-                             Strings.comparerTabPacketViewName,
-                             allowTablePaste=False)
+        AbstractTab.__init__(
+            self,
+            tabWidget,
+            Strings.comparerTabLoggerName, [2, 3, 4],
+            Strings.comparerTabPacketViewName,
+            allowTablePaste=False)
 
         self.rawPacketSet1 = []
         self.rawPacketSet2 = []
@@ -56,9 +54,11 @@ class ComparerTab(AbstractTab):
         self.buttonComparerStartCompare = self.tabWidget.findChild(
             QtGui.QPushButton, "buttonComparerStartCompare")
 
-        assert all(GUIElem is not None for GUIElem in [self.buttonComparerLoadSet1,
-                                                       self.buttonComparerLoadSet2,
-                                                       self.buttonComparerStartCompare, ]), "GUI Elements not found"
+        assert all(GUIElem is not None for GUIElem in [
+            self.buttonComparerLoadSet1,
+            self.buttonComparerLoadSet2,
+            self.buttonComparerStartCompare,
+        ]), "GUI Elements not found"
 
         self.buttonComparerLoadSet1.clicked.connect(self.setPacketSet1)
         self.buttonComparerLoadSet2.clicked.connect(self.setPacketSet2)
@@ -112,10 +112,10 @@ class ComparerTab(AbstractTab):
 
         self.clear()
         # Compare using sets of tuples --> Performance over 9000!!1!
-        rawPacketSetSets1 = set(tuple(rawPacket)
-                                for rawPacket in self.rawPacketSet1)
-        rawPacketSetSets2 = set(tuple(rawPacket)
-                                for rawPacket in self.rawPacketSet2)
+        rawPacketSetSets1 = set(
+            tuple(rawPacket) for rawPacket in self.rawPacketSet1)
+        rawPacketSetSets2 = set(
+            tuple(rawPacket) for rawPacket in self.rawPacketSet2)
 
         resultSets = list(rawPacketSetSets1 & rawPacketSetSets2)
         result = [list(resultSet) for resultSet in resultSets]

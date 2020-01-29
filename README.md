@@ -19,6 +19,7 @@
 For more information, read the HTML or PDF version of the documentation in the `./doc/build` folder.
 
 # Features
+* **Now with CAN FD Support**
 * Manage interface configuration (automatic loading of kernel modules, manage physical and virtual SocketCAN devices)
 * Multi interface support
 * Manage your work in projects. You can also import and export them in the human readable/editable JSON format

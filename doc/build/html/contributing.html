@@ -170,45 +170,45 @@
 <div class="section" id="guidelines">
 <h2>Guidelines<a class="headerlink" href="#guidelines" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Each tab has its own Class. If possible, inherit from <a class="reference internal" href="src.html#src.AbstractTab.AbstractTab" title="src.AbstractTab.AbstractTab"><code class="xref py py-class docutils literal"><span class="pre">AbstractTab</span></code></a>.</li>
+<li><p>Each tab has its own Class. If possible, inherit from <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractTab</span></code>.</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li>To provide comatibility:</li>
+<li><p>To provide comatibility:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li>The displayed data should also be in a raw data list called <code class="docutils literal"><span class="pre">rawData</span></code> which is <em>always</em> up to date</li>
-<li><code class="docutils literal"><span class="pre">prepareUI</span></code> initializes all GUI elements</li>
-<li><code class="docutils literal"><span class="pre">active</span></code> manages the status of a tab</li>
-<li>Tab specific CANData instances are called <code class="docutils literal"><span class="pre">CANData</span></code></li>
+<li><p>The displayed data should also be in a raw data list called <code class="docutils literal notranslate"><span class="pre">rawData</span></code> which is <em>always</em> up to date</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prepareUI</span></code> initializes all GUI elements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">active</span></code> manages the status of a tab</p></li>
+<li><p>Tab specific CANData instances are called <code class="docutils literal notranslate"><span class="pre">CANData</span></code></p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
 <ul class="simple">
-<li>Please log useful information using an own logger instance</li>
-<li>Use existing Toolbox methods if possible</li>
-<li>Use batch database operations using raw lists (not objects) for better performance</li>
-<li>Use docstrings</li>
-<li>Keep the <code class="docutils literal"><span class="pre">.ui</span></code> files clean: Always name new GUI elements properly according to existing ones</li>
-<li>Put new strings in the Strings file and reference it</li>
+<li><p>Please log useful information using an own logger instance</p></li>
+<li><p>Use existing Toolbox methods if possible</p></li>
+<li><p>Use batch database operations using raw lists (not objects) for better performance</p></li>
+<li><p>Use docstrings</p></li>
+<li><p>Keep the <code class="docutils literal notranslate"><span class="pre">.ui</span></code> files clean: Always name new GUI elements properly according to existing ones</p></li>
+<li><p>Put new strings in the Strings file and reference it</p></li>
 </ul>
 </div>
 <div class="section" id="i-want-to-add-a-new-tab-what-do-i-have-to-do">
 <h2>I want to add a new tab, what do I have to do?<a class="headerlink" href="#i-want-to-add-a-new-tab-what-do-i-have-to-do" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Create a new tab on the GUI and stick to the already existing naming conventions</li>
-<li>Add a QTableView to display your data and other GUI elements</li>
-<li>Update <cite>mainWindow.py</cite> using <cite>pyside-uic mainWindow.ui &gt; mainWindow.py</cite>.</li>
-<li>Add a new File and a new class which inherits from <a class="reference internal" href="src.html#src.AbstractTab.AbstractTab" title="src.AbstractTab.AbstractTab"><code class="xref py py-class docutils literal"><span class="pre">AbstractTab</span></code></a></li>
-<li>Call the parents constructor in your <code class="docutils literal"><span class="pre">__init__</span></code></li>
-<li>Add the GUI elements from the <code class="docutils literal"><span class="pre">.ui</span></code> file to your code. You can refer to the other tabs
-to see how it’s done. Also, add the click handlers here.</li>
-<li>Call <code class="docutils literal"><span class="pre">prepareUI</span></code> as last action in <code class="docutils literal"><span class="pre">__init___</span></code></li>
-<li>If your tab needs an interface or displays interface values: Add your tab
-class or instance to <a class="reference internal" href="src.html#src.Toolbox.Toolbox.updateInterfaceLabels" title="src.Toolbox.Toolbox.updateInterfaceLabels"><code class="xref py py-func docutils literal"><span class="pre">updateInterfaceLabels()</span></code></a> and/or <a class="reference internal" href="src.html#src.Toolbox.Toolbox.updateCANDataInstances" title="src.Toolbox.Toolbox.updateCANDataInstances"><code class="xref py py-func docutils literal"><span class="pre">updateCANDataInstances()</span></code></a>.</li>
-<li>If your tab uses an instance: Add an instance to <cite>Globals.py</cite> and create one at startup (see <cite>CANalyzat0r.py</cite>).</li>
-<li>If your tab uses a static class: Call <cite>prepareUI</cite> at startup (see <cite>CANalyzat0r.py</cite>).</li>
+<li><p>Create a new tab on the GUI and stick to the already existing naming conventions</p></li>
+<li><p>Add a QTableView to display your data and other GUI elements</p></li>
+<li><p>Update <cite>mainWindow.py</cite> using <cite>pyside-uic mainWindow.ui &gt; mainWindow.py</cite>.</p></li>
+<li><p>Add a new File and a new class which inherits from <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractTab</span></code></p></li>
+<li><p>Call the parents constructor in your <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p></li>
+<li><p>Add the GUI elements from the <code class="docutils literal notranslate"><span class="pre">.ui</span></code> file to your code. You can refer to the other tabs
+to see how it’s done. Also, add the click handlers here.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">prepareUI</span></code> as last action in <code class="docutils literal notranslate"><span class="pre">__init___</span></code></p></li>
+<li><p>If your tab needs an interface or displays interface values: Add your tab
+class or instance to <code class="xref py py-func docutils literal notranslate"><span class="pre">updateInterfaceLabels()</span></code> and/or <code class="xref py py-func docutils literal notranslate"><span class="pre">updateCANDataInstances()</span></code>.</p></li>
+<li><p>If your tab uses an instance: Add an instance to <cite>Globals.py</cite> and create one at startup (see <cite>CANalyzat0r.py</cite>).</p></li>
+<li><p>If your tab uses a static class: Call <cite>prepareUI</cite> at startup (see <cite>CANalyzat0r.py</cite>).</p></li>
 </ul>
 </div>
 </div>
@@ -268,6 +268,7 @@ class or instance to <a class="reference internal" href="src.html#src.Toolbox.To
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 

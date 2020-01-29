@@ -1,4 +1,4 @@
-\select@language {english}
+\babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Requirements}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Docker}{1}{section.1.1}
 \contentsline {chapter}{\numberline {2}CANAlyzat0r manual}{3}{chapter.2}
@@ -13,7 +13,7 @@
 \contentsline {subsection}{\numberline {2.2.2}General}{5}{subsection.2.2.2}
 \contentsline {subsubsection}{\numberline {2.2.2.1}Why can I change interface settings in every tab and why is there a global interface?}{5}{subsubsection.2.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2.2}Well, how can I manage packets in between tabs?}{5}{subsubsection.2.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.2.3}Ok Ok, but how can I import my SocketCAN dumps?}{5}{subsubsection.2.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.2.3}Ok Ok, but how can I import my SocketCAN dumps?}{6}{subsubsection.2.2.2.3}
 \contentsline {subsubsection}{\numberline {2.2.2.4}What are known packets?}{6}{subsubsection.2.2.2.4}
 \contentsline {subsubsection}{\numberline {2.2.2.5}I\IeC {\textquoteright }ve discovered a bug, pls fix!}{6}{subsubsection.2.2.2.5}
 \contentsline {subsection}{\numberline {2.2.3}Sniffer Tab}{6}{subsection.2.2.3}
@@ -21,9 +21,9 @@
 \contentsline {subsubsection}{\numberline {2.2.3.2}Ignoring packets}{6}{subsubsection.2.2.3.2}
 \contentsline {subsubsection}{\numberline {2.2.3.3}I get errors/no data when I try to sniff!!1!}{6}{subsubsection.2.2.3.3}
 \contentsline {subsubsection}{\numberline {2.2.3.4}The sniffer tab doesn\IeC {\textquoteright }t list the packets I\IeC {\textquoteright }m sending}{6}{subsubsection.2.2.3.4}
-\contentsline {subsection}{\numberline {2.2.4}Sender Tab}{6}{subsection.2.2.4}
-\contentsline {subsubsection}{\numberline {2.2.4.1}What do the sub tabs do?}{6}{subsubsection.2.2.4.1}
-\contentsline {subsubsection}{\numberline {2.2.4.2}Why does \sphinxstyleliteralintitle {Loop} do?!?!}{6}{subsubsection.2.2.4.2}
+\contentsline {subsection}{\numberline {2.2.4}Sender Tab}{7}{subsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.4.1}What do the sub tabs do?}{7}{subsubsection.2.2.4.1}
+\contentsline {subsubsection}{\numberline {2.2.4.2}Why does \sphinxstyleliteralintitle {\sphinxupquote {Loop}} do?!?!}{7}{subsubsection.2.2.4.2}
 \contentsline {subsection}{\numberline {2.2.5}Fuzzer Tab}{7}{subsection.2.2.5}
 \contentsline {subsubsection}{\numberline {2.2.5.1}What does this thing to?}{7}{subsubsection.2.2.5.1}
 \contentsline {subsubsection}{\numberline {2.2.5.2}What are masks?}{7}{subsubsection.2.2.5.2}
@@ -31,62 +31,57 @@
 \contentsline {subsubsection}{\numberline {2.2.5.4}What are the modes?}{7}{subsubsection.2.2.5.4}
 \contentsline {subsection}{\numberline {2.2.6}Comparer Tab}{7}{subsection.2.2.6}
 \contentsline {subsubsection}{\numberline {2.2.6.1}What can I compare?}{7}{subsubsection.2.2.6.1}
-\contentsline {subsection}{\numberline {2.2.7}Searcher Tab}{7}{subsection.2.2.7}
-\contentsline {subsubsection}{\numberline {2.2.7.1}What can I search for?}{7}{subsubsection.2.2.7.1}
-\contentsline {subsubsection}{\numberline {2.2.7.2}It doesn\IeC {\textquoteright }t work!!1!}{7}{subsubsection.2.2.7.2}
-\contentsline {subsubsection}{\numberline {2.2.7.3}It still doesn\IeC {\textquoteright }t work :(}{7}{subsubsection.2.2.7.3}
+\contentsline {subsection}{\numberline {2.2.7}Searcher Tab}{8}{subsection.2.2.7}
+\contentsline {subsubsection}{\numberline {2.2.7.1}What can I search for?}{8}{subsubsection.2.2.7.1}
+\contentsline {subsubsection}{\numberline {2.2.7.2}It doesn\IeC {\textquoteright }t work!!1!}{8}{subsubsection.2.2.7.2}
+\contentsline {subsubsection}{\numberline {2.2.7.3}It still doesn\IeC {\textquoteright }t work :(}{8}{subsubsection.2.2.7.3}
 \contentsline {subsubsection}{\numberline {2.2.7.4}I want to do it manually, how can this tool help me?}{8}{subsubsection.2.2.7.4}
 \contentsline {subsection}{\numberline {2.2.8}Manager Tab}{8}{subsection.2.2.8}
 \contentsline {subsubsection}{\numberline {2.2.8.1}What can I do using the dumps tab?}{8}{subsubsection.2.2.8.1}
 \contentsline {subsubsection}{\numberline {2.2.8.2}I know packet XY has effect ZZ, do I create a dump or a known packet?}{8}{subsubsection.2.2.8.2}
 \contentsline {subsubsection}{\numberline {2.2.8.3}Importing/Exporting projects}{8}{subsubsection.2.2.8.3}
-\contentsline {subsection}{\numberline {2.2.9}Filter Tab}{8}{subsection.2.2.9}
-\contentsline {subsubsection}{\numberline {2.2.9.1}What can I filter?}{8}{subsubsection.2.2.9.1}
-\contentsline {subsubsection}{\numberline {2.2.9.2}How can I try this without a car or CAN device?}{8}{subsubsection.2.2.9.2}
-\contentsline {chapter}{\numberline {3}Contributing}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Guidelines}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}I want to add a new tab, what do I have to do?}{9}{section.3.2}
-\contentsline {chapter}{\numberline {4}src package}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Subpackages}{11}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}src.ui package}{11}{subsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.1.1}Submodules}{11}{subsubsection.4.1.1.1}
-\contentsline {subsubsection}{\numberline {4.1.1.2}CANalyzat0r.ui.mainWindow module}{11}{subsubsection.4.1.1.2}
-\contentsline {subsubsection}{\numberline {4.1.1.3}Module contents}{11}{subsubsection.4.1.1.3}
-\contentsline {section}{\numberline {4.2}Submodules}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}CANalyzat0r.AboutTab module}{11}{section.4.3}
-\contentsline {section}{\numberline {4.4}CANalyzat0r.CANData module}{12}{section.4.4}
-\contentsline {section}{\numberline {4.5}CANalyzat0r.CANalyzat0r module}{14}{section.4.5}
-\contentsline {section}{\numberline {4.6}CANalyzat0r.ComparerTab module}{15}{section.4.6}
-\contentsline {section}{\numberline {4.7}CANalyzat0r.Database module}{16}{section.4.7}
-\contentsline {section}{\numberline {4.8}CANalyzat0r.FilterTab module}{22}{section.4.8}
-\contentsline {section}{\numberline {4.9}CANalyzat0r.FuzzerTab module}{24}{section.4.9}
-\contentsline {section}{\numberline {4.10}CANalyzat0r.Globals module}{26}{section.4.10}
-\contentsline {section}{\numberline {4.11}CANalyzat0r.ItemAdderThread module}{26}{section.4.11}
-\contentsline {section}{\numberline {4.12}CANalyzat0r.KnownPacket module}{27}{section.4.12}
-\contentsline {section}{\numberline {4.13}CANalyzat0r.Logger module}{27}{section.4.13}
-\contentsline {section}{\numberline {4.14}CANalyzat0r.MainTab module}{28}{section.4.14}
-\contentsline {section}{\numberline {4.15}CANalyzat0r.ManagerTab module}{30}{section.4.15}
-\contentsline {section}{\numberline {4.16}CANalyzat0r.Packet module}{32}{section.4.16}
-\contentsline {section}{\numberline {4.17}CANalyzat0r.PacketsDialog module}{33}{section.4.17}
-\contentsline {section}{\numberline {4.18}CANalyzat0r.PacketSet module}{34}{section.4.18}
-\contentsline {section}{\numberline {4.19}CANalyzat0r.PacketTableModel module}{34}{section.4.19}
-\contentsline {section}{\numberline {4.20}CANalyzat0r.Project module}{37}{section.4.20}
-\contentsline {section}{\numberline {4.21}CANalyzat0r.SearcherTab module}{38}{section.4.21}
-\contentsline {section}{\numberline {4.22}CANalyzat0r.SenderTab module}{39}{section.4.22}
-\contentsline {section}{\numberline {4.23}CANalyzat0r.SenderTabElement module}{41}{section.4.23}
-\contentsline {section}{\numberline {4.24}CANalyzat0r.SenderThread module}{42}{section.4.24}
-\contentsline {section}{\numberline {4.25}CANalyzat0r.Settings module}{42}{section.4.25}
-\contentsline {section}{\numberline {4.26}CANalyzat0r.SnifferProcess module}{43}{section.4.26}
-\contentsline {section}{\numberline {4.27}CANalyzat0r.SnifferTab module}{43}{section.4.27}
-\contentsline {section}{\numberline {4.28}CANalyzat0r.SnifferTabElement module}{44}{section.4.28}
-\contentsline {section}{\numberline {4.29}CANalyzat0r.Strings module}{45}{section.4.29}
-\contentsline {section}{\numberline {4.30}CANalyzat0r.Toolbox module}{45}{section.4.30}
-\contentsline {section}{\numberline {4.31}CANalyzat0r.mainWindow module}{48}{section.4.31}
-\contentsline {section}{\numberline {4.32}CANalyzat0r.AbstractTab module}{48}{section.4.32}
-\contentsline {section}{\numberline {4.33}Module contents}{50}{section.4.33}
+\contentsline {subsection}{\numberline {2.2.9}Filter Tab}{9}{subsection.2.2.9}
+\contentsline {subsubsection}{\numberline {2.2.9.1}What can I filter?}{9}{subsubsection.2.2.9.1}
+\contentsline {subsubsection}{\numberline {2.2.9.2}How can I try this without a car or CAN device?}{9}{subsubsection.2.2.9.2}
+\contentsline {chapter}{\numberline {3}Contributing}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Guidelines}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}I want to add a new tab, what do I have to do?}{11}{section.3.2}
+\contentsline {chapter}{\numberline {4}src package}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}Subpackages}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}Submodules}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}CANalyzat0r.AboutTab module}{13}{section.4.3}
+\contentsline {section}{\numberline {4.4}CANalyzat0r.CANData module}{13}{section.4.4}
+\contentsline {section}{\numberline {4.5}CANalyzat0r.CANalyzat0r module}{13}{section.4.5}
+\contentsline {section}{\numberline {4.6}CANalyzat0r.ComparerTab module}{13}{section.4.6}
+\contentsline {section}{\numberline {4.7}CANalyzat0r.Database module}{14}{section.4.7}
+\contentsline {section}{\numberline {4.8}CANalyzat0r.FilterTab module}{20}{section.4.8}
+\contentsline {section}{\numberline {4.9}CANalyzat0r.FuzzerTab module}{23}{section.4.9}
+\contentsline {section}{\numberline {4.10}CANalyzat0r.Globals module}{24}{section.4.10}
+\contentsline {section}{\numberline {4.11}CANalyzat0r.ItemAdderThread module}{25}{section.4.11}
+\contentsline {section}{\numberline {4.12}CANalyzat0r.KnownPacket module}{25}{section.4.12}
+\contentsline {section}{\numberline {4.13}CANalyzat0r.Logger module}{26}{section.4.13}
+\contentsline {section}{\numberline {4.14}CANalyzat0r.MainTab module}{27}{section.4.14}
+\contentsline {section}{\numberline {4.15}CANalyzat0r.ManagerTab module}{29}{section.4.15}
+\contentsline {section}{\numberline {4.16}CANalyzat0r.Packet module}{31}{section.4.16}
+\contentsline {section}{\numberline {4.17}CANalyzat0r.PacketsDialog module}{31}{section.4.17}
+\contentsline {section}{\numberline {4.18}CANalyzat0r.PacketSet module}{32}{section.4.18}
+\contentsline {section}{\numberline {4.19}CANalyzat0r.PacketTableModel module}{33}{section.4.19}
+\contentsline {section}{\numberline {4.20}CANalyzat0r.Project module}{36}{section.4.20}
+\contentsline {section}{\numberline {4.21}CANalyzat0r.SearcherTab module}{36}{section.4.21}
+\contentsline {section}{\numberline {4.22}CANalyzat0r.SenderTab module}{38}{section.4.22}
+\contentsline {section}{\numberline {4.23}CANalyzat0r.SenderTabElement module}{39}{section.4.23}
+\contentsline {section}{\numberline {4.24}CANalyzat0r.SenderThread module}{40}{section.4.24}
+\contentsline {section}{\numberline {4.25}CANalyzat0r.Settings module}{41}{section.4.25}
+\contentsline {section}{\numberline {4.26}CANalyzat0r.SnifferProcess module}{42}{section.4.26}
+\contentsline {section}{\numberline {4.27}CANalyzat0r.SnifferTab module}{42}{section.4.27}
+\contentsline {section}{\numberline {4.28}CANalyzat0r.SnifferTabElement module}{43}{section.4.28}
+\contentsline {section}{\numberline {4.29}CANalyzat0r.Strings module}{44}{section.4.29}
+\contentsline {section}{\numberline {4.30}CANalyzat0r.Toolbox module}{44}{section.4.30}
+\contentsline {section}{\numberline {4.31}CANalyzat0r.mainWindow module}{47}{section.4.31}
+\contentsline {section}{\numberline {4.32}CANalyzat0r.AbstractTab module}{47}{section.4.32}
 \contentsline {chapter}{\numberline {5}Used libraries and files}{51}{chapter.5}
 \contentsline {section}{\numberline {5.1}Libs}{51}{section.5.1}
 \contentsline {section}{\numberline {5.2}Misc}{51}{section.5.2}
 \contentsline {chapter}{\numberline {6}Indices and tables}{53}{chapter.6}
-\contentsline {chapter}{Python Module Index}{55}{section*.410}
-\contentsline {chapter}{Index}{57}{section*.411}
+\contentsline {chapter}{Python Module Index}{55}{section*.379}
+\contentsline {chapter}{Index}{57}{section*.380}

@@ -3,7 +3,7 @@ Used libraries and files
 
 Libs
 ----
-- `pyvit by Eric Evenchick <https://github.com/linklayer/pyvit>`_
+- `pythoh-can <https://github.com/hardbyte/python-can>`_
 - `PySide: Python for Qt <https://wiki.qt.io/PySide>`_
 - `ffmpeg <https://ffmpeg.org/`_
 - `can-utils <https://github.com/linux-can/can-utils>`_

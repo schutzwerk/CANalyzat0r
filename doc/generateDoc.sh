@@ -1,3 +1,6 @@
 #!/bin/bash
 
-make html && make latexpdf
+set -o pipefail
+
+make html
+make latexpdf

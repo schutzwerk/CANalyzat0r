@@ -6,32 +6,30 @@ Subpackages
 
 .. toctree::
 
-    src.ui
-
 Submodules
 ----------
 
 CANalyzat0r\.AboutTab module
 ----------------------------
 
-.. automodule:: src.AboutTab
+.. automodule:: AboutTab
     :members:
     :undoc-members:
     :show-inheritance:
-    
+
+
 CANalyzat0r\.CANData module
----------------------------
+----------------------------
 
-.. automodule:: src.CANData
+.. automodule:: CANData
     :members:
     :undoc-members:
     :show-inheritance:
-
 
 CANalyzat0r\.CANalyzat0r module
 -------------------------------
 
-.. automodule:: src.CANalyzat0r
+.. automodule:: CANalyzat0r
     :members:
     :undoc-members:
     :show-inheritance:
@@ -39,7 +37,7 @@ CANalyzat0r\.CANalyzat0r module
 CANalyzat0r\.ComparerTab module
 -------------------------------
 
-.. automodule:: src.ComparerTab
+.. automodule:: ComparerTab
     :members:
     :undoc-members:
     :show-inheritance:
@@ -52,7 +50,7 @@ The database model is as follows:
 Note: The **bold** columns are ``NOT NULL``
 
 
-.. automodule:: src.Database
+.. automodule:: Database
     :members:
     :undoc-members:
     :show-inheritance:
@@ -61,7 +59,7 @@ Note: The **bold** columns are ``NOT NULL``
 CANalyzat0r\.FilterTab module
 -----------------------------
 
-.. automodule:: src.FilterTab
+.. automodule:: FilterTab
     :members:
     :undoc-members:
     :show-inheritance:
@@ -69,7 +67,7 @@ CANalyzat0r\.FilterTab module
 CANalyzat0r\.FuzzerTab module
 -----------------------------
 
-.. automodule:: src.FuzzerTab
+.. automodule:: FuzzerTab
     :members:
     :undoc-members:
     :show-inheritance:
@@ -77,7 +75,7 @@ CANalyzat0r\.FuzzerTab module
 CANalyzat0r\.Globals module
 ---------------------------
 
-.. automodule:: src.Globals
+.. automodule:: Globals
     :members:
     :undoc-members:
     :show-inheritance:
@@ -86,7 +84,7 @@ CANalyzat0r\.Globals module
 CANalyzat0r\.ItemAdderThread module
 -----------------------------------
 
-.. automodule:: src.ItemAdderThread
+.. automodule:: ItemAdderThread
     :members:
     :undoc-members:
     :show-inheritance:
@@ -95,7 +93,7 @@ CANalyzat0r\.ItemAdderThread module
 CANalyzat0r\.KnownPacket module
 -------------------------------
 
-.. automodule:: src.KnownPacket
+.. automodule:: KnownPacket
     :members:
     :undoc-members:
     :show-inheritance:
@@ -103,7 +101,7 @@ CANalyzat0r\.KnownPacket module
 CANalyzat0r\.Logger module
 --------------------------
 
-.. automodule:: src.Logger
+.. automodule:: Logger
     :members:
     :undoc-members:
     :show-inheritance:
@@ -111,7 +109,7 @@ CANalyzat0r\.Logger module
 CANalyzat0r\.MainTab module
 ---------------------------
 
-.. automodule:: src.MainTab
+.. automodule:: MainTab
     :members:
     :undoc-members:
     :show-inheritance:
@@ -119,7 +117,7 @@ CANalyzat0r\.MainTab module
 CANalyzat0r\.ManagerTab module
 ------------------------------
 
-.. automodule:: src.ManagerTab
+.. automodule:: ManagerTab
     :members:
     :undoc-members:
     :show-inheritance:
@@ -127,7 +125,7 @@ CANalyzat0r\.ManagerTab module
 CANalyzat0r\.Packet module
 --------------------------
 
-.. automodule:: src.Packet
+.. automodule:: Packet
     :members:
     :undoc-members:
     :show-inheritance:
@@ -135,7 +133,7 @@ CANalyzat0r\.Packet module
 CANalyzat0r\.PacketsDialog module
 ---------------------------------
 
-.. automodule:: src.PacketsDialog
+.. automodule:: PacketsDialog
     :members:
     :undoc-members:
     :show-inheritance:
@@ -144,7 +142,7 @@ CANalyzat0r\.PacketsDialog module
 CANalyzat0r\.PacketSet module
 -----------------------------
 
-.. automodule:: src.PacketSet
+.. automodule:: PacketSet
     :members:
     :undoc-members:
     :show-inheritance:
@@ -152,7 +150,7 @@ CANalyzat0r\.PacketSet module
 CANalyzat0r\.PacketTableModel module
 ------------------------------------
 
-.. automodule:: src.PacketTableModel
+.. automodule:: PacketTableModel
     :members:
     :undoc-members:
     :show-inheritance:
@@ -160,7 +158,7 @@ CANalyzat0r\.PacketTableModel module
 CANalyzat0r\.Project module
 ---------------------------
 
-.. automodule:: src.Project
+.. automodule:: Project
     :members:
     :undoc-members:
     :show-inheritance:
@@ -168,7 +166,7 @@ CANalyzat0r\.Project module
 CANalyzat0r\.SearcherTab module
 -------------------------------
 
-.. automodule:: src.SearcherTab
+.. automodule:: SearcherTab
     :members:
     :undoc-members:
     :show-inheritance:
@@ -176,7 +174,7 @@ CANalyzat0r\.SearcherTab module
 CANalyzat0r\.SenderTab module
 -----------------------------
 
-.. automodule:: src.SenderTab
+.. automodule:: SenderTab
     :members:
     :undoc-members:
     :show-inheritance:
@@ -184,7 +182,7 @@ CANalyzat0r\.SenderTab module
 CANalyzat0r\.SenderTabElement module
 ------------------------------------
 
-.. automodule:: src.SenderTabElement
+.. automodule:: SenderTabElement
     :members:
     :undoc-members:
     :show-inheritance:
@@ -192,7 +190,7 @@ CANalyzat0r\.SenderTabElement module
 CANalyzat0r\.SenderThread module
 --------------------------------
 
-.. automodule:: src.SenderThread
+.. automodule:: SenderThread
     :members:
     :undoc-members:
     :show-inheritance:
@@ -200,7 +198,7 @@ CANalyzat0r\.SenderThread module
 CANalyzat0r\.Settings module
 ----------------------------
 
-.. automodule:: src.Settings
+.. automodule:: Settings
     :members:
     :undoc-members:
     :show-inheritance:
@@ -208,7 +206,7 @@ CANalyzat0r\.Settings module
 CANalyzat0r\.SnifferProcess module
 ----------------------------------
 
-.. automodule:: src.SnifferProcess
+.. automodule:: SnifferProcess
     :members:
     :undoc-members:
     :show-inheritance:
@@ -216,7 +214,7 @@ CANalyzat0r\.SnifferProcess module
 CANalyzat0r\.SnifferTab module
 ------------------------------
 
-.. automodule:: src.SnifferTab
+.. automodule:: SnifferTab
     :members:
     :undoc-members:
     :show-inheritance:
@@ -224,7 +222,7 @@ CANalyzat0r\.SnifferTab module
 CANalyzat0r\.SnifferTabElement module
 -------------------------------------
 
-.. automodule:: src.SnifferTabElement
+.. automodule:: SnifferTabElement
     :members:
     :undoc-members:
     :show-inheritance:
@@ -232,7 +230,7 @@ CANalyzat0r\.SnifferTabElement module
 CANalyzat0r\.Strings module
 ----------------------------
 
-.. automodule:: src.Strings
+.. automodule:: Strings
     :members:
     :undoc-members:
     :show-inheritance:
@@ -240,7 +238,7 @@ CANalyzat0r\.Strings module
 CANalyzat0r\.Toolbox module
 ---------------------------
 
-.. automodule:: src.Toolbox
+.. automodule:: Toolbox
     :members:
     :undoc-members:
     :show-inheritance:
@@ -249,7 +247,7 @@ CANalyzat0r\.Toolbox module
 CANalyzat0r\.mainWindow module
 ------------------------------
 
-.. automodule:: src.mainWindow
+.. automodule:: mainWindow
     :members:
     :undoc-members:
     :show-inheritance:
@@ -258,15 +256,7 @@ CANalyzat0r\.mainWindow module
 CANalyzat0r\.AbstractTab module
 -------------------------------
 
-.. automodule:: src.AbstractTab
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: src
+.. automodule:: AbstractTab
     :members:
     :undoc-members:
     :show-inheritance:

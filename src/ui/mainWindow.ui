@@ -113,8 +113,8 @@
        <rect>
         <x>30</x>
         <y>80</y>
-        <width>391</width>
-        <height>211</height>
+        <width>441</width>
+        <height>231</height>
        </rect>
       </property>
       <property name="font">
@@ -134,12 +134,12 @@
         <rect>
          <x>20</x>
          <y>30</y>
-         <width>357</width>
-         <height>163</height>
+         <width>407</width>
+         <height>197</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayoutMainIfaceConfig">
-        <item row="5" column="2" colspan="2">
+        <item row="6" column="2" colspan="2">
          <widget class="QPushButton" name="buttonVCANRemove">
           <property name="text">
            <string>Remove vcan0</string>
@@ -162,21 +162,14 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="0">
+        <item row="6" column="0">
          <widget class="QPushButton" name="buttonReadInterfaces">
           <property name="text">
            <string>Check interfaces</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="labelRate">
-          <property name="text">
-           <string>Bitrate (Bit/s)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
+        <item row="5" column="0">
          <widget class="QPushButton" name="buttonApplyInterface">
           <property name="text">
            <string>Apply</string>
@@ -208,7 +201,7 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="2" colspan="2">
+        <item row="5" column="2" colspan="2">
          <widget class="QPushButton" name="buttonVCANAdd">
           <property name="text">
            <string>Add vcan0</string>
@@ -234,10 +227,56 @@
            <number>1000000</number>
           </property>
           <property name="singleStep">
-           <number>10000</number>
+           <number>100000</number>
           </property>
           <property name="value">
            <number>500000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QCheckBox" name="checkBoxMainUseFD">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>CAN FD</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="labelRate">
+          <property name="text">
+           <string>CAN Bitrate (Bit/s)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="labelFDRate">
+          <property name="text">
+           <string>FD Bitrate (Bit/s)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2" colspan="2">
+         <widget class="QSpinBox" name="spinBoxFDBitrate">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>9000000</number>
+          </property>
+          <property name="singleStep">
+           <number>1000000</number>
+          </property>
+          <property name="value">
+           <number>2000000</number>
           </property>
          </widget>
         </item>
@@ -391,6 +430,25 @@
       </property>
       <property name="scaledContents">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="proLogo">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>90</y>
+        <width>161</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>icon/pro.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -776,23 +834,6 @@
          </property>
         </widget>
        </item>
-       <item row="14" column="2" colspan="2">
-        <widget class="QLabel" name="labelFuzzerInterfaceValue">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="text">
-          <string>None</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="0" colspan="2">
-        <widget class="QLabel" name="labelFuzzerInterfaceDescr">
-         <property name="text">
-          <string>Interface:</string>
-         </property>
-        </widget>
-       </item>
        <item row="13" column="0" colspan="4">
         <widget class="QPushButton" name="buttonFuzzerInterfaceSettings">
          <property name="text">
@@ -814,6 +855,16 @@
          </property>
          <property name="maximum">
           <double>9000.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0" colspan="4">
+        <widget class="QLabel" name="labelFuzzerInterfaceValue">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>None</string>
          </property>
         </widget>
        </item>
@@ -951,9 +1002,9 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>880</x>
+        <x>820</x>
         <y>7</y>
-        <width>226</width>
+        <width>341</width>
         <height>301</height>
        </rect>
       </property>
@@ -997,23 +1048,6 @@
         <widget class="QPushButton" name="buttonSearcherDataClear">
          <property name="text">
           <string>Clear</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QLabel" name="labelSearcherInterfaceValue">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="text">
-          <string>None</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="labelSearcherInterfaceDescr">
-         <property name="text">
-          <string>Interface:</string>
          </property>
         </widget>
        </item>
@@ -1072,6 +1106,16 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QLabel" name="labelSearcherInterfaceValue">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>None</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -1207,14 +1251,7 @@
          </property>
         </spacer>
        </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="labelFilterInterfaceDescr">
-         <property name="text">
-          <string>Interface:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1" colspan="2">
+       <item row="7" column="0" colspan="3">
         <widget class="QLabel" name="labelFilterInterfaceValue">
          <property name="enabled">
           <bool>true</bool>

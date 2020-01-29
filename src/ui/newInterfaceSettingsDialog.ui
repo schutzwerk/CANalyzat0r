@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>216</width>
-    <height>147</height>
+    <width>223</width>
+    <height>190</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>191</width>
-     <height>123</height>
+     <width>203</width>
+     <height>169</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -33,16 +33,16 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="2">
+    <item row="3" column="2">
      <widget class="QSpinBox" name="spinBoxDialogBitrate">
       <property name="minimum">
-       <number>1</number>
+       <number>1000</number>
       </property>
       <property name="maximum">
        <number>1000000</number>
       </property>
       <property name="singleStep">
-       <number>10000</number>
+       <number>100000</number>
       </property>
       <property name="value">
        <number>500000</number>
@@ -56,20 +56,56 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0" colspan="2">
+    <item row="3" column="0" colspan="2">
      <widget class="QLabel" name="labelRateSniffer">
       <property name="text">
-       <string>Bitrate (Bit/s)</string>
+       <string>CAN Bitrate (Bit/s)</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0" colspan="3">
+    <item row="5" column="0" colspan="3">
      <widget class="QDialogButtonBox" name="buttonBox">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="standardButtons">
        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="3">
+     <widget class="QCheckBox" name="checkBoxDialogIsFD">
+      <property name="text">
+       <string>FD</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QSpinBox" name="spinBoxDialogFDBitrate">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+      <property name="minimum">
+       <number>1000</number>
+      </property>
+      <property name="maximum">
+       <number>9000000</number>
+      </property>
+      <property name="singleStep">
+       <number>1000000</number>
+      </property>
+      <property name="value">
+       <number>2000000</number>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <widget class="QLabel" name="labelRateSniffer_2">
+      <property name="text">
+       <string>FD Bitrate (Bit/s)</string>
       </property>
      </widget>
     </item>

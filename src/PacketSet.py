@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 19, 2017
 
@@ -27,7 +26,6 @@ from datetime import datetime
 
 
 class PacketSet():
-
     """
     This class is being used to handle packet set data.
     It's more comfortable to use a object to pass data
@@ -65,9 +63,8 @@ class PacketSet():
 
         """
 
-        return json.dumps(self,
-                          default=lambda o: o.__dict__,
-                          sort_keys=True, indent=4)
+        return json.dumps(
+            self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
     @staticmethod
     def fromJSON(importJSON):

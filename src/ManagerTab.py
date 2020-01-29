@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 22, 2017
 
@@ -40,17 +39,13 @@ from AbstractTab import AbstractTab
 
 
 class ManagerTab(AbstractTab):
-
     """
     This class handles the logic of the manager tab
     """
 
     def __init__(self, tabWidget):
-        AbstractTab.__init__(self,
-                             tabWidget,
-                             Strings.managerTabLoggerName,
-                             [2, 3, 4],
-                             Strings.managerTabPacketTableViewName)
+        AbstractTab.__init__(self, tabWidget, Strings.managerTabLoggerName,
+                             [2, 3, 4], Strings.managerTabPacketTableViewName)
 
         #: Kepps track between the association of
         #: table row <-> database id of the packet
@@ -128,40 +123,38 @@ class ManagerTab(AbstractTab):
         self.buttonManagerExport = self.tabWidget.findChild(
             QtGui.QPushButton, "buttonManagerExport")
 
-        assert all(GUIElem is not None for GUIElem in [self.lineEditProjectName,
-                                                       self.lineEditProjectDescription,
-                                                       self.buttonProjectCreate,
-                                                       self.comboBoxProjectDelete,
-                                                       self.buttonProjectDelete,
-                                                       self.comboBoxProjectEdit,
-                                                       self.lineEditProjectEditName,
-                                                       self.lineEditProjectEditDescription,
-                                                       self.buttonProjectEdit,
-
-                                                       self.comboBoxManagerDumps,
-                                                       self.buttonManagerDeleteDump,
-                                                       self.buttonManagerDumpsAddPacket,
-                                                       self.buttonManagerUpdateDump,
-                                                       self.buttonManagerCreateDump,
-                                                       self.buttonManagerDumpsSaveToFile,
-                                                       self.buttonManagerClearDump,
-
-                                                       self.lineEditKnownPacketID,
-                                                       self.lineEditKnownPacketData,
-                                                       self.lineEditKnownPacketDescription,
-                                                       self.buttonAddKnownPacket,
-                                                       self.comboBoxDeleteKnownPackets,
-                                                       self.buttonKnownPacketRemove,
-                                                       self.comboBoxEditKnownPackets,
-                                                       self.lineEditKnownPacketEditID,
-                                                       self.lineEditKnownPacketEditData,
-                                                       self.lineEditKnownPacketEditDescription,
-                                                       self.buttonManagerEditKnownPacket,
-
-                                                       self.buttonManagerImport,
-                                                       self.comboBoxManagerExportProject,
-                                                       self.buttonManagerExport,
-                                                       ]), "GUI Elements not found"
+        assert all(GUIElem is not None for GUIElem in [
+            self.lineEditProjectName,
+            self.lineEditProjectDescription,
+            self.buttonProjectCreate,
+            self.comboBoxProjectDelete,
+            self.buttonProjectDelete,
+            self.comboBoxProjectEdit,
+            self.lineEditProjectEditName,
+            self.lineEditProjectEditDescription,
+            self.buttonProjectEdit,
+            self.comboBoxManagerDumps,
+            self.buttonManagerDeleteDump,
+            self.buttonManagerDumpsAddPacket,
+            self.buttonManagerUpdateDump,
+            self.buttonManagerCreateDump,
+            self.buttonManagerDumpsSaveToFile,
+            self.buttonManagerClearDump,
+            self.lineEditKnownPacketID,
+            self.lineEditKnownPacketData,
+            self.lineEditKnownPacketDescription,
+            self.buttonAddKnownPacket,
+            self.comboBoxDeleteKnownPackets,
+            self.buttonKnownPacketRemove,
+            self.comboBoxEditKnownPackets,
+            self.lineEditKnownPacketEditID,
+            self.lineEditKnownPacketEditData,
+            self.lineEditKnownPacketEditDescription,
+            self.buttonManagerEditKnownPacket,
+            self.buttonManagerImport,
+            self.comboBoxManagerExportProject,
+            self.buttonManagerExport,
+        ]), "GUI Elements not found"
 
         # Add click handlers
         self.buttonProjectCreate.clicked.connect(self.createProject)
@@ -199,10 +192,10 @@ class ManagerTab(AbstractTab):
         """
 
         if Globals.project is None:
-            QtGui.QMessageBox.information(Globals.ui.tabWidgetMain,
-                                          Strings.noProjectSelectedMessageBoxTitle,
-                                          Strings.noProjectSelectedMessageBoxText,
-                                          QtGui.QMessageBox.Ok)
+            QtGui.QMessageBox.information(
+                Globals.ui.tabWidgetMain,
+                Strings.noProjectSelectedMessageBoxTitle,
+                Strings.noProjectSelectedMessageBoxText, QtGui.QMessageBox.Ok)
             return
 
         if CANID is None:
@@ -218,8 +211,8 @@ class ManagerTab(AbstractTab):
             self.logger.info(Strings.managerTabKnownPacketNotAdded)
             return
 
-        knownPacket = KnownPacket(
-            None, Globals.project.id, CANID, data, description)
+        knownPacket = KnownPacket(None, Globals.project.id, CANID, data,
+                                  description)
         Globals.db.saveKnownPacket(knownPacket)
         self.populateKnownPackets()
         # Update the dictionary of known values
@@ -236,13 +229,13 @@ class ManagerTab(AbstractTab):
         """
 
         selectedKnownPacket = Globals.ui.comboBoxDeleteKnownPackets.itemData(
-            Globals.ui.comboBoxDeleteKnownPackets.currentIndex()
-        )
+            Globals.ui.comboBoxDeleteKnownPackets.currentIndex())
 
         if selectedKnownPacket == None:
             return
 
-        if not Toolbox.Toolbox.yesNoBox(Strings.confirmDeleteMessageBoxTitle, Strings.confirmDeleteMessageBoxText):
+        if not Toolbox.Toolbox.yesNoBox(Strings.confirmDeleteMessageBoxTitle,
+                                        Strings.confirmDeleteMessageBoxText):
             return
 
         Globals.db.deleteKnownPacket(selectedKnownPacket)
@@ -275,8 +268,7 @@ class ManagerTab(AbstractTab):
 
         # Else: Use the project attributes to fill the GUI elements text
         selectedProject = self.comboBoxProjectEdit.itemData(
-            self.comboBoxProjectEdit.currentIndex()
-        )
+            self.comboBoxProjectEdit.currentIndex())
 
         if selectedProject is not None:
             self.lineEditProjectEditName.setText(selectedProject.name)
@@ -300,8 +292,7 @@ class ManagerTab(AbstractTab):
             return
 
         selectedKnownPacket = self.comboBoxEditKnownPackets.itemData(
-            self.comboBoxEditKnownPackets.currentIndex()
-        )
+            self.comboBoxEditKnownPackets.currentIndex())
 
         if selectedKnownPacket is not None:
             self.lineEditKnownPacketEditID.setText(selectedKnownPacket.CANID)
@@ -360,11 +351,14 @@ class ManagerTab(AbstractTab):
 
         # Save the index
         if keepCurrentIndex:
-            currentKnownPacketDeleteIndex = self.comboBoxDeleteKnownPackets.currentIndex()
-            currentKnownPacketEditIndex = self.comboBoxEditKnownPackets.currentIndex()
+            currentKnownPacketDeleteIndex = self.comboBoxDeleteKnownPackets.currentIndex(
+            )
+            currentKnownPacketEditIndex = self.comboBoxEditKnownPackets.currentIndex(
+            )
 
-        knownPacketComboBoxes = [self.comboBoxDeleteKnownPackets,
-                                 self.comboBoxEditKnownPackets]
+        knownPacketComboBoxes = [
+            self.comboBoxDeleteKnownPackets, self.comboBoxEditKnownPackets
+        ]
 
         # Clear them all
         for knownPacketComboBox in knownPacketComboBoxes:
@@ -412,10 +406,11 @@ class ManagerTab(AbstractTab):
             return
 
         # Get the name from the tuple returned by the dialog
-        packetSetName = QtGui.QInputDialog.getText(self.packetTableView,
-                                                   Strings.packetSetSaveMessageBoxTitle,
-                                                   Strings.packetSetSaveMessageBoxText,
-                                                   )[0]
+        packetSetName = QtGui.QInputDialog.getText(
+            self.packetTableView,
+            Strings.packetSetSaveMessageBoxTitle,
+            Strings.packetSetSaveMessageBoxText,
+        )[0]
 
         if len(packetSetName) == 0:
             self.logger.error(Strings.packetSetInvalidName)
@@ -434,18 +429,22 @@ class ManagerTab(AbstractTab):
 
                 if len(rawPackets) == 1:
                     # The user added a PacketSet with size 1 -- maybe he wants to add it as a known packet too
-                    if Toolbox.Toolbox.yesNoBox(Strings.managerTabAddAsKnownPacketMessageBoxTitle,
-                                                Strings.managerTabAddAsKnownPacketMessageBoxText):
+                    if Toolbox.Toolbox.yesNoBox(
+                            Strings.managerTabAddAsKnownPacketMessageBoxTitle,
+                            Strings.managerTabAddAsKnownPacketMessageBoxText):
 
                         rawPacket = rawPackets[0]
                         CANID = rawPacket[0]
                         data = rawPacket[1]
 
                         # Get the description from the tuple returned by the dialog
-                        description = QtGui.QInputDialog.getText(self.packetTableView,
-                                                                 Strings.managerTabAskKnownPacketDescriptionMessageBoxTitle,
-                                                                 Strings.managerTabAskKnownPacketDescriptionMessageBoxText,
-                                                                 )[0]
+                        description = QtGui.QInputDialog.getText(
+                            self.packetTableView,
+                            Strings.
+                            managerTabAskKnownPacketDescriptionMessageBoxTitle,
+                            Strings.
+                            managerTabAskKnownPacketDescriptionMessageBoxText,
+                        )[0]
 
                         if len(description) == 0:
                             self.logger.error(
@@ -453,8 +452,8 @@ class ManagerTab(AbstractTab):
                             return
 
                         # Create the object and save it
-                        knownPacket = KnownPacket(
-                            None, Globals.project.id, CANID, data, description)
+                        knownPacket = KnownPacket(None, Globals.project.id,
+                                                  CANID, data, description)
                         Globals.db.saveKnownPacket(knownPacket)
                         self.populateKnownPackets()
         finally:
@@ -520,8 +519,8 @@ class ManagerTab(AbstractTab):
 
         assert len(packetDescriptions) == len(
             rawPacketsFiltered), "Lengths must be equal"
-        assert(len(rawPacketsFromDB) == len(
-            rawPacketsFiltered)), "Lengths must be equal"
+        assert (len(rawPacketsFromDB) == len(rawPacketsFiltered)
+                ), "Lengths must be equal"
 
         for i in range(len(rawPacketsFromDB)):
 
@@ -573,11 +572,13 @@ class ManagerTab(AbstractTab):
             except IndexError:
                 packetID = -1
 
-            currentColValueIDList.append((Database.DatabaseStatements.packetTableCANIDColName,
-                                          rawPacket[self.IDColIndex]))
+            currentColValueIDList.append(
+                (Database.DatabaseStatements.packetTableCANIDColName,
+                 rawPacket[self.IDColIndex]))
 
-            currentColValueIDList.append((Database.DatabaseStatements.packetTableDataColName,
-                                          rawPacket[self.dataColIndex]))
+            currentColValueIDList.append(
+                (Database.DatabaseStatements.packetTableDataColName,
+                 rawPacket[self.dataColIndex]))
 
             currentColValueIDList.append(packetID)
 
@@ -626,7 +627,8 @@ class ManagerTab(AbstractTab):
                 del self.dumpsRowIDs[row]
             except IndexError:
                 self.logger.debug(
-                    Strings.managerTabDebuggingDumpsRowIDsIndexError + str(row))
+                    Strings.managerTabDebuggingDumpsRowIDsIndexError +
+                    str(row))
 
     def populateProjects(self, keepCurrentIndex=False):
         """
@@ -637,12 +639,14 @@ class ManagerTab(AbstractTab):
 
         # Save the index
         if keepCurrentIndex:
-            currentProjectDeleteIndex = self.comboBoxProjectDelete.currentIndex()
+            currentProjectDeleteIndex = self.comboBoxProjectDelete.currentIndex(
+            )
             currentProjectEditIndex = self.comboBoxProjectEdit.currentIndex()
 
-        projectComboBoxes = [self.comboBoxProjectDelete,
-                             self.comboBoxProjectEdit,
-                             self.comboBoxManagerExportProject]
+        projectComboBoxes = [
+            self.comboBoxProjectDelete, self.comboBoxProjectEdit,
+            self.comboBoxManagerExportProject
+        ]
 
         # Clear them all
         for projectComboBox in projectComboBoxes:
@@ -686,9 +690,9 @@ class ManagerTab(AbstractTab):
                 knownPacket.CANID, knownPacket.data)
 
             if strIdx in Globals.knownPackets:
-                self.logger.warn(Strings.managerTabWarningKnownPacketOverwritten +
-                                 knownPacket.CANID + " " +
-                                 knownPacket.data)
+                self.logger.warn(
+                    Strings.managerTabWarningKnownPacketOverwritten +
+                    knownPacket.CANID + " " + knownPacket.data)
 
             Globals.knownPackets[strIdx] = knownPacket.description
 
@@ -735,8 +739,7 @@ class ManagerTab(AbstractTab):
         if len(self.lineEditProjectName.text()) == 0:
             return
 
-        projectToSave = Project(None,
-                                self.lineEditProjectName.text(),
+        projectToSave = Project(None, self.lineEditProjectName.text(),
                                 self.lineEditProjectDescription.text())
 
         Globals.db.saveProject(projectToSave)
@@ -755,8 +758,7 @@ class ManagerTab(AbstractTab):
         """
 
         selectedProject = self.comboBoxProjectEdit.itemData(
-            self.comboBoxProjectEdit.currentIndex()
-        )
+            self.comboBoxProjectEdit.currentIndex())
         if selectedProject is None:
             return
 
@@ -785,8 +787,7 @@ class ManagerTab(AbstractTab):
         """
 
         selectedKnownPacket = self.comboBoxEditKnownPackets.itemData(
-            self.comboBoxEditKnownPackets.currentIndex()
-        )
+            self.comboBoxEditKnownPackets.currentIndex())
         if selectedKnownPacket is None:
             return
 
@@ -802,8 +803,7 @@ class ManagerTab(AbstractTab):
             return
 
         updatedKnownPacket = KnownPacket(selectedKnownPacket.id,
-                                         Globals.project.id,
-                                         newCANID, newData,
+                                         Globals.project.id, newCANID, newData,
                                          newDescription)
 
         Globals.db.updateKnownPacket(updatedKnownPacket)
@@ -830,8 +830,7 @@ class ManagerTab(AbstractTab):
         """
 
         selectedProject = self.comboBoxProjectDelete.itemData(
-            self.comboBoxProjectDelete.currentIndex()
-        )
+            self.comboBoxProjectDelete.currentIndex())
         if selectedProject is None:
             return
 
@@ -876,27 +875,27 @@ class ManagerTab(AbstractTab):
                     exportFile.write(Strings.projectExportEndSectionMarker)
 
                     # Write the PacketSet data
-                    exportFile.write(
-                        Strings.projectExportPacketSetHeader + "\n")
+                    exportFile.write(Strings.projectExportPacketSetHeader +
+                                     "\n")
                     for packetSet in packetSets:
                         QtCore.QCoreApplication.processEvents()
                         jsonPacketSet = packetSet.toJSON()
-                        exportFile.write(
-                            jsonPacketSet + Strings.projectExportEndElementMarker)
+                        exportFile.write(jsonPacketSet +
+                                         Strings.projectExportEndElementMarker)
                     exportFile.write(Strings.projectExportEndSectionMarker)
 
-                   # Write the Packet data
+                    # Write the Packet data
                     exportFile.write(Strings.projectExportPacketHeader + "\n")
                     for packet in packets:
                         QtCore.QCoreApplication.processEvents()
                         jsonPacket = packet.toJSON()
-                        exportFile.write(
-                            jsonPacket + Strings.projectExportEndElementMarker)
+                        exportFile.write(jsonPacket +
+                                         Strings.projectExportEndElementMarker)
                     exportFile.write(Strings.projectExportEndSectionMarker)
 
-                   # Write the KnownPacket data
-                    exportFile.write(
-                        Strings.projectExportKnownPacketHeader + "\n")
+                    # Write the KnownPacket data
+                    exportFile.write(Strings.projectExportKnownPacketHeader +
+                                     "\n")
                     for knownPacket in knownPackets:
                         QtCore.QCoreApplication.processEvents()
                         jsonKnownPacket = knownPacket.toJSON()
@@ -1003,10 +1002,13 @@ class ManagerTab(AbstractTab):
                     # Theres already a project with the same name --> get new name
                     except IntegrityError:
                         # Get the name from the tuple returned by the dialog
-                        newProjectName = QtGui.QInputDialog.getText(self.packetTableView,
-                                                                    Strings.managerTabDBIntegrityNewProjectNameMessageBoxTitle,
-                                                                    Strings.managerTabDBIntegrityNewProjectNameMessageBoxText,
-                                                                    )[0]
+                        newProjectName = QtGui.QInputDialog.getText(
+                            self.packetTableView,
+                            Strings.
+                            managerTabDBIntegrityNewProjectNameMessageBoxTitle,
+                            Strings.
+                            managerTabDBIntegrityNewProjectNameMessageBoxText,
+                        )[0]
 
                         if len(newProjectName) == 0:
                             self.logger.error(
@@ -1022,9 +1024,13 @@ class ManagerTab(AbstractTab):
                 # Import the packet sets along with the packets
                 for importedPacketSet in importedPacketSets:
                     packetsOfPacketSet = [
-                        packet for packet in importedPackets if packet.packetSetID == importedPacketSet.id]
+                        packet for packet in importedPackets
+                        if packet.packetSetID == importedPacketSet.id
+                    ]
                     Globals.db.savePacketSetWithData(
-                        importedPacketSet.name, packets=packetsOfPacketSet, project=importedProject)
+                        importedPacketSet.name,
+                        packets=packetsOfPacketSet,
+                        project=importedProject)
 
                 # Import known packets
                 for importedKnownPacket in importedKnownPackets:
@@ -1060,10 +1066,9 @@ class ManagerTab(AbstractTab):
             return
 
         for packet in packetsToSave:
-            socketCANPacket = SocketCANPacket(packet[3],
-                                              Globals.CANData.ifaceName if Globals.CANData is not None else "can0",
-                                              packet[0],
-                                              packet[1])
+            socketCANPacket = SocketCANPacket(
+                packet[3], Globals.CANData.ifaceName if
+                Globals.CANData is not None else "can0", packet[0], packet[1])
 
             socketCANPackets.append(socketCANPacket)
             self.logger.debug(Strings.snifferTabElementSocketCANConvertOK)

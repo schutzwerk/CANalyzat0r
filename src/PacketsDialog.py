@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on Jun 23, 2017
 
@@ -31,13 +30,15 @@ from AbstractTab import AbstractTab
 
 
 class PacketsDialog(AbstractTab):
-
     """
     This class handles the logic of the "manage packets" dialog. For example, this can be found in the
     :class:`~src.SnifferTabElement.SnifferTabElement`.
     """
 
-    def __init__(self, packets=None, rawPacketList=None, returnPacketsAsRawList=True):
+    def __init__(self,
+                 packets=None,
+                 rawPacketList=None,
+                 returnPacketsAsRawList=True):
         """
         This basically just sets data and reads the widget from the ``.ui`` file.
 
@@ -58,13 +59,13 @@ class PacketsDialog(AbstractTab):
         self.widget = Toolbox.Toolbox.widgetFromUIFile(
             Strings.packetsDialogUIPath)
 
-        AbstractTab.__init__(self,
-                             self.widget,
-                             Strings.packetsDialogLoggerName,
-                             [2, 3],
-                             Strings.packetsDialogTableViewName,
-                             labelInterfaceValueName=None,
-                             hideTimestampCol=False)
+        AbstractTab.__init__(
+            self,
+            self.widget,
+            Strings.packetsDialogLoggerName, [2, 3],
+            Strings.packetsDialogTableViewName,
+            labelInterfaceValueName=None,
+            hideTimestampCol=False)
 
         self.returnPacketsAsRawList = returnPacketsAsRawList
 
@@ -78,11 +79,12 @@ class PacketsDialog(AbstractTab):
         self.buttonManagePacketsDialogUniqueIDs = self.tabWidget.findChild(
             QtGui.QPushButton, "buttonManagePacketsDialogUniqueIDs")
 
-        assert all(GUIElem is not None for GUIElem in [self.buttonManagePacketsDialogAdd,
-                                                       self.buttonManagePacketsDialogClear,
-                                                       self.buttonManagePacketsDialogUniquePackets,
-                                                       self.buttonManagePacketsDialogUniqueIDs,
-                                                       ]), "GUI Elements not found"
+        assert all(GUIElem is not None for GUIElem in [
+            self.buttonManagePacketsDialogAdd,
+            self.buttonManagePacketsDialogClear,
+            self.buttonManagePacketsDialogUniquePackets,
+            self.buttonManagePacketsDialogUniqueIDs,
+        ]), "GUI Elements not found"
 
         self.buttonManagePacketsDialogAdd.clicked.connect(self.manualAddPacket)
         self.buttonManagePacketsDialogClear.clicked.connect(self.clear)
@@ -190,8 +192,8 @@ class PacketsDialog(AbstractTab):
             # Use asynchronous processing
             pool = Pool(processes=1)
             # We need to pass a tuple of args
-            async_result = pool.apply_async(
-                PacketsDialog.getUniqueRawPackets, (rawData,))
+            async_result = pool.apply_async(PacketsDialog.getUniqueRawPackets,
+                                            (rawData, ))
 
             refreshCounter = 0
             while not async_result.ready():

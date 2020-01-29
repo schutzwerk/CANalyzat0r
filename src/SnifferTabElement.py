@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on Jun 16, 2017
 
@@ -25,7 +24,6 @@ Created on Jun 16, 2017
 from multiprocessing import Pipe, Value
 from PySide import QtCore
 from PySide.QtGui import QMessageBox
-
 
 import Strings
 import Globals
@@ -40,7 +38,6 @@ from AbstractTab import AbstractTab
 
 
 class SnifferTabElement(AbstractTab):
-
     """
     This class handles the logic of the sniffer sub tab.
     The main tab is being handled in :class:`~src.SnifferTab.SnifferTab`.
@@ -60,16 +57,17 @@ class SnifferTabElement(AbstractTab):
 
         self.ifaceName = ifaceName if ifaceName is not None else tabName
 
-        AbstractTab.__init__(self,
-                             tabWidget,
-                             Strings.snifferTabElementLoggerName +
-                             " (" + tabName + ")",
-                             [0, 1, 2, 3, 4],
-                             Strings.snifferTabElementPacketTableViewName,
-                             labelInterfaceValueName=Strings.snifferTabElementLabelInterfaceValueName,
-                             CANData=CANData.CANDataInstances[self.ifaceName],
-                             hideTimestampCol=False,
-                             allowTablePaste=False)
+        AbstractTab.__init__(
+            self,
+            tabWidget,
+            Strings.snifferTabElementLoggerName + " (" + tabName + ")",
+            [0, 1, 2, 3, 4],
+            Strings.snifferTabElementPacketTableViewName,
+            labelInterfaceValueName=Strings.
+            snifferTabElementLabelInterfaceValueName,
+            CANData=CANData.CANDataInstances[self.ifaceName],
+            hideTimestampCol=False,
+            allowTablePaste=False)
 
         self.tabName = tabName
 
@@ -98,10 +96,11 @@ class SnifferTabElement(AbstractTab):
         """
 
         if self.CANData is None:
-            QMessageBox.critical(Globals.ui.tabWidgetMain,
-                                 Strings.snifferTabElementInterfaceMissingMessageBoxTitle,
-                                 Strings.snifferTabElementInterfaceMissingMessageBoxText,
-                                 QMessageBox.Ok)
+            QMessageBox.critical(
+                Globals.ui.tabWidgetMain,
+                Strings.snifferTabElementInterfaceMissingMessageBoxTitle,
+                Strings.snifferTabElementInterfaceMissingMessageBoxText,
+                QMessageBox.Ok)
             return
 
         # Stop the thread and process
@@ -119,7 +118,8 @@ class SnifferTabElement(AbstractTab):
                         if listIdx % 1500 == 0:
                             QtCore.QCoreApplication.processEvents()
                         self.addPacket(
-                            self.valueListsToProcess[listIdx], ignorePacketRate=True)
+                            self.valueListsToProcess[listIdx],
+                            ignorePacketRate=True)
                 finally:
                     progressDialog.close()
                     self.packetTableView.setEnabled(True)
@@ -134,19 +134,21 @@ class SnifferTabElement(AbstractTab):
             snifferReceivePipe, snifferSendPipe = Pipe()
 
             # First start the ItemAdderThread...
-            self.itemAdderThread = ItemAdderThread.ItemAdderThread(snifferReceivePipe,
-                                                                   self.packetTableModel,
-                                                                   self.rawData,
-                                                                   useTimestamp=True)
+            self.itemAdderThread = ItemAdderThread.ItemAdderThread(
+                snifferReceivePipe,
+                self.packetTableModel,
+                self.rawData,
+                useTimestamp=True)
 
             self.itemAdderThread.appendRow.connect(self.addPacket)
             self.itemAdderThread.start()
 
             # ... then start the SnifferProcess
-            self.snifferProcess = SnifferProcess.SnifferProcess(snifferSendPipe,
-                                                                self.sharedSnifferEnabledFlag,
-                                                                self.tabName,
-                                                                CANData=self.CANData)
+            self.snifferProcess = SnifferProcess.SnifferProcess(
+                snifferSendPipe,
+                self.sharedSnifferEnabledFlag,
+                self.tabName,
+                CANData=self.CANData)
             self.snifferProcess.start()
 
             SnifferTabElement.amountThreadsRunning += 1
@@ -177,7 +179,13 @@ class SnifferTabElement(AbstractTab):
 
             MainTab.MainTab.addApplicationStatus(status)
 
-    def addPacket(self, valueList, addAtFront=True, append=True, emit=True, addToRawDataOnly=False, ignorePacketRate=False):
+    def addPacket(self,
+                  valueList,
+                  addAtFront=True,
+                  append=True,
+                  emit=True,
+                  addToRawDataOnly=False,
+                  ignorePacketRate=False):
         """
         Override the parents method to add packets at front and to update the counter label.
         If too much data is received, the data will be added after sniffing to prevent freezes.
@@ -210,7 +218,9 @@ class SnifferTabElement(AbstractTab):
 
         else:
             # Check periodically
-            if len(self.rawData) % 500 == 0 and len(self.rawData) > 0 and not ignorePacketRate and not self.tooMuchData:
+            if len(self.rawData) % 500 == 0 and len(
+                    self.rawData
+            ) > 0 and not ignorePacketRate and not self.tooMuchData:
                 packetCount = self.getPacketCount()
                 # if we add one packet to the GUI, X packets are received on the socket
                 # --> this is too much data
@@ -223,8 +233,12 @@ class SnifferTabElement(AbstractTab):
                 # Update the value for the next call
                 self.packetCount = packetCount
 
-            AbstractTab.addPacket(self, valueList=valueList,
-                                  addAtFront=addAtFront, append=append, emit=emit)
+            AbstractTab.addPacket(
+                self,
+                valueList=valueList,
+                addAtFront=addAtFront,
+                append=append,
+                emit=emit)
             # Also update the label
             self.tabWidget.labelSnifferCountValue.setText(
                 str(len(self.rawData)))
@@ -261,11 +275,11 @@ class SnifferTabElement(AbstractTab):
         """
 
         if self.active:
-            Globals.ui.tabWidgetSnifferTabs.tabBar().setTabTextColor(self.tabIndex(),
-                                                                     QtCore.Qt.red)
+            Globals.ui.tabWidgetSnifferTabs.tabBar().setTabTextColor(
+                self.tabIndex(), QtCore.Qt.red)
         else:
-            Globals.ui.tabWidgetSnifferTabs.tabBar().setTabTextColor(self.tabIndex(),
-                                                                     QtCore.Qt.black)
+            Globals.ui.tabWidgetSnifferTabs.tabBar().setTabTextColor(
+                self.tabIndex(), QtCore.Qt.black)
 
         SnifferTab.SnifferTab.toggleActive()
 
@@ -342,5 +356,6 @@ class SnifferTabElement(AbstractTab):
         :return: Received packet count of the current interface as itneger
         """
 
-        with open("/sys/class/net/" + self.ifaceName + "/statistics/rx_packets") as statisticsFile:
+        with open("/sys/class/net/" + self.ifaceName +
+                  "/statistics/rx_packets") as statisticsFile:
             return int(statisticsFile.readlines()[0].strip())

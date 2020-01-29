@@ -292,11 +292,12 @@ class Toolbox():
 
         if initialSelectedCANData.isFD:
             Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.setChecked(True)
-            Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(True)
+            Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(
+                True)
         else:
             Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.setChecked(False)
-            Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(False)
-
+            Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(
+                False)
 
         Toolbox.interfaceDialogWidget.comboBoxDialogInterface.currentIndexChanged.connect(
             Toolbox.interfaceSettingsDialogComboBoxChanged)

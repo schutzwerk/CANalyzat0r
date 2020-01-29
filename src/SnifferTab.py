@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 18, 2017
 
@@ -31,7 +30,6 @@ import Strings
 
 
 class SnifferTab():
-
     """
     This class handles the logic of the sniffer tab.
     Subtabs are being handled in :class:`~src.SnifferTabElement.SnifferTabElement`.
@@ -66,9 +64,8 @@ class SnifferTab():
         placeholderWidget = Toolbox.Toolbox.widgetFromUIFile(
             Strings.snifferPlaceHolderTemplatePath)
 
-        Globals.ui.tabWidgetSnifferTabs.insertTab(0,
-                                                  placeholderWidget,
-                                                  Strings.snifferTabPlaceHolderTabText)
+        Globals.ui.tabWidgetSnifferTabs.insertTab(
+            0, placeholderWidget, Strings.snifferTabPlaceHolderTabText)
 
     @staticmethod
     def addSniffer(snifferTabName):
@@ -95,13 +92,12 @@ class SnifferTab():
 
         tabIndex = Globals.ui.tabWidgetSnifferTabs.count()
         # Insert the new tab
-        Globals.ui.tabWidgetSnifferTabs.insertTab(tabIndex,
-                                                  newSnifferTabWidget,
-                                                  snifferTabName)
+        Globals.ui.tabWidgetSnifferTabs.insertTab(
+            tabIndex, newSnifferTabWidget, snifferTabName)
 
         # Create a SnifferTabElement object which uses the created Widget
-        snifferTabElement = SnifferTabElement.SnifferTabElement(newSnifferTabWidget,
-                                                                snifferTabName)
+        snifferTabElement = SnifferTabElement.SnifferTabElement(
+            newSnifferTabWidget, snifferTabName)
 
         # Add it to the dict
         SnifferTab.snifferTabs[snifferTabName] = snifferTabElement
@@ -145,7 +141,7 @@ class SnifferTab():
         del SnifferTab.snifferTabs[snifferTabElement.tabName]
         # Set the focus to the left element
         Globals.ui.tabWidgetSnifferTabs.tabBar().setCurrentIndex(
-            Globals.ui.tabWidgetSnifferTabs.count()-1)
+            Globals.ui.tabWidgetSnifferTabs.count() - 1)
 
         # Add a placeholder if no interfaces are remaining
         if Globals.ui.tabWidgetSnifferTabs.count() == 0:
@@ -166,8 +162,8 @@ class SnifferTab():
         """
 
         if SnifferTabElement.SnifferTabElement.amountThreadsRunning > 0:
-            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(Globals.ui.tabWidgetMain.currentIndex(),
-                                                              Qt.red)
+            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(
+                Globals.ui.tabWidgetMain.currentIndex(), Qt.red)
         else:
-            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(Globals.ui.tabWidgetMain.currentIndex(),
-                                                              Qt.black)
+            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(
+                Globals.ui.tabWidgetMain.currentIndex(), Qt.black)

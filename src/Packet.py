@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 19, 2017
 
@@ -28,7 +27,6 @@ import Toolbox
 
 
 class Packet():
-
     """
     This class is being used to handle packet data.
     It's more comfortable to use a object to pass data
@@ -37,7 +35,14 @@ class Packet():
     if you have to deal with much data.
     """
 
-    def __init__(self, packetSetID, CANID, data, timestamp="", iface="", length=None, id=None):
+    def __init__(self,
+                 packetSetID,
+                 CANID,
+                 data,
+                 timestamp="",
+                 iface="",
+                 length=None,
+                 id=None):
         """
         The parameters ``CANID`` and ``data`` must be valid hex strings.
         If length is not specified, it will be calculated automatically.
@@ -62,7 +67,7 @@ class Packet():
         # Use the parameter or calculate it
         if length is None:
             # 1 byte = 8 bit = 2x 4 bit; 2^4 = 16 --> 2 chars
-            self.length = int(len(data)/2)
+            self.length = int(len(data) / 2)
         else:
             self.length = self.lengthStringToInt(length)
 
@@ -91,9 +96,8 @@ class Packet():
 
         """
 
-        return json.dumps(self,
-                          default=lambda o: o.__dict__,
-                          sort_keys=True, indent=4)
+        return json.dumps(
+            self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
     @staticmethod
     def fromJSON(importJSON):

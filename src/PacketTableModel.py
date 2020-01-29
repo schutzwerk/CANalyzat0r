@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 31, 2017
 
@@ -34,7 +33,6 @@ from PySide import QtCore
 
 
 class PacketTableModel(QtCore.QAbstractTableModel, QtCore.QObject):
-
     """
     A custom TableModel is needed to allow efficient handling of **many** values.
     """
@@ -117,7 +115,11 @@ class PacketTableModel(QtCore.QAbstractTableModel, QtCore.QObject):
         self.dataList = []
         self.emit(QtCore.SIGNAL("layoutChanged()"))
 
-    def appendRow(self, dataList=[], addAtFront=False, emit=True, resolveDescription=False):
+    def appendRow(self,
+                  dataList=[],
+                  addAtFront=False,
+                  emit=True,
+                  resolveDescription=False):
         """
         Inserts the ``dataList`` list into ``self.dataList`` to add a whole row with values at once.
 
@@ -147,13 +149,14 @@ class PacketTableModel(QtCore.QAbstractTableModel, QtCore.QObject):
         assert len(dataList) == self.columnCount(), "Invalid data list length"
 
         if resolveDescription:
-            description = Toolbox.Toolbox.getKnownPacketDescription(dataList[0],
-                                                                    dataList[1])
+            description = Toolbox.Toolbox.getKnownPacketDescription(
+                dataList[0], dataList[1])
             dataList[self.descriptionColIndex] = description
 
         # Set the length
-        dataList[self.lengthColIndex] = str(Packet.Packet.getDisplayDataLength(dataList[self.IDColIndex],
-                                                                               dataList[self.dataColIndex]))
+        dataList[self.lengthColIndex] = str(
+            Packet.Packet.getDisplayDataLength(dataList[self.IDColIndex],
+                                               dataList[self.dataColIndex]))
 
         if addAtFront:
             self.dataList.insert(0, dataList[:])
@@ -189,8 +192,10 @@ class PacketTableModel(QtCore.QAbstractTableModel, QtCore.QObject):
                  to keep indexes. Else None will be returned
         """
 
-        self.emit(QtCore.SIGNAL("beginInsertRows()"), QtCore.QModelIndex(),
-                  self.rowCount(), self.rowCount() + len(rowList))
+        self.emit(
+            QtCore.SIGNAL("beginInsertRows()"), QtCore.QModelIndex(),
+            self.rowCount(),
+            self.rowCount() + len(rowList))
         descriptions = []
 
         for rowIdx in range(len(rowList)):
@@ -204,8 +209,12 @@ class PacketTableModel(QtCore.QAbstractTableModel, QtCore.QObject):
                 rowList[rowIdx].append("")
 
             if resolveDescriptions:
-                descriptions.append(self.appendRow(
-                    rowList[rowIdx], addAtFront, emit=doEmit, resolveDescription=True))
+                descriptions.append(
+                    self.appendRow(
+                        rowList[rowIdx],
+                        addAtFront,
+                        emit=doEmit,
+                        resolveDescription=True))
             else:
                 self.appendRow(rowList[rowIdx], addAtFront, emit=doEmit)
 
@@ -381,8 +390,8 @@ class PacketTableModel(QtCore.QAbstractTableModel, QtCore.QObject):
         """
 
         self.emit(QtCore.SIGNAL("layoutAboutToBeChanged()"))
-        self.dataList = sorted(self.dataList,
-                               key=operator.itemgetter(colIndex))
+        self.dataList = sorted(
+            self.dataList, key=operator.itemgetter(colIndex))
         if order == QtCore.Qt.DescendingOrder:
             self.dataList.reverse()
         self.emit(QtCore.SIGNAL("layoutChanged()"))

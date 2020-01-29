@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 17, 2017
 
@@ -37,17 +36,13 @@ import Toolbox
 
 
 class SearcherTab(AbstractTab):
-
     """
     This class handles the logic of the filter tab
     """
 
     def __init__(self, tabWidget):
-        AbstractTab.__init__(self,
-                             tabWidget,
-                             Strings.searcherTabLoggerName,
-                             [2, 3, 4],
-                             Strings.searcherTabPacketTableViewName,
+        AbstractTab.__init__(self, tabWidget, Strings.searcherTabLoggerName,
+                             [2, 3, 4], Strings.searcherTabPacketTableViewName,
                              Strings.searcherTabLabelInterfaceValueName)
 
         #: The currently smallest known set of packets that cause a specific action.
@@ -73,11 +68,11 @@ class SearcherTab(AbstractTab):
         self.buttonSearcherDataClear = self.tabWidget.findChild(
             QtGui.QPushButton, "buttonSearcherDataClear")
 
-        assert all(GUIElem is not None for GUIElem in [self.buttonSearcherAddPacket,
-                                                       self.doubleSpinBoxSearcherPacketGap,
-                                                       self.buttonSearcherInterfaceSettings,
-                                                       self.buttonSearcherStart,
-                                                       self.buttonSearcherDataClear]), "GUI Elements not found"
+        assert all(GUIElem is not None for GUIElem in [
+            self.buttonSearcherAddPacket, self.doubleSpinBoxSearcherPacketGap,
+            self.buttonSearcherInterfaceSettings, self.buttonSearcherStart,
+            self.buttonSearcherDataClear
+        ]), "GUI Elements not found"
 
         self.buttonSearcherInterfaceSettings.clicked.connect(
             self.handleInterfaceSettingsDialog)
@@ -103,7 +98,7 @@ class SearcherTab(AbstractTab):
             return [lstCopy]
 
         # Amount if elements per chunk
-        chunkSize = int(floor((len(lstCopy)/chunkAmount)))
+        chunkSize = int(floor((len(lstCopy) / chunkAmount)))
         chunks = []
 
         for chunkIdx in range(chunkAmount):
@@ -122,9 +117,9 @@ class SearcherTab(AbstractTab):
         self.logger.debug("chunkSize: " + str(chunkSize))
         self.logger.debug("chunkLength: " + str(len(chunks)))
 
-        assert(len(chunks) == chunkAmount)
+        assert (len(chunks) == chunkAmount)
         # Check if we lost or added elements
-        assert(sum(len(sublst) for sublst in chunks) == len(lst))
+        assert (sum(len(sublst) for sublst in chunks) == len(lst))
         return chunks
 
     def sendAndSearch(self, chunkAmount=2):
@@ -145,19 +140,17 @@ class SearcherTab(AbstractTab):
         progressDialog.open()
 
         try:
-            self.logger.info(Strings.searcherTabAmountPackets +
-                             ": " + str(len(self.rawData)))
+            self.logger.info(Strings.searcherTabAmountPackets + ": " +
+                             str(len(self.rawData)))
 
             # Split the list
             # Take the minimum --> cant split list with 2 elements in 3 parts
-            chunks = self.splitLists(self.rawData,
-                                     max(2,
-                                         min(chunkAmount,
-                                             int(ceil(
-                                                 (len(self.rawData) / chunkAmount)))
-                                             )
-                                         )
-                                     )
+            chunks = self.splitLists(
+                self.rawData,
+                max(
+                    2,
+                    min(chunkAmount,
+                        int(ceil((len(self.rawData) / chunkAmount))))))
 
             # Reverse the chunk order --> newest packets first
             for chunkIdx in reversed(range(len(chunks))):
@@ -169,8 +162,8 @@ class SearcherTab(AbstractTab):
                     data = idAndData[1]
 
                     if counter % 1000 == 0:
-                        self.logger.info(
-                            "Packet " + str(counter) + "/" + str(len(chunks[chunkIdx])))
+                        self.logger.info("Packet " + str(counter) + "/" +
+                                         str(len(chunks[chunkIdx])))
 
                     if counter % 200 == 0:
                         QtCore.QCoreApplication.processEvents()
@@ -219,7 +212,9 @@ class SearcherTab(AbstractTab):
                     chunks.pop(chunkIdx)
                     # set the remaining chunks to one flat list of the remaining packets
                     self.rawData = [
-                        tupleData for tupleDataList in chunks for tupleData in tupleDataList]
+                        tupleData for tupleDataList in chunks
+                        for tupleData in tupleDataList
+                    ]
                     progressDialog.open()
         finally:
             progressDialog.close()
@@ -299,8 +294,8 @@ class SearcherTab(AbstractTab):
                     for packet in packets:
 
                         if counter % 500 == 0:
-                            self.logger.debug(
-                                "Packet " + str(counter) + "/" + str(len(self.rawData)))
+                            self.logger.debug("Packet " + str(counter) + "/" +
+                                              str(len(self.rawData)))
 
                         try:
                             builtPacket = CANData.tryBuildPacket(
@@ -353,10 +348,10 @@ class SearcherTab(AbstractTab):
         :return: True if the user pressed yes, else False
         """
 
-        answer = QMessageBox.question(self.tabWidget,
-                                      Strings.searcherTabActionPerformedMessageBoxTitle,
-                                      Strings.searcherTabActionPerformedMessageBoxText,
-                                      QMessageBox.Yes | QMessageBox.No)
+        answer = QMessageBox.question(
+            self.tabWidget, Strings.searcherTabActionPerformedMessageBoxTitle,
+            Strings.searcherTabActionPerformedMessageBoxText,
+            QMessageBox.Yes | QMessageBox.No)
         return answer == QMessageBox.Yes
 
     def askWhichAction(self):
@@ -377,11 +372,14 @@ class SearcherTab(AbstractTab):
         messageBox.setText(Strings.searcherTabAskActionMessageBoxText)
 
         tryAgainButton = messageBox.addButton(
-            Strings.searcherTabAskActionMessageBoxButtonTryAgainText, QMessageBox.RejectRole)
+            Strings.searcherTabAskActionMessageBoxButtonTryAgainText,
+            QMessageBox.RejectRole)
         reTestButton = messageBox.addButton(
-            Strings.searcherTabAskActionMessageBoxButtonReTestText, QMessageBox.NoRole)
+            Strings.searcherTabAskActionMessageBoxButtonReTestText,
+            QMessageBox.NoRole)
         cancelButton = messageBox.addButton(
-            Strings.searcherTabAskActionMessageBoxButtonCancelText, QMessageBox.YesRole)
+            Strings.searcherTabAskActionMessageBoxButtonCancelText,
+            QMessageBox.YesRole)
         messageBox.exec_()
 
         if messageBox.clickedButton() == tryAgainButton:
@@ -396,10 +394,9 @@ class SearcherTab(AbstractTab):
         Block the GUI thread until the user pressed the button on the MessageBox.
         """
 
-        QMessageBox.information(self.tabWidget,
-                                Strings.searcherTabEnterWhenReadyMessageBoxTitle,
-                                Strings.searcherTabEnterWhenReadyMessageBoxText,
-                                QMessageBox.Ok)
+        QMessageBox.information(
+            self.tabWidget, Strings.searcherTabEnterWhenReadyMessageBoxTitle,
+            Strings.searcherTabEnterWhenReadyMessageBoxText, QMessageBox.Ok)
 
     def clear(self, returnOldPackets=False):
         """
@@ -437,12 +434,12 @@ class SearcherTab(AbstractTab):
         :param state: Boolean value to indicate whether to enable or disable elements
         """
 
-        for GUIElement in [self.doubleSpinBoxSearcherPacketGap,
-                           self.buttonSearcherStart,
-                           self.buttonSearcherInterfaceSettings,
-                           self.buttonSearcherAddPacket,
-                           self.buttonSearcherDataClear,
-                           self.packetTableView]:
+        for GUIElement in [
+                self.doubleSpinBoxSearcherPacketGap, self.buttonSearcherStart,
+                self.buttonSearcherInterfaceSettings,
+                self.buttonSearcherAddPacket, self.buttonSearcherDataClear,
+                self.packetTableView
+        ]:
             GUIElement.setEnabled(state)
 
     def beep(self):

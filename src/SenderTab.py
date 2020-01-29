@@ -15,7 +15,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with CANalyzat0r.  If not, see <http://www.gnu.org/licenses/>.
-
 """
 Created on May 22, 2017
 
@@ -34,7 +33,6 @@ from Logger import Logger
 
 
 class SenderTab():
-
     """
     This class handles the logic of the sender tab.
     Subtabs are being handled in :class:`~src.SenderTabElement.SenderTabElement`.
@@ -70,8 +68,8 @@ class SenderTab():
         if packet is not None:
             SenderTab.CANData.sendPacket(packet)
         else:
-            SenderTab.logger.error(
-                Strings.packetBuildError + ": " + id + " " + data)
+            SenderTab.logger.error(Strings.packetBuildError + ": " + id + " " +
+                                   data)
 
     @staticmethod
     def prepareUI():
@@ -108,27 +106,28 @@ class SenderTab():
 
         if senderTabName is None:
             # Get the name of the new sender tab from the tuple returned by the dialog
-            senderTabNameObject = QInputDialog.getText(Globals.ui.tabWidgetMain,
-                                                 Strings.senderTabNewSenderMessageBoxTitle,
-                                                 Strings.senderTabNewSenderMessageBoxText,
-                                                 )
+            senderTabNameObject = QInputDialog.getText(
+                Globals.ui.tabWidgetMain,
+                Strings.senderTabNewSenderMessageBoxTitle,
+                Strings.senderTabNewSenderMessageBoxText,
+            )
             if senderTabNameObject is None or senderTabNameObject[1] is False:
                 return
 
             senderTabName = senderTabNameObject[0]
-        
+
         if len(senderTabName) == 0:
             SenderTab.logger.error(Strings.senderTabSenderInvalidName)
             return
 
         # Insert the new tab just before the add-button
-        Globals.ui.tabWidgetSenderTabs.insertTab(Globals.ui.tabWidgetSenderTabs.count()-1,
-                                                 newSenderTabWidget,
-                                                 senderTabName)
+        Globals.ui.tabWidgetSenderTabs.insertTab(
+            Globals.ui.tabWidgetSenderTabs.count() - 1, newSenderTabWidget,
+            senderTabName)
 
         # Create a SenderTabElement object which uses the created Widget
-        senderTabElement = SenderTabElement.SenderTabElement(newSenderTabWidget,
-                                                             senderTabName)
+        senderTabElement = SenderTabElement.SenderTabElement(
+            newSenderTabWidget, senderTabName)
 
         SenderTab.senderTabs.append(senderTabElement)
 
@@ -148,8 +147,9 @@ class SenderTab():
 
         # Set the new tab as the currently active tab
         Globals.ui.tabWidgetSenderTabs.tabBar().setCurrentIndex(
-            Globals.ui.tabWidgetSenderTabs.count()-2)
-        Globals.ui.tabWidgetMain.tabBar().setCurrentIndex(SenderTab.indexInMainTabBar)
+            Globals.ui.tabWidgetSenderTabs.count() - 2)
+        Globals.ui.tabWidgetMain.tabBar().setCurrentIndex(
+            SenderTab.indexInMainTabBar)
 
         # Return the index of the new tab to eventually fill it with data
         return SenderTab.senderTabs.index(senderTabElement)
@@ -202,7 +202,7 @@ class SenderTab():
         SenderTab.senderTabs.remove(senderTabElement)
         # Set the focus to the left element
         Globals.ui.tabWidgetSenderTabs.tabBar().setCurrentIndex(
-            Globals.ui.tabWidgetSenderTabs.count()-2)
+            Globals.ui.tabWidgetSenderTabs.count() - 2)
 
     @staticmethod
     def toggleActive():
@@ -211,11 +211,11 @@ class SenderTab():
         """
 
         if SenderTab.currentlySendingTabs > 0:
-            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(Globals.ui.tabWidgetMain.currentIndex(),
-                                                              Qt.red)
+            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(
+                Globals.ui.tabWidgetMain.currentIndex(), Qt.red)
         else:
-            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(Globals.ui.tabWidgetMain.currentIndex(),
-                                                              Qt.black)
+            Globals.ui.tabWidgetMain.tabBar().setTabTextColor(
+                Globals.ui.tabWidgetMain.currentIndex(), Qt.black)
 
     @staticmethod
     def toggleGUIElements(state):
@@ -225,10 +225,12 @@ class SenderTab():
         :param state: Boolean value to indicate whether to enable or disable elements
         """
 
-        for GUIElement in [Globals.ui.buttonSenderSingleInterfaceSettings,
-                           Globals.ui.lineEditSinglePacketID,
-                           Globals.ui.lineEditSinglePacketData,
-                           Globals.ui.buttonSingleSend]:
+        for GUIElement in [
+                Globals.ui.buttonSenderSingleInterfaceSettings,
+                Globals.ui.lineEditSinglePacketID,
+                Globals.ui.lineEditSinglePacketData,
+                Globals.ui.buttonSingleSend
+        ]:
             GUIElement.setEnabled(state)
 
     @classmethod

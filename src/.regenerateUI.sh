@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -o pipefail
+
 # This script can be used to regenerate the main GUI and its resources
 # after editing them
 

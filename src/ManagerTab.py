@@ -856,6 +856,7 @@ class ManagerTab(AbstractTab):
                 # Make a flat list out of the list of lists
                 packets = sum(packetLists, [])
 
+
                 # Get known packets
                 knownPackets = Globals.db.getKnownPackets(
                     project=selectedProject)

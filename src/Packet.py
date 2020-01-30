@@ -54,7 +54,7 @@ class Packet():
         self.packetSetID = packetSetID
         self.CANID = CANID
         self.data = data
-        self.id = id
+        self.id = str(id)
 
         if len(self.id) <= 3:
             neededLength = 3
@@ -95,9 +95,9 @@ class Packet():
         :return: The formatted JSON data of the object
 
         """
-
-        return json.dumps(
+        res = json.dumps(
             self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+        return res
 
     @staticmethod
     def fromJSON(importJSON):

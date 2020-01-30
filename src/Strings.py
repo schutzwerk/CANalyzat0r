@@ -220,6 +220,7 @@ CANDataCantExecuteInterfaceActive = "The interface is still being used, can't de
 CANDataDetectedVirtualInterface = "Detected virtual interface for: "
 CANDataNoInstanceAvailable = "No CANData instance available"
 CANDataNewInterfaceAdded = "New CAN interface added: "
+CANDataNeedFD = "Failed to send packet, please use FD mode for packets larger than 8 bytes"
 
 # Database
 databaseLoggerName = "Database"

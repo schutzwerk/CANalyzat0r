@@ -96,7 +96,14 @@ class CANData():
         """
 
         assert self.iface is not None
-        self.iface.send(packet)
+        try:
+            self.iface.send(packet)
+        except Exception as e:
+            if not self.isFD and len(packet.data) > 8:
+                CANData.logger.info(Strings.CANDataNeedFD)
+            else:
+                raise e
+
 
     def readPacket(self):
         """

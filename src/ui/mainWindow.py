@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Wed Jan 29 16:10:57 2020
+# Created: Thu Jan 30 09:13:07 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -185,7 +185,7 @@ class Ui_CANalyzatorMainWindow(object):
         self.labelMainLogo.setScaledContents(True)
         self.labelMainLogo.setObjectName("labelMainLogo")
         self.proLogo = QtGui.QLabel(self.tabMain)
-        self.proLogo.setGeometry(QtCore.QRect(540, 90, 161, 111))
+        self.proLogo.setGeometry(QtCore.QRect(630, 180, 41, 21))
         self.proLogo.setText("")
         self.proLogo.setPixmap(QtGui.QPixmap("icon/pro.png"))
         self.proLogo.setScaledContents(False)

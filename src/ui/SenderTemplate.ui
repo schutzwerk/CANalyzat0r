@@ -58,13 +58,6 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="6" column="0">
-     <widget class="QLabel" name="labelSenderXInterfaceDescr">
-      <property name="text">
-       <string>Interface:</string>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="0" colspan="2">
      <widget class="Line" name="line">
       <property name="orientation">
@@ -100,13 +93,6 @@
       </property>
       <property name="maximum">
        <double>9000.000000000000000</double>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="1">
-     <widget class="QLabel" name="labelSenderXInterfaceValue">
-      <property name="text">
-       <string>None</string>
       </property>
      </widget>
     </item>
@@ -149,6 +135,13 @@
      <widget class="QPushButton" name="buttonAddPacket">
       <property name="text">
        <string>Add packet</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="2">
+     <widget class="QLabel" name="labelSenderXInterfaceValue">
+      <property name="text">
+       <string>None</string>
       </property>
      </widget>
     </item>

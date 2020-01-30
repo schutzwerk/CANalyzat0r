@@ -42,7 +42,7 @@ class Packet():
                  timestamp="",
                  iface="",
                  length=None,
-                 id=None):
+                 id="137"):
         """
         The parameters ``CANID`` and ``data`` must be valid hex strings.
         If length is not specified, it will be calculated automatically.

@@ -1,6 +1,6 @@
 ![Alt text](/.repoResources/mainTab.png?raw=true "CANalyzat0r main tab")
 
-*This software project is a result of a Bachelor's thesis created at [SCHUTZWERK](https://www.schutzwerk.com) in collaboration with [Aalen University](https://www.hs-aalen.de/) by Philipp Schmied.*
+*This software project is a result of a Bachelor's thesis created at [SCHUTZWERK](https://www.schutzwerk.com) in collaboration with [Aalen University](https://www.hs-aalen.de/) by Philipp Schmied ([@CaptnBanana](https://twitter.com/CaptnBanana)).*
 
 *Please refer to the corresponding [blog post](https://www.schutzwerk.com/en/43/posts/canalyzat0r/) for more information.*
 
@@ -44,7 +44,7 @@ For more information, read the HTML or PDF version of the documentation in the `
 
 # Working CAN Adapters
 
-In general, all SocketCAN devices should be compatible. CANalyzat0r has been developed and successfully tested in combination with [USB2CAN](https://www.8devices.com/products/usb2can).
+In general, all SocketCAN devices should be compatible. CANalyzat0r has been developed and successfully tested in combination with [USB2CAN](https://www.8devices.com/products/usb2can) and [PCAN-USB Pro FD](https://www.peak-system.com/PCAN-USB-Pro-FD.366.0.html?&L=1).
 
 # Testing It
 

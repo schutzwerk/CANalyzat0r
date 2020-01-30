@@ -326,13 +326,6 @@ class Toolbox():
 
             # Only create a new instance if the interface isn't active
             if not selectedCANData.active:
-
-                selectedCANData.VCAN = Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked(
-                )
-
-                selectedCANData.isFD = Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.isChecked(
-                )
-
                 if not selectedCANData.VCAN:
                     # Physical interface - lets update the bitrate too
                     if selectedCANData.updateBitrate(
@@ -340,7 +333,10 @@ class Toolbox():
                             value(),
                             Toolbox.interfaceDialogWidget.
                             spinBoxDialogFDBitrate.value(),
-                            fd=selectedCANData.isFD):
+                            fd=Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.isChecked()):
+                        selectedCANData.isFD = Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.isChecked()
+                        Toolbox.logger.info(Strings.mainTabCANConfigUpdated)
+                    else:
                         Toolbox.logger.info(Strings.mainTabCANConfigUpdated)
                 else:
                     Toolbox.logger.info(Strings.mainTabCANConfigUpdated)
@@ -390,6 +386,9 @@ class Toolbox():
 
         Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(
             Toolbox.interfaceDialogWidget.checkBoxDialogIsFD.isChecked())
+
+        Toolbox.interfaceDialogWidget.spinBoxDialogFDBitrate.setEnabled(
+            not Toolbox.interfaceDialogWidget.checkBoxDialogIsVCAN.isChecked())
 
     @staticmethod
     def interfaceSettingsDialogComboBoxChanged():

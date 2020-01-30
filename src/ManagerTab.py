@@ -1027,6 +1027,7 @@ class ManagerTab(AbstractTab):
                         packet for packet in importedPackets
                         if packet.packetSetID == importedPacketSet.id
                     ]
+
                     Globals.db.savePacketSetWithData(
                         importedPacketSet.name,
                         packets=packetsOfPacketSet,

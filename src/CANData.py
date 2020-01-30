@@ -260,17 +260,18 @@ class CANData():
         arbID = int(CANID, 16)
         data = list(bytearray.fromhex(data))
 
-        try:
-            packet = can.Message(arbitration_id=arbID, data=data)
-        except ValueError:
+        # distinguish between extended and normal CAN IDs
+        if len(CANID.lstrip("0")) <= 3:
+            packet = can.Message(
+                arbitration_id=arbID, data=data, is_extended_id=False)
 
-            # Uh oh, try to create an extended packet
+        # Try to create an extended packet
+        else:
             try:
                 packet = can.Message(
                     arbitration_id=arbID, data=data, is_extended_id=True)
-            except TypeError:
-                CANData.logger.error(Strings.packetBuildError +
-                                     ": %s" % (str(e)))
+            except TypeError as e:
+                CANData.logger.error(Strings.packetBuildError + ": %s" % (str(e)))
                 return None
 
         if len(data) > 8:
@@ -323,16 +324,25 @@ class CANData():
                 # Remove ( and )
                 curTimestamp = valueList[0].replace("(", "").replace(")", "")
                 curIface = valueList[1]
-                IDAndData = valueList[2].split("#")
-                if len(IDAndData) == 2:
+
+                # CAN FD line
+                if "##" in valueList[2]:
+                    IDAndData = valueList[2].split("##")
+                    # remove the flag that's present at this index
+                    IDAndData[1] = IDAndData[1][1:]
+                # Regular line
+                else:
+                    IDAndData = valueList[2].split("#")
+
+                try:
                     curID = IDAndData[0]
                     curData = IDAndData[1]
                     socketCANPacket = SocketCANPacket(curTimestamp, curIface,
                                                       curID, curData)
                     socketCANPackets.append(socketCANPacket)
-                else:
-                    CANData.logger.warning(
-                        Strings.CANDataInvalidSocketCANLine + ": " + line)
+                except Exception as e:
+                    CANData.logger.warning(Strings.CANDataInvalidSocketCANLine
+                                           + ": %s (%s)" % (line, str(e)))
 
         return socketCANPackets
 

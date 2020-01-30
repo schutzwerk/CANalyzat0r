@@ -44,7 +44,7 @@ For more information, read the HTML or PDF version of the documentation in the `
 
 # Working CAN Adapters
 
-In general, all SocketCAN devices should be compatible. CANalyzat0r has been developed and successfully tested in combination with [USB2CAN](https://www.8devices.com/products/usb2can) and [PCAN-USB Pro FD](https://www.peak-system.com/PCAN-USB-Pro-FD.366.0.html?&L=1).
+In general, all SocketCAN devices should be compatible. CANalyzat0r has been developed and successfully tested in combination with [USB2CAN](https://www.8devices.com/products/usb2can) for regular CAN and [PCAN-USB Pro FD](https://www.peak-system.com/PCAN-USB-Pro-FD.366.0.html?&L=1) for CAN FD.
 
 # Testing It
 

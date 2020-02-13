@@ -25,6 +25,7 @@ For more information, read the HTML or PDF version of the documentation in the `
 * Manage your work in projects. You can also import and export them in the human readable/editable JSON format
 * Logging of all actions
 * Graphical sniffing
+* Basic support for UDS fuzzing
 * Manage findings, dumps and known packets per project
 ![Alt text](/.repoResources/demo/knownPackets.gif?raw=true "Recognizing known packets")
 * Easy copy and paste between tabs. Also, you can just paste your SocketCAN files into a table that allows pasting

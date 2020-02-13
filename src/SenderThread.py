@@ -108,13 +108,13 @@ class FuzzSenderThread(QtCore.QThread):
         slept = 0
         while self.enabled:
             slept = 0
-            randomPacket = Globals.fuzzerTabInstance.generateRandomPacket()
-            if randomPacket is None:
+            packet = Globals.fuzzerTabInstance.generateRandomPacket()
+            if packet is None:
                 continue
 
             # Building the packet worked -- let's send
             try:
-                self.CANData.sendPacket(randomPacket)
+                self.CANData.sendPacket(packet)
             except OSError:
                 if errorCount % 10000 == 0:
                     self.logger.error(Strings.OSError)
@@ -122,7 +122,7 @@ class FuzzSenderThread(QtCore.QThread):
                 errorCount += 1
 
             # Also send the data over the pipe to add it on the GUI
-            self.fuzzerSendPipe.send(randomPacket)
+            self.fuzzerSendPipe.send(packet)
 
             while slept < self.sleepTime:
                 if not self.enabled:
@@ -130,6 +130,75 @@ class FuzzSenderThread(QtCore.QThread):
 
                 time.sleep(0.1)
                 slept += 0.1
+
+    def disable(self):
+        """
+        This sets the ``enabled`` flag to False which causes the main loop to terminate.
+        """
+
+        self.enabled = False
+
+####
+
+
+class UDSSenderThread(QtCore.QThread):
+    """
+    Spawns a new thread that will send sequential UDS packets in a loop.
+    """
+
+    def __init__(self, UDSTab, sleepTime, UDSSendPipe, CANData, threadName):
+        QtCore.QThread.__init__(self)
+        self.UDSTab = UDSTab
+        self.sleepTime = sleepTime
+        self.UDSSendPipe = UDSSendPipe
+        self.CANData = CANData
+        self.threadName = threadName
+        self.enabled = True
+
+        self.logger = Logger(Strings.UDSSenderThreadLoggerName + " (" +
+                             self.threadName + ")").getLogger()
+
+
+    def run(self):
+        """
+        Send the packets in a loop and wait accordingly until the thread is disabled.
+        """
+        errorCount = 1
+        slept = 0
+        done = False
+        packet = None
+        while self.enabled and not done:
+            slept = 0
+            done, packet = Globals.UDSTabInstance.generateNextUDSPacket(packet)
+            if packet is None:
+                continue
+
+            # Building the packet worked -- let's send
+            try:
+                self.CANData.sendPacket(packet)
+            except OSError:
+                if errorCount % 10000 == 0:
+                    self.logger.error(Strings.OSError)
+                    errorCount = 1
+                errorCount += 1
+
+            # Also send the data over the pipe to add it on the GUI
+            self.UDSSendPipe.send(packet)
+
+            if done:
+                # Tell the GUI that we're finished
+                self.UDSTab.toggleUDSFuzzing()
+                # disable this thread
+                self.disable()
+                continue
+
+            while slept < self.sleepTime:
+                if not self.enabled:
+                    return
+
+                time.sleep(0.1)
+                slept += 0.1
+
 
     def disable(self):
         """

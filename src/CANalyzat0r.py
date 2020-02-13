@@ -67,6 +67,7 @@ class MainWindow(QMainWindow, Ui_CANalyzatorMainWindow):
         from SearcherTab import SearcherTab
         from ManagerTab import ManagerTab
         from ComparerTab import ComparerTab
+        from UDSTab import UDSTab
         from AboutTab import AboutTab
         from Toolbox import Toolbox
 
@@ -103,6 +104,7 @@ class MainWindow(QMainWindow, Ui_CANalyzatorMainWindow):
         Globals.searcherTabInstance = SearcherTab(Globals.ui.tabSearcher)
         Globals.filterTabInstance = FilterTab(Globals.ui.tabFilter)
         Globals.managerTabInstance = ManagerTab(Globals.ui.tabManager)
+        Globals.UDSTabInstance = UDSTab(Globals.ui.tabUDS)
 
         MainTab.MainTab.detectCANInterfaces(updateLabels=False)
         MainTab.MainTab.applyLogLevelSetting()

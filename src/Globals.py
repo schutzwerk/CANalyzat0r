@@ -47,3 +47,4 @@ comparerTabInstance = None
 searcherTabInstance = None
 filterTabInstance = None
 managerTabInstance = None
+UDSTabInstance = None

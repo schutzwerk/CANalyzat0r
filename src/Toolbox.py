@@ -511,7 +511,7 @@ class Toolbox():
         SenderTab.updateCANDataInstance(CANDataInstance, delegate=True)
         for tab in [
                 Globals.fuzzerTabInstance, Globals.searcherTabInstance,
-                Globals.filterTabInstance
+                Globals.filterTabInstance, Globals.UDSTabInstance
         ]:
             tab.updateCANDataInstance(CANDataInstance)
 
@@ -523,7 +523,7 @@ class Toolbox():
 
         for tab in [
                 SnifferTab.SnifferTab, SenderTab, Globals.fuzzerTabInstance,
-                Globals.searcherTabInstance, Globals.filterTabInstance
+                Globals.searcherTabInstance, Globals.filterTabInstance, Globals.UDSTabInstance
         ]:
             tab.updateInterfaceLabel()
 

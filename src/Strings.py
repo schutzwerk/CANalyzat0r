@@ -136,6 +136,19 @@ fuzzSenderThreadLoggerName = "FuzzerThread"
 comparerTabLoggerName = "ComparerTab"
 comparerTabPacketViewName = "tableViewComparerData"
 
+
+# UDSTab
+UDSTabLoggerName = "UDSTab"
+UDSTabPacketViewName = "tableViewUDSData"
+UDSTabLabelInterfaceValueName = "labelUDSInterfaceValue"
+UDSTabUDSButtonEnabled = "Stop"
+UDSTabUDSButtonDisabled = "Start"
+UDSTabUDSThreadStarted = "Started UDS fuzzer thread"
+UDSTabUDSThreadStopped = "Stopped UDS fuzzer thread"
+
+# UDSSenderThread
+UDSSenderThreadLoggerName = "UDSSenderThread"
+
 # ManagerTab
 managerTabLoggerName = "ManagerTab"
 managerTabPacketTableViewName = "tableViewManagerDumpsData"
@@ -261,6 +274,7 @@ statusBarNoProject = "No project selected"
 statusBarProjectWasDeleted = "Project was deleted"
 statusBarSniffing = "sniffing"
 statusBarFuzzing = "fuzzing"
+statusBarUDSFuzzing = "Diagnosis fuzzing"
 statusBarSending = "sending"
 
 # Project import/export file structuring

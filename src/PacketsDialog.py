@@ -36,9 +36,10 @@ class PacketsDialog(AbstractTab):
     """
 
     def __init__(self,
-                 packets=None,
-                 rawPacketList=None,
-                 returnPacketsAsRawList=True):
+            packets=None,
+            rawPacketList=None,
+            returnPacketsAsRawList=True,
+            invert=False):
         """
         This basically just sets data and reads the widget from the ``.ui`` file.
 
@@ -52,46 +53,54 @@ class PacketsDialog(AbstractTab):
         :param returnPacketsAsRawList: Boolean value indicating whether the displayed packets will be returned
                                        as raw packet list. If this is False, the values will be returned as list
                                        in the following format: ``<CAN ID>#<Data>``.
+
+        :param invert: Boolean value indicating whether the selected packets are the ones that will be displayed by the sniffer.
+                         This filters all packets that are NOT defined in the dialog.
         """
 
         self.packets = packets
         self.rawPacketList = rawPacketList
+        self.invert = invert
+
         self.widget = Toolbox.Toolbox.widgetFromUIFile(
-            Strings.packetsDialogUIPath)
+                Strings.packetsDialogUIPath)
 
         AbstractTab.__init__(
-            self,
-            self.widget,
-            Strings.packetsDialogLoggerName, [2, 3],
-            Strings.packetsDialogTableViewName,
-            labelInterfaceValueName=None,
-            hideTimestampCol=False)
+                self,
+                self.widget,
+                Strings.packetsDialogLoggerName, [2, 3],
+                Strings.packetsDialogTableViewName,
+                labelInterfaceValueName=None,
+                hideTimestampCol=False)
 
         self.returnPacketsAsRawList = returnPacketsAsRawList
 
         # Get all GUI elements
         self.buttonManagePacketsDialogAdd = self.tabWidget.findChild(
-            QtGui.QPushButton, "buttonManagePacketsDialogAdd")
+                QtGui.QPushButton, "buttonManagePacketsDialogAdd")
+        self.checkBoxManagePacketsDialogInvert = self.tabWidget.findChild(
+                QtGui.QCheckBox, "checkBoxManagePacketsDialogInvert")
         self.buttonManagePacketsDialogClear = self.tabWidget.findChild(
-            QtGui.QPushButton, "buttonManagePacketsDialogClear")
+                QtGui.QPushButton, "buttonManagePacketsDialogClear")
         self.buttonManagePacketsDialogUniquePackets = self.tabWidget.findChild(
-            QtGui.QPushButton, "buttonManagePacketsDialogUniquePackets")
+                QtGui.QPushButton, "buttonManagePacketsDialogUniquePackets")
         self.buttonManagePacketsDialogUniqueIDs = self.tabWidget.findChild(
-            QtGui.QPushButton, "buttonManagePacketsDialogUniqueIDs")
+                QtGui.QPushButton, "buttonManagePacketsDialogUniqueIDs")
 
         assert all(GUIElem is not None for GUIElem in [
             self.buttonManagePacketsDialogAdd,
             self.buttonManagePacketsDialogClear,
             self.buttonManagePacketsDialogUniquePackets,
             self.buttonManagePacketsDialogUniqueIDs,
-        ]), "GUI Elements not found"
+            self.checkBoxManagePacketsDialogInvert
+            ]), "GUI Elements not found"
 
         self.buttonManagePacketsDialogAdd.clicked.connect(self.manualAddPacket)
         self.buttonManagePacketsDialogClear.clicked.connect(self.clear)
         self.buttonManagePacketsDialogUniquePackets.clicked.connect(
-            self.getUniquePackets)
+                self.getUniquePackets)
         self.buttonManagePacketsDialogUniqueIDs.clicked.connect(
-            self.getUniqueIDs)
+                self.getUniqueIDs)
 
         self.prepareUI()
 
@@ -114,6 +123,8 @@ class PacketsDialog(AbstractTab):
                 data = vals[1] if vals[1] != "*" else ""
                 self.addPacket([CANID, data])
 
+        self.checkBoxManagePacketsDialogInvert.setChecked(self.invert)
+
     def open(self):
         """
         Show the widget, extract data and return it
@@ -126,10 +137,10 @@ class PacketsDialog(AbstractTab):
         pressedButton = self.widget.exec_()
         if pressedButton == QMessageBox.Accepted:
             rawPackets = Toolbox.Toolbox.tableExtractAllRowData(
-                self.widget.tableViewManagePacketsDialogData)
+                    self.widget.tableViewManagePacketsDialogData)
 
             if self.returnPacketsAsRawList:
-                return rawPackets
+                return (self.checkBoxManagePacketsDialogInvert.isChecked(), rawPackets)
             else:
                 returnedPackets = []
                 for rawPacket in rawPackets:
@@ -140,7 +151,7 @@ class PacketsDialog(AbstractTab):
                     data = "*" if len(data) == 0 else data
 
                     returnedPackets.append(CANID + "#" + data)
-                return returnedPackets
+                return (self.checkBoxManagePacketsDialogInvert.isChecked(), returnedPackets)
 
         else:
             return None
@@ -171,7 +182,7 @@ class PacketsDialog(AbstractTab):
         from multiprocessing.pool import Pool
 
         progressDialog = Toolbox.Toolbox.getWorkingDialog(
-            Strings.dialogFiltering)
+                Strings.dialogFiltering)
         progressDialog.open()
 
         try:
@@ -193,7 +204,7 @@ class PacketsDialog(AbstractTab):
             pool = Pool(processes=1)
             # We need to pass a tuple of args
             async_result = pool.apply_async(PacketsDialog.getUniqueRawPackets,
-                                            (rawData, ))
+                    (rawData, ))
 
             refreshCounter = 0
             while not async_result.ready():

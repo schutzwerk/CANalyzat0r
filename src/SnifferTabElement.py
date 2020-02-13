@@ -205,9 +205,6 @@ class SnifferTabElement(AbstractTab):
         data = valueList[self.dataColIndex]
         strIdx = Toolbox.Toolbox.getPacketDictIndex(CANID, data)
 
-        print("ignored: %s" % (self.ignoredPackets))
-        print("strIdx: %s" % (strIdx))
-
         accepted = True
         if strIdx in self.ignoredPackets:
             accepted = False

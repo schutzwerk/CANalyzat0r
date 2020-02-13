@@ -54,57 +54,52 @@
     <bool>true</bool>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="buttonManagePacketsDialogAdd">
+  <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>900</x>
+     <x>890</x>
      <y>10</y>
-     <width>171</width>
-     <height>28</height>
+     <width>181</width>
+     <height>191</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Add packet</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonManagePacketsDialogClear">
-   <property name="geometry">
-    <rect>
-     <x>900</x>
-     <y>50</y>
-     <width>171</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Clear</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonManagePacketsDialogUniquePackets">
-   <property name="geometry">
-    <rect>
-     <x>900</x>
-     <y>110</y>
-     <width>171</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Get unique packets</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonManagePacketsDialogUniqueIDs">
-   <property name="geometry">
-    <rect>
-     <x>900</x>
-     <y>150</y>
-     <width>171</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Get unique IDs</string>
-   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="0">
+     <widget class="QPushButton" name="buttonManagePacketsDialogUniquePackets">
+      <property name="text">
+       <string>Get unique packets</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="buttonManagePacketsDialogAdd">
+      <property name="text">
+       <string>Add packet</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="buttonManagePacketsDialogClear">
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="buttonManagePacketsDialogUniqueIDs">
+      <property name="text">
+       <string>Get unique IDs</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QCheckBox" name="checkBoxManagePacketsDialogInvert">
+      <property name="text">
+       <string>Invert</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

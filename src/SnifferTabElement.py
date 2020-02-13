@@ -78,6 +78,8 @@ class SnifferTabElement(AbstractTab):
 
         # Can be managed using the button
         self.ignoredPackets = []
+        # whether to invert the packet ignore mechanism --> do a whitelist instead of a blacklist
+        self.invert = False
 
         self.snifferProcess = None
         self.itemAdderThread = None
@@ -202,10 +204,21 @@ class SnifferTabElement(AbstractTab):
         CANID = valueList[self.IDColIndex]
         data = valueList[self.dataColIndex]
         strIdx = Toolbox.Toolbox.getPacketDictIndex(CANID, data)
+
+        print("ignored: %s" % (self.ignoredPackets))
+        print("strIdx: %s" % (strIdx))
+
+        accepted = True
         if strIdx in self.ignoredPackets:
-            return
+            accepted = False
         # Check wildcard
         elif str(str(CANID) + "#*").upper() in self.ignoredPackets:
+            accepted = False
+
+        if self.invert:
+            accepted = not accepted
+
+        if not accepted:
             return
 
         # Save the values for later
@@ -331,8 +344,14 @@ class SnifferTabElement(AbstractTab):
         """
 
         dialog = PacketsDialog.PacketsDialog(
-            packets=self.ignoredPackets, returnPacketsAsRawList=False)
-        ignoredPackets = dialog.open()
+            packets=self.ignoredPackets, returnPacketsAsRawList=False, invert=self.invert)
+        res = dialog.open()
+        if res is None:
+            return
+
+        invert, ignoredPackets = res
+
+        self.invert = invert
 
         # Only if the user didn't press cancel
         if ignoredPackets is not None:

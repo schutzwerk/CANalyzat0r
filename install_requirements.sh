@@ -27,6 +27,6 @@ sudo pip3 install pipenv
 cd $DIR
 mkdir -p pipenv && cd pipenv
 pipenv --three
-pipenv install -e 'git+https://github.com/hardbyte/python-can.git@3.3.2#egg=can'
+pipenv install python-can==3.3.2
 pipenv install sphinx_rtd_theme
 cp -rf /usr/lib/python3/dist-packages/PySide $(pipenv --venv)/lib/python3*/site-packages

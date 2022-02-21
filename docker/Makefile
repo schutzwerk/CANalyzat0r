@@ -12,7 +12,7 @@ build: ## Build the image
 	docker build --rm -t $(IMAGE_NAME):$(VERSION) .
 
 build-local: ## Build the image using a local version of CANalyzat0r
-	docker build -t $(IMAGE_NAME) -f Dockerfile.local .
+	docker build -t $(IMAGE_NAME) -f Dockerfile.local ..
 
 build-nc: ## Build the container without caching
 	docker build --rm --no-cache -t $(IMAGE_NAME) .
